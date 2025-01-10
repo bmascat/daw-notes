@@ -1,0 +1,8 @@
+La tarea cuenta 1 punto sobre la nota final.
+La tarea se puede realizar entre 2 o 3 integrantes. 
+Debéis investigar con que plataforma queréis hacer el despliegue. Tenéis un montón de opciones. Y una vez decidáis con que plataforma trabajar, la entrega consistirá en:
+Un informe con la plataforma escogida y las características que tiene. Hasta donde llega la capa gratuita y en que momento deberíamos saltar a la capa de pago.
+Debéis de conseguir acceder a la capa gratuita de esa plataforma. (captura de pantalla en vuestro informe con los pasos a seguir para contratar ese servicio)
+Se realizará el despliegue de la aplicación FRONT del examen del 1T (o una que queráis a vuestra elección).  Debéis crear un GitHub Actions con los pasos que ya conocéis (build y push) y ahora además añadir el despliegue en vuestra plataforma. (Se añadirá al informe el repositorio y con el ID último commit)
+Una vez desplegada la app, se deberá añadir en el informe la URL de la aplicación para verificar su correcto funcionamiento.
+Es relativamente complejo encontrar servidores gratuitos donde desplegar un docker-compose.yml. Así que simplemente intentad desplegar la calculadora del front (aunque no funcione) de manera automatizada. O si tenéis alguna aplicación vuestra de un único servicio, adelante.
