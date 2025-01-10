@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+ <!-- Schema recetas -->
+ <xs:element name="recetas">
+    <xs:complexType>
+    <xs:sequence>
+        <xs:element ref = "receta"></xs:element>
+        <xs:element ref = "productos"></xs:element>
+    </xs:sequence>
+    </xs:complexType>
+ </xs:element>
+
+ <!-- schema receta -->
+  <xs:element name="receta">
+    <xs:complexType>
+        <xs:sequence>
+         <xs:element name="nombreR" type="xs:string"></xs:element>
+         <xs:element name="comensales" type="xs:integer"></xs:element>
+         <xs:element ref="ingredientes"></xs:element>
+         <xs:element ref="proceso"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- schema productos -->
+  <xs:element name="productos">
+  <xs:complexType>
+    <xs:sequence>
+        <xs:element ref="producto" maxOccurs="unbounded"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+
+  <!-- schema ingredientes -->
+  <xs:element name="ingredientes">
+    <xs:complexType>
+        <xs:sequence>
+        <xs:element ref="ingrediente" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- schema ingrediente -->
+  <xs:element name="ingrediente">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cantidad">
+                 <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:integer">
+                            <xs:attribute name="medida" type="xs:string"></xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                 </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="codigo" type = "xs:string"></xs:attribute>
+        </xs:complexType>
+     </xs:element>
+
+  <!-- schema  proceso -->
+  <xs:element name="proceso">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="paso" type="xs:string" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- schema producto -->
+  <xs:element name="producto">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="idProducto" type="xs:string"></xs:attribute>
+                    <xs:attribute name="codProveedor" type="typeCodProv"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+  </xs:element>
+  
+    <xs:key name="idProducto">
+            <xs:selector xpath="producto"/>
+            <xs:field xpath="@idProducto"/>
+    </xs:key>
+    <xs:keyref name="codigo" refer ="idProducto">
+                <xs:selector xpath="ingrediente"/>
+                <xs:field xpath="@codigo"/> 
+    </xs:keyref>
+
+  <!-- schema typeCodProv -->
+  <xs:simpleType name = "typeCodProv">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="[PE]-\d{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

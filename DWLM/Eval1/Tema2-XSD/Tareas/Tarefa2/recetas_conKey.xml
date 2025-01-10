@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<recetas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="recetas_conKey.xsd">
+  <receta>
+    <nombreR>Sopa de cebolla</nombreR>
+    <comensales>4</comensales>
+    <ingredientes>
+      <ingrediente codigo="CB">
+        <cantidad medida="kg">1</cantidad>
+      </ingrediente>
+      <ingrediente codigo="CC">
+        <cantidad medida="l">2</cantidad>
+        </ingrediente>
+      <ingrediente codigo="MT">
+        <cantidad medida="gr">100</cantidad>
+      </ingrediente>
+      <ingrediente codigo="HR">
+        <cantidad medida="cucharada">1</cantidad>
+      </ingrediente>
+      <ingrediente codigo="QES">
+        <cantidad medida="gr">100</cantidad>
+      </ingrediente>
+      <ingrediente codigo="PNT">
+        <cantidad medida="rebanadas">4</cantidad>
+      </ingrediente>
+      <ingrediente codigo="TM">
+        <cantidad medida="pizca">1</cantidad>
+      </ingrediente>
+      <ingrediente codigo="LR">
+        <cantidad medida="hoja">1</cantidad>
+      </ingrediente>
+        <ingrediente codigo="PM">
+        <cantidad medida="pizca">1</cantidad>
+      </ingrediente>
+    </ingredientes>
+    <proceso>
+      <paso>Pelar y partir las cebollas en rodajas finas </paso>
+      <paso>Rehogarlas con la mantequilla, sal y pimienta a fuego lento 
+                    hasta que estén transparentes sin dorarse</paso>
+      <paso>Añadir la harina sin dejar de remover</paso>
+      <paso>Ponerlo en una cazuela con el caldo, el tomillo y el laurel</paso>
+      <paso>Dejar cocer a fuego lento durante unos 15 minutos</paso>
+      <paso>Poner las rebanadas de pan encima, espolvorear el queso y gratinar al horno</paso>
+    </proceso>
+  </receta>
+  <productos>
+    <producto idProducto="CB" codProveedor="P-222">cebolla</producto>
+    <producto idProducto="CC" codProveedor="E-222">caldo de carne</producto>
+    <producto idProducto="MT" codProveedor="E-111">mantequilla</producto>
+    <producto idProducto="HR" codProveedor="E-222">harina</producto>
+    <producto idProducto="QES" codProveedor="E-111">queso emmental suizo o gruyére rallado</producto>
+    <producto idProducto="PNT" codProveedor="E-222">Pan tostado en rebanadas</producto>
+    <producto idProducto="TM" codProveedor="P-111">Tomillo</producto>
+    <producto idProducto="LR" codProveedor="P-111">laurel</producto>
+    <producto idProducto="PM" codProveedor="E-444">Pimienta</producto>
+    <producto idProducto="AG" codProveedor="E-333">Agua</producto>
+  </productos>
+</recetas>
