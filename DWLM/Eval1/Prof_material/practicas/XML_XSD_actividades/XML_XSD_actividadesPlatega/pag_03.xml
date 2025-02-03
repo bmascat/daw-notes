@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: pag_03.xml
+      Observaciones: ejemplo (XML_XSD_actividades) página 3 -->
+<!DOCTYPE garderia SYSTEM "pag_03_garderia.dtd">
+<garderia>
+  <neno numeroExpedente="popeye">
+    <nome>cousas</nome>
+    <dataNacemento>1.1.1</dataNacemento>
+    <peso>non o sei</peso>
+    <altura>falso</altura>
+    <vacunas>no</vacunas>
+  </neno>
+</garderia>
+

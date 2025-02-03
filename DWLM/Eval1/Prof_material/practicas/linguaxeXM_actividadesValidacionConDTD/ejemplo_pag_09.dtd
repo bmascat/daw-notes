@@ -1,0 +1,5 @@
+<!ELEMENT libro (receita | ingrediente)*>
+<!ELEMENT receita #PCDATA>
+<!ATTLIST receita id ID #REQUIRED>
+<!ELEMENT ingrediente #PCDATA>
+<!ATTLIST ingrediente ref IDREFS #IMPLIED>

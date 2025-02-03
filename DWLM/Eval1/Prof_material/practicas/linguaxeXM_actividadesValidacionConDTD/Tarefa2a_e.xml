@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE contactos [
+  <!ELEMENT contactos (contacto*)>
+  <!ELEMENT contacto (nome, fixo?, mobil+,correo*)>
+  <!ELEMENT nome (#PCDATA)>
+  <!ELEMENT fixo (#PCDATA)>
+  <!ELEMENT mobil (#PCDATA)>
+  <!ELEMENT correo (#PCDATA)>
+]>
+
+<contactos>
+  <contacto>
+    <nome>Xoel</nome>
+    <fixo>989898989</fixo>
+  </contacto>
+  <contacto>
+    <nome>Noa</nome>
+    <fixo>998899889</fixo>
+    <correo>noa.vila@traballo.com</correo>
+    <mobil>644432344</mobil>
+    <correo>noa@omeucorreo.com</correo>
+  </contacto>
+</contactos>
+
+
+
+

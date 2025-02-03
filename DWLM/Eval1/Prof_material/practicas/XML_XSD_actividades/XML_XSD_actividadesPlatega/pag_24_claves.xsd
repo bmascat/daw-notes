@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="empresa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="empregado" type="tipoEmpregado" maxOccurs="200"/>
+        <xs:element name="departamento" type="tipoDepartamento" maxOccurs="8"/>
+      </xs:sequence>
+    </xs:complexType>
+    
+    <xs:key name="depUnico">
+      <xs:selector xpath="departamento"/>
+      <xs:field xpath="@codigo"/>
+    </xs:key>
+    
+    <xs:keyref name="Ref_departamento" refer="depUnico">
+      <xs:selector xpath="empregado"/>
+      <xs:field xpath="departamento"/>
+    </xs:keyref>
+  </xs:element>
+  
+  <xs:complexType name="tipoEmpregado">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string"/>
+      <xs:element name="departamento" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tipoDepartamento">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="codigo" type="xs:string" use="required"/>
+  </xs:complexType>
+</xs:schema>

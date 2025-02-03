@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE mensaxe SYSTEM "tarefa_1_b_dtd.dtd">
+<mensaxe>
+   <de>maria@gmail.com</de>
+   <para>ignacio@mail.com</para>
+   <para>maria@mail.com</para>
+   <para>marta@mail.com</para>
+   <asunto>Envíoche os arquivos</asunto>
+   <adxunto>D:\fotos\naCea.jpg</adxunto>
+   <adxunto>D:\fotos\naPraia.jpg</adxunto>
+  
+</mensaxe>

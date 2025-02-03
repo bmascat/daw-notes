@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+  <!-- Documento: GuGa_p147_Brazil_versionFinal.xml
+      Observaciones: derivado de GuGa_p136_Brazil.xml; version final con elementos y atributos -->
+<pelicula 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="GuGa_p147_Schema_Brazil_versionFinal.xsd"
+  titulo="Brazil" minutos="124">
+  <director>Terry Gillian</director>
+  <protagonista>Jonathan Pryce</protagonista>
+  </pelicula>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tema SYSTEM "ejemplo_pag_03_DTD_externa.dtd">
+<tema titulo="A linguaxe XML" unidade="5">
+  <autor>Sabela Varela</autor>
+  <apartado numero="1">Contido do apartado 1</apartado>
+  <apartado numero="2">Contido do capitulo 2</apartado>
+</tema>

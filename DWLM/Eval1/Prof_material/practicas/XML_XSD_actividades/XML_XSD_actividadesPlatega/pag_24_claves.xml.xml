@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<empresa xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xsi:noNamespaceSchemaLocation="pag_24_claves.xsd">
+  <empregado>
+    <nome>Iria</nome>
+    <departamento>IFC</departamento>
+  </empregado>
+  <empregado>
+    <nome>Xoel</nome>
+    <departamento>CON</departamento>
+  </empregado>
+    <!-- ejemplar empregado para experimentar la validez 
+      <empregado>
+    <nome>Oscar</nome>
+    <departamento>FOL</departamento>
+  </empregado>
+   -->
+
+  <departamento codigo="IFC">
+    <nome>Informática</nome>
+  </departamento>
+  <departamento codigo="CON">
+    <nome>Contabilidade</nome>
+  </departamento>
+  
+  <!-- ejemplar departamento para experimentar la validez 
+    <departamento codigo="IP">
+    <nome>Imaxe Persoal</nome>
+  </departamento>
+  -->
+</empresa>

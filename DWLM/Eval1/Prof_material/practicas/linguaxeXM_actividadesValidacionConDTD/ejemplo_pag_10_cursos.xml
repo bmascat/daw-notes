@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE cursos [
+   <!ELEMENT cursos (nomeEmpresa, curso*,alumnos*)>
+   <!ELEMENT nomeEmpresa (#PCDATA)>
+   <!ELEMENT alumnos (alumno+)>
+  <!ELEMENT curso (#PCDATA)>   
+   <!ATTLIST curso
+       codigo ID #REQUIRED
+       nome CDATA #REQUIRED
+       dataInicio CDATA #REQUIRED
+       nivel (baixo | medio | avanzado) #IMPLIED>
+   <!ELEMENT alumno (nome, apelidos, telefono?)>
+   <!ATTLIST alumno cursos IDREFS #IMPLIED>
+   <!ELEMENT nome (#PCDATA)>
+   <!ELEMENT apelidos (#PCDATA)>
+   <!ELEMENT telefono (#PCDATA)>
+]>
+
+<cursos>
+   <nomeEmpresa>Xunta de Galicia</nomeEmpresa>
+   <curso codigo="C89" nome="Java" dataInicio="7/10-2009" nivel="avanzado" />
+   <curso codigo="C91" nome="SQL" dataInicio="8/11-2009" />
+   <curso codigo="C90" nome="PHP" dataInicio="6/11-2009" />
+   <curso codigo="C100" nome="XML" dataInicio="30/03/2010" nivel="medio" />
+  <alumnos>
+   <alumno cursos="C90">
+       <nome>Pilar</nome>
+       <apelidos>Pérez Sousa</apelidos>
+      </alumno>
+     <alumno cursos="C91">
+       <nome>Carmen</nome>
+       <apelidos>Novoa Real</apelidos>
+     </alumno>
+   <alumno cursos="C89 C90 C100">
+        <nome>Santiago</nome>
+       <apelidos>Souto Lema</apelidos>
+       <telefono>698811111</telefono>
+     </alumno>
+ <alumno cursos="C100 C89">
+        <nome>Antón</nome>
+       <apelidos>Rioboo Vila</apelidos>
+       <telefono>698811111</telefono>
+     </alumno>
+   </alumnos>
+</cursos>
+

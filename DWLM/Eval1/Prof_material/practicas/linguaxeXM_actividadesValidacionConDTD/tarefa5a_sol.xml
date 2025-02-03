@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE edificio [
+<!ELEMENT edificio (enderezo , dataConstrucion , material?)>
+<!ELEMENT enderezo (rua , numero , poboacion , provincia , codigoPostal)>
+<!ELEMENT rua (#PCDATA)>
+<!ELEMENT numero (#PCDATA)>
+<!ELEMENT poboacion (#PCDATA)>
+<!ELEMENT provincia (#PCDATA)>
+<!ELEMENT codigoPostal (#PCDATA)>
+<!ELEMENT dataConstrucion EMPTY>
+<!ATTLIST dataConstrucion mes CDATA #REQUIRED>
+<!ATTLIST dataConstrucion ano CDATA #REQUIRED>
+<!ELEMENT material (#PCDATA)>
+<!ATTLIST edificio valor CDATA #IMPLIED>
+<!ATTLIST edificio alquiler (verdadeiro | falso) #REQUIRED>
+]>
+<edificio alquiler="verdadeiro">
+  <enderezo>
+    <rua>Ponzano</rua>
+    <numero>66</numero>
+    <poboacion>Madrid</poboacion>
+    <provincia>Madrid</provincia>
+    <codigoPostal>28003</codigoPostal>
+  </enderezo>
+  <dataConstrucion mes="febreiro" ano="1989"/>
+  <material>formigón</material>
+</edificio>

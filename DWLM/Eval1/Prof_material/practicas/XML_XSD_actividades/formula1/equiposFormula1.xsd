@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="formula1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="equipos" />
+        <xs:element ref="pilotos" />
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="pertenece">
+        <xs:selector xpath=".//piloto" />
+        <xs:field xpath="@codigoPiloto" />
+    </xs:key>
+    <xs:keyref name="relacion" refer="pertenece">
+        <xs:selector xpath=".//pilota" />
+        <xs:field xpath="@id" />
+    </xs:keyref>
+  </xs:element>
+  <xs:element name="equipos">
+      <xs:complexType>
+          <xs:sequence>
+              <xs:element ref="equipo" maxOccurs="unbounded" />
+          </xs:sequence>
+      </xs:complexType>
+  </xs:element>
+  <xs:element name="equipo">
+      <xs:complexType>
+          <xs:sequence>
+              <xs:element name="nombre" type="xs:string" />
+              <xs:element ref="temporada" maxOccurs="unbounded" />
+          </xs:sequence>
+      </xs:complexType>
+  </xs:element>
+  <xs:element name="temporada">
+      <xs:complexType>
+          <xs:sequence>
+              <xs:element name="año" type="xs:string" />
+              <xs:element name="pilota" maxOccurs="2">
+                  <xs:complexType>
+                      <xs:attribute name="id" type="xs:unsignedByte" />
+                  </xs:complexType>
+              </xs:element>
+          </xs:sequence>
+      </xs:complexType>
+  </xs:element>
+  <xs:element name="pilotos">
+      <xs:complexType>
+          <xs:sequence>
+              <xs:element ref="piloto" maxOccurs="unbounded"/>
+          </xs:sequence>
+      </xs:complexType>
+  </xs:element>
+  <xs:element name="piloto">
+      <xs:complexType>
+          <xs:sequence>
+              <xs:element name="nombre" type="xs:string" />
+              <xs:element name="edad" type="xs:integer" />
+          </xs:sequence>
+          <xs:attribute name="codigoPiloto" type="xs:unsignedByte" />
+      </xs:complexType>
+  </xs:element>
+</xs:schema>

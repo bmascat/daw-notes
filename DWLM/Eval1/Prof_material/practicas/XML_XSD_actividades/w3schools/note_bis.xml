@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<note xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="note_bis.xsd"
+          tipo="interna">
+<to>Tove</to>
+<to>Mary</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+
+</note>

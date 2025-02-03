@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE formula1 [
+<!ELEMENT formula1 (equipos, pilotos)>
+<!ELEMENT equipos (equipo*)>
+<!ELEMENT equipo (nombre, temporada*)>
+<!ELEMENT temporada (año, pilota+)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT pilota EMPTY>
+<!ATTLIST pilota id IDREF #REQUIRED>
+<!ELEMENT pilotos (piloto*)>
+<!ELEMENT piloto (nombreP, edad)>
+<!ELEMENT nombreP (#PCDATA)>
+<!ELEMENT edad (#PCDATA)>
+<!ATTLIST piloto codigoPiloto ID #REQUIRED>
+]>
+<formula1> 
+  <equipos>
+    <equipo>
+      <nombre>Mercedes-AMG Petronas F1 Team</nombre>
+      <temporada>
+        <año>2020</año>
+        <pilota id="P1"/>
+        <pilota id="P2"/>
+      </temporada>
+      <temporada>
+        <año>2021</año>
+        <pilota id="P1"/>
+        <pilota id="P2"/>
+      </temporada>
+    </equipo>
+    <equipo>
+      <nombre>Red Bull Racing Honda</nombre>
+      <temporada>
+        <año>2019</año>
+        <pilota id="P6"/>
+        <pilota id="P4"/>
+      </temporada>
+      <temporada>
+        <año>2020</año>
+        <pilota id="P3"/>
+        <pilota id="P4"/>
+      </temporada>
+      <temporada>
+        <año>2021</año>
+        <pilota id="P3"/>
+        <pilota id="P5"/>
+      </temporada>
+    </equipo>
+    <equipo>
+      <nombre>Scuderia Ferrari</nombre>
+      <temporada>
+        <año>2020</año>
+        <pilota id="P6"/>
+        <pilota id="P7"/>
+      </temporada>
+      <temporada>
+        <año>2021</año>
+        <pilota id="P7"/>
+        <pilota id="P6"/>
+      </temporada>
+    </equipo>
+  </equipos>
+  <pilotos>
+    <piloto codigoPiloto="P1">
+      <nombreP>Lewis Hamilton</nombreP>
+      <edad>37</edad>
+    </piloto>
+    <piloto codigoPiloto="P2">
+      <nombreP>Valtteri Bottas</nombreP>
+      <edad>32</edad>
+    </piloto>
+    <piloto codigoPiloto="P3">
+      <nombreP>Max Verstappen</nombreP>
+      <edad>24</edad>
+    </piloto>
+    <piloto codigoPiloto="P4">
+      <nombreP>Alexander Albon</nombreP>
+      <edad>25</edad>
+    </piloto>
+    <piloto codigoPiloto="P5">
+      <nombreP>Sergio Pérez</nombreP>
+      <edad>31</edad>
+    </piloto>
+    <piloto codigoPiloto="P6">
+      <nombreP>Sebastian Vettel</nombreP>
+      <edad>34</edad>
+    </piloto>
+    <piloto codigoPiloto="P7">
+      <nombreP>Charles Leclerc</nombreP>
+      <edad>23</edad>
+    </piloto>
+    <piloto codigoPiloto="P8">
+      <nombreP>Carlos Sainz Jr.</nombreP>
+      <edad>27</edad>
+    </piloto>
+  </pilotos>
+</formula1>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ciclo [
+  <!ELEMENT ciclo (modulo+)>
+  <!ELEMENT modulo (#PCDATA)>
+]>
+
+<ciclo>
+</ciclo>
+

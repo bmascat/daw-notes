@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: tarefa_01_garderiaConXSD.xml
+      Observaciones: ejemplo página 2 (gardería) vinculado a su correspondiente XSD -->
+<garderia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	       xsi:noNamespaceSchemaLocation="pag_04_garderia.xsd">
+<neno numeroExpedente="2344">
+    <nome>Noa Blanco Coello</nome>
+    <dataNacemento>2010-10-12</dataNacemento>
+    <peso>13.5</peso>
+    <altura>78</altura>
+    <vacunas>false</vacunas>
+  </neno>
+  </garderia>

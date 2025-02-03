@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<modulo codigo="MP0373" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="tarefa_2_b_sol.xsd">
+      <duracion horas="133" sesions="160" sesionsSemanais="5"/>
+      <nome>Linguaxes de marcas e sistemas de xestión da información</nome>
+      <ciclo codigo="CSIFC01">
+          Administración de sistemas informáticos e redes
+      </ciclo>
+      <ciclo codigo="CSIFC02">
+          Desenvolvemento de aplicacións multiplataforma
+      </ciclo>
+      <ciclo codigo="CSIFC03">
+          Desenvolvemento de aplicacións web
+      </ciclo>
+      <contidos>
+          <UD num="1" sesións="5">
+              <titulo>
+                 Aplicacións web. Introdución aos linguaxes de marcas
+              </titulo>
+              <descrición>
+                Introdución aos conceptos relacionados coas aplicacións web.
+			  Páxinas web estáticas e dinámicas. Introdución aos linguaxes
+                de marcas.
+              </descrición>
+          </UD>
+          <UD num="2" sesións="12">
+              <titulo>
+                 Linguaxes de marcas para a transmisión de información a
+                 través da Web: HTML.
+              </titulo>
+          </UD>
+          <UD num="3" sesións="13">
+              <titulo>
+                 Linguaxes de marcas para a transmisión de información a
+                 través da Web: CSS
+              </titulo>
+              <descrición>
+                 Separar o contido da presentación. Follas de estilo CSS.
+              </descrición>
+          </UD>
+      </contidos>
+</modulo>
+

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alumnos [
+  <!ELEMENT alumnos (alumno)>
+  <!ELEMENT numeroExpedente (#PCDATA)>
+  <!ELEMENT dataNacemento (#PCDATA)>
+  <!ELEMENT nome (#PCDATA)>
+]>
+
+<alumnos>
+  <alumno>
+    <numeroExpedente>1023</numeroExpedente>
+    <nome>Alba Prado</nome>
+    <dataNacemento>25/04/1984</dataNacemento>
+    <telefono>676767676</telefono>
+    <telefono>999888777</telefono>
+    <muller />
+  </alumno>
+  <alumno>
+    <numeroExpedente>1444</numeroExpedente>
+    <nome>Brais Seoane</nome>
+    <dataNacemento>10/04/1985</dataNacemento>
+    <telefono>688668866</telefono>
+    <varon />
+  </alumno>
+</alumnos>
+

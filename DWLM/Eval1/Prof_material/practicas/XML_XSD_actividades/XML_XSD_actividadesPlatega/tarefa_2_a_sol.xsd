@@ -1,0 +1,12 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+  <xs:element name="Ciclo">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="Nome" type="xs:string"/>
+            <xs:element name="Modulo" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="familia" type="xs:string" use="required" />
+        <xs:attribute name="tipo" type="xs:string" use="required" />
+    </xs:complexType>
+    </xs:element>
+</xs:schema>

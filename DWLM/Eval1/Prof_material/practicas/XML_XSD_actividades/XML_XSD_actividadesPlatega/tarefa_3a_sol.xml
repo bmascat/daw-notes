@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- tarefa 1 UD7  -->
+
+<garderia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="tarefa_3a_sol.xsd">
+  <neno numeroExpedente="2344" codigo="P44">
+    <nome>Noa Blanco Coello</nome>
+    <dataNacemento>2010-10-12</dataNacemento>
+    <peso>13.5</peso>
+    <altura>78</altura>
+    <vacunas>true</vacunas>
+    <sexo>H</sexo>
+    <contacto relación="nai">123456789</contacto>
+    <contacto relación="pai">123456789</contacto>
+    <contacto relación="avó/a">123456789</contacto>
+    <contacto relación="titor">123456789</contacto>
+    <idade anos="2" meses="10"></idade>
+  </neno>
+</garderia>
+

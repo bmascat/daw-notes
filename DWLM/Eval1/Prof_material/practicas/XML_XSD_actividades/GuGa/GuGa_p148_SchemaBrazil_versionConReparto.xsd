@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="pelicula">
+    <complexType>
+        <sequence>
+         <element name="director" type="string"/>
+         <element name="protagonista" type="string"/>
+          <element name="reparto">
+              <complexType>
+                 <sequence>
+                  <element name="interprete" maxOccurs="unbounded"/>
+                 </sequence> 
+              </complexType>
+          </element> 
+        </sequence>
+        <attribute name="titulo" type="string"/>
+        <attribute name="minutos" type="integer"/>
+  </complexType>
+  </element>
+</schema>

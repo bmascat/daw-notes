@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE libro [
+<!ELEMENT libro (receita | ingrediente)*>
+<!ELEMENT receita (#PCDATA)>
+<!ATTLIST receita id ID #REQUIRED>
+<!ELEMENT ingrediente (#PCDATA)>
+<!ATTLIST ingrediente ref IDREFS #IMPLIED>
+]>
+<libro>
+<receita id="rec_1">Filloas</receita>
+<receita id="rec_2"> Flan de queixo </receita>
+<receita id="rec_3"> Torta de mazá </receita>
+<ingrediente ref="rec_1 rec_3">ovos</ingrediente>
+<ingrediente ref="rec_2">Queixo</ingrediente>
+<ingrediente ref="rec_1 rec_2">Leite</ingrediente>
+</libro>

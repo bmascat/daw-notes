@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE email [
+<!ELEMENT email (para, cc?, cco?, asunto, cuerpo)>
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT cc (#PCDATA)>
+<!ELEMENT cco (#PCDATA)>
+<!ELEMENT asunto (#PCDATA)>
+<!ELEMENT cuerpo (#PCDATA)>
+]>
+<email>
+<para>hhh@gmail.com</para>
+<cc>h200@gmail.com</cc>
+<cco>klm@edu.xunta.gal</cco>
+<asunto>convocatoria opos</asunto>
+<cuerpo>Remito documento con .....</cuerpo>
+</email>

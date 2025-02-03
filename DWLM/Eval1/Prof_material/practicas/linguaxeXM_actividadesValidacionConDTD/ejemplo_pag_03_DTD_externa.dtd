@@ -1,0 +1,8 @@
+<!ELEMENT tema (autor, apartado+)>
+<!ATTLIST tema
+titulo CDATA #REQUIRED
+unidade CDATA #REQUIRED>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT apartado (#PCDATA)>
+<!ATTLIST apartado
+numero CDATA #REQUIRED>

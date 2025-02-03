@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE familias [
+  <!ELEMENT familias (familia*)>
+  <!ELEMENT familia (codigo, nome)>
+  <!ELEMENT codigo (#PCDATA)>
+  <!ELEMENT nome (#PCDATA)>
+]>
+
+<familias>
+  <familia>
+    <codigo>IFC</codigo>
+    <nome>Informática e comunicacións</nome>
+  </familia>
+  <familia>
+    <nome>Imaxe persoal</nome>
+    <codigo>IMP</codigo>
+  </familia>
+</familias>
+
+
+

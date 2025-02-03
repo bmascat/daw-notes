@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listaEmail [
+  <!ELEMENT listaEmail (email*)>
+<!ELEMENT email (para, cc?, cco?, asunto, cuerpo)>
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT cc (#PCDATA)>
+<!ELEMENT cco (#PCDATA)>
+<!ELEMENT asunto (#PCDATA)>
+<!ELEMENT cuerpo (#PCDATA)>
+]>
+<listaEmail>
+<email>
+<para>jaaaa@gmail.com</para>
+<cc>ttt@hotmail.com</cc>
+<asunto>convocatoria opos</asunto>
+<cuerpo>Remito documento con .....</cuerpo>
+</email>
+<email>
+<para>jose@gmail.com</para>
+<cco>ttt@hotmail.com</cco>
+<asunto>Reunión viernes</asunto>
+<cuerpo>Remito documento con datos de la reunión .....</cuerpo>
+</email>
+</listaEmail>

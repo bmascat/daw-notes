@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Declaracións DTD-->
+<!DOCTYPE tema [
+<!ELEMENT tema (autor, apartado+)>
+<!ATTLIST tema
+titulo CDATA #REQUIRED
+unidade CDATA #REQUIRED>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT apartado (#PCDATA)>
+<!ATTLIST apartado
+numero CDATA #REQUIRED>
+]>
+<!-- Datos XML-->
+<tema unidade="5" titulo="A linguaxe XML">
+<autor>Sabela Varela</autor>
+<apartado numero="1">Contido do apartado 1</apartado>
+<apartado numero="2">Contido do capitulo 2</apartado>
+</tema>

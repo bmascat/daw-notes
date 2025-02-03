@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mediosDeTransporte>
+  <medio>
+    <nombre>bicicleta</nombre>
+    <velocidadMaxima medida="km/h">&lt;100</velocidadMaxima>
+  </medio> 
+    <medio>
+    <nombre>patinete</nombre>
+    <velocidadMaxima medida="millas/h">50</velocidadMaxima>
+  </medio> 
+</mediosDeTransporte>

@@ -1,0 +1,10 @@
+<!-- Documento: Pag_03_garderia.dtd
+      Observaciones: DTD correspondiente a ejemplo (XML_XSD_actividades) página 2 -->
+<!ELEMENT garderia (neno*)>
+<!ELEMENT neno (nome, dataNacemento, peso, altura, vacunas)>      
+<!ATTLIST neno numeroExpedente CDATA #REQUIRED>
+<!ELEMENT nome (#PCDATA)>
+<!ELEMENT dataNacemento (#PCDATA)>
+<!ELEMENT peso (#PCDATA)>
+<!ELEMENT altura (#PCDATA)>
+<!ELEMENT vacunas (#PCDATA)>

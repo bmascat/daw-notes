@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: GuGa_p136_Brazil_conSchema.xml
+      Observaciones: GuGa_p136_Brazil.xml  con vinculación al su definición de documento-->
+<pelicula
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="GuGa_p136_Schema_Brazil.xsd">
+<titulo>Brazil</titulo>
+</pelicula>

@@ -1,0 +1,28 @@
+pelicula {
+  display: block; 
+  font-size: xx-large; 
+  font-weight: bold; 
+  margin-top: 8px; 
+  margin-left: 8px; 
+}
+director { 
+  display: block; 
+  font-size: medium; 
+  font-weight: normal; 
+  padding-top: 22px;
+}
+director:before { 
+  content: "Director: "; 
+  font-size: medium; 
+  font-weight: bold; 
+}
+actor { 
+  display: block; 
+  font-size: medium; 
+  font-weight: normal; 
+}
+actor:before { 
+  content: "Protagonista: "; 
+  font-size: medium; 
+  font-weight: bold; 
+}

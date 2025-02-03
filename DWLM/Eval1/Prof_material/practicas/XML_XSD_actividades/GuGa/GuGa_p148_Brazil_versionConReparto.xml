@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pelicula xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="GuGa_p148_SchemaBrazil_versionConReparto.xsd"
+      titulo="Brazil" minutos="142">
+    <director>Terry Gilliam</director>
+    <protagonista>Jonathan Pryce</protagonista>
+    <reparto>
+        <interprete>Robert De Niro</interprete>
+        <interprete>Kim Greist</interprete>
+    </reparto>
+  </pelicula>

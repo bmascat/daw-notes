@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE paises [
+  <!ELEMENT pais (nome, continente, G20, oceano)>
+  <!ELEMENT nome EMPTY>
+  <!ELEMENT G20 EMPTY>
+  <!ELEMENT oceano EMPTY>
+]>
+
+<paises>
+  <pais>
+    <nome>Sudáfrica</nome>
+    <continente>Africa</continente>
+    <G20 />
+    <oceano>Atlántico</oceano>
+    <oceano>Indico</oceano>
+  </pais>
+  <pais>
+     <nome>Colombia</nome>
+    <continente>América</continente>
+    <oceano>Atlántico</oceano>
+    <oceano>Pacífico</oceano>
+  </pais>
+  <pais>
+     <nome>Bolivia</nome>
+    <continente>América</continente>
+  </pais>
+  <pais>
+    <nome>India</nome>
+    <continente>Asia</continente>
+    <G20 />
+    <oceano>Indico</oceano>
+ </pais>
+</paises> 
+
+

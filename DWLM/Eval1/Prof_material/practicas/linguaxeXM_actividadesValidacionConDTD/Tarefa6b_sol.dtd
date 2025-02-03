@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Hardware (Maquina*, Fabricante*, Espazo*)>
+
+<!ELEMENT Maquina (Info, Config, Notas?)>
+<!ATTLIST Maquina
+    Nome ID #REQUIRED
+    Fabricante IDREF #IMPLIED
+	   Espazo IDREF #IMPLIED>
+	
+<!ELEMENT Info (Tipo, Procesador?, Memoria?, Disco*, 
+(Lectora | Gravadora)?)>
+<!ELEMENT Tipo (#PCDATA)>
+<!ELEMENT Procesador (#PCDATA)>
+<!ATTLIST Procesador
+	   Marca (Intel | AMD) #REQUIRED
+	   NumNucleos CDATA "1"
+	   Velocidade CDATA #IMPLIED>
+	
+<!ELEMENT Memoria (#PCDATA)>
+<!ATTLIST Memoria
+	   Tecnoloxía (DDR | DDR2 | DDR3) #IMPLIED>
+	
+<!ELEMENT Disco EMPTY>
+<!ATTLIST Disco
+	   Tecnoloxía (ATA | SATA | SCSI | SSD) #IMPLIED
+	   Capacidade CDATA #REQUIRED>
+	
+<!ENTITY % Unidade_optica 
+	   "Tipo (CD | DVD | BD) #REQUIRED
+	   Velocidade CDATA #IMPLIED">
+<!ELEMENT Lectora (#PCDATA)>
+<!ATTLIST Lectora % Unidade_optica; >
+<!ELEMENT Gravadora (#PCDATA)>
+<!ATTLIST Gravadora %Unidade_optica; >
+
+<!ELEMENT Config (Role*, OS?, IP*, Gateway?)>
+<!ELEMENT Role (#PCDATA)>
+<!ELEMENT OS (#PCDATA)>
+<!ELEMENT IP (#PCDATA)>
+<!ELEMENT Gateway (#PCDATA)>
+<!ELEMENT Notas (#PCDATA)>
+	
+<!ELEMENT Fabricante (Web, Mail)>
+<!ATTLIST Fabricante
+	   Nome ID #REQUIRED>
+<!ELEMENT Web (#PCDATA)>
+<!ELEMENT Mail (#PCDATA)>
+
+<!ELEMENT Espazo (Ubicación?)>
+<!ATTLIST Espazo
+	   Nome ID #REQUIRED
+	   Tipo (aula|sala|departamento) #IMPLIED>
+<!ELEMENT Ubicación (#PCDATA)>

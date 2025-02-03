@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: tarefa2_a.xml
+      Observaciones: archivo datos-xml de enunciado de tarefa 2.a -->
+<Ciclo familia="IFC" tipo="CS">
+    <Nome>Administración de Sistemas Informáticos</Nome>
+    <Modulo>Redes de Area Local</Modulo>
+    <Modulo>Sistemas Informáticos Monousuario e Multiusuario</Modulo>
+    <Modulo>Sistemas Xestores de Bases de Datos</Modulo>
+</Ciclo>
+

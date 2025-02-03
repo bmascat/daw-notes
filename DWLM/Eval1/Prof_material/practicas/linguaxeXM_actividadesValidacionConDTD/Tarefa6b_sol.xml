@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Hardware SYSTEM "Tarefa6b_sol.dtd">
+<Hardware>
+	<Maquina Nome="PC017" Fabricante="Dell" Espazo="Aula_ASIR1">
+		<Info>
+			<Tipo>PC Sobremesa</Tipo>
+			<Procesador Marca="Intel" NumNucleos="4" 
+Velocidade="2,4">Core2 Quad 6600</Procesador>
+			<Memoria Tecnoloxía="DDR2">2</Memoria>
+			<Disco Tecnoloxía="SATA" Capacidade="500"/>
+			<Gravadora Tipo="DVD"/>
+		</Info>
+		<Config>
+			<OS>Windows XP</OS>
+			<IP>192.168.20.105</IP>
+			<Gateway>192.168.20.1</Gateway>
+		</Config>
+	</Maquina>
+	<Maquina Nome="GALILEO" Fabricante="Fujitsu-Siemens" 
+Espazo="Dpto_Informática">
+		<Info>
+			<Tipo>Torre</Tipo>
+			<Procesador Marca="Intel" NumNucleos="4" 
+Velocidade="3">Xeon</Procesador>
+			<Memoria Tecnoloxía="DDR">2</Memoria>
+			<Disco Tecnoloxía="SCSI" Capacidade="200"/>
+			<Disco Tecnoloxía="SCSI" Capacidade="200"/>
+			<Disco Tecnoloxía="SCSI" Capacidade="200"/>
+			<Lectora Tipo="DVD"/>
+		</Info>
+		<Config>
+			<Role>Servidor de dominio</Role>
+			<OS>Windows 2003 Server R2</OS>
+			<IP>192.168.20.10</IP>
+			<Gateway>192.168.20.1</Gateway>
+		</Config>
+	</Maquina>
+	<Maquina Nome="PC053" Espazo="Sala_Profesores">
+		<Info>
+			<Tipo>Semitorre</Tipo>
+			<Memoria>0,5</Memoria>
+			<Disco Capacidade="40"/>
+			<Lectora Tipo="CD"/>
+		</Info>
+		<Config>
+			<OS>Windows 98 SE</OS>
+		</Config>
+	</Maquina>
+	<Maquina Nome="PC007">
+		<Info>
+			<Tipo>Semitorre</Tipo>
+			<Memoria Tecnoloxía="DDR">0,5</Memoria>
+			<Disco Capacidade="40"/>
+			<Lectora Tipo="CD"/>
+		</Info>
+		<Config>
+			<OS>Windows 98 SE</OS>
+		</Config>
+		<Notas>Sin tarxeta de rede</Notas>
+	</Maquina>
+	<Maquina Nome="PR003" Fabricante="Lexmark">
+		<Info>
+			<Tipo>Impresora Inyección</Tipo>
+		</Info>
+		<Config/>
+	</Maquina>
+	<Maquina Nome="PC011">
+		<Info>
+			<Tipo>Semitorre</Tipo>
+			<Memoria>1</Memoria>
+			<Disco Capacidade="80"/>
+			<Lectora Tipo="CD"/>
+		</Info>
+		<Config>
+			<OS>Windows 2000 SP4</OS>
+			<IP>192.168.10.221</IP>
+			<Gateway>192.168.10.1</Gateway>
+		</Config>
+	</Maquina>
+	<Maquina Nome="PC019" Espazo="Taller_Informática">
+		<Info>
+			<Tipo>Semitorre</Tipo>
+			<Procesador Marca="AMD" Velocidade="1,4">Athlon</Procesador>
+			<Memoria>0,5</Memoria>
+			<Disco Capacidade="40"/>
+			<Gravadora Tipo="CD"/>
+		</Info>
+		<Config>
+			<OS>Mandriva 2007</OS>
+			<IP>192.168.10.45</IP>
+			<Gateway>192.168.10.1</Gateway>
+		</Config>
+	</Maquina>
+	<Maquina Nome="PR007" Fabricante="OKI" Espazo="Dpto_Informática">
+		<Info>
+			<Tipo>Impresora Láser</Tipo>
+		</Info>
+		<Config/>
+		<Notas>Monocromo, dúplex, red</Notas>
+	</Maquina>
+	<Maquina Nome="COPERNICO" Fabricante="Fujitsu-Siemens">
+		<Info>
+			<Tipo>Torre</Tipo>
+			<Procesador Marca="Intel" NumNucleos="4" 
+Velocidade="3">Xeon</Procesador>
+			<Memoria Tecnoloxía="DDR">2</Memoria>
+			<Disco Tecnoloxía="SCSI" Capacidade="500"/>
+			<Disco Tecnoloxía="SCSI" Capacidade="500"/>
+			<Gravadora Tipo="DVD"/>
+		</Info>
+		<Config>
+			<Role>Servidor de dominio</Role>
+			<OS>Windows 2003 Server R2</OS>
+			<IP>192.168.20.11</IP>
+			<Gateway>192.168.20.1</Gateway>
+		</Config>
+	</Maquina>
+	<Maquina Nome="KEPLER" Fabricante="HP">
+		<Info>
+			<Tipo>Rack</Tipo>
+			<Procesador Marca="Intel" NumNucleos="2" 
+Velocidade="3">Core2 Duo</Procesador>
+			<Memoria Tecnoloxía="DDR2">4</Memoria>
+			<Disco Tecnoloxía="SATA" Capacidade="500"/>
+			<Disco Tecnoloxía="SATA" Capacidade="500"/>
+			<Disco Tecnoloxía="SATA" Capacidade="500"/>
+			<Gravadora Tipo="DVD"/>
+		</Info>
+		<Config>
+			<Role>Servidor de arquivos</Role>
+			<OS>Ubuntu 8.04 Server</OS>
+			<IP>192.168.10.10</IP>
+			<Gateway>192.168.10.1</Gateway>
+		</Config>
+	</Maquina>
+	<Maquina Nome="NEWTON" Fabricante="HP">
+		<Info>
+			<Tipo>Rack</Tipo>
+			<Procesador Marca="Intel" NumNucleos="2" 
+Velocidade="3">Core2 Duo</Procesador>
+			<Memoria Tecnoloxía="DDR2">4</Memoria>
+			<Disco Tecnoloxía="SATA" Capacidade="500"/>
+			<Disco Tecnoloxía="SATA" Capacidade="500"/>
+			<Gravadora Tipo="DVD"/>
+		</Info>
+		<Config>
+			<Role>Servidor web</Role>
+			<OS>Ubuntu 8.04 Server</OS>
+			<IP>192.168.10.11</IP>
+			<Gateway>192.168.10.1</Gateway>
+		</Config>
+	</Maquina>
+	<Fabricante Nome="HP">
+		<Web>http://www.hp.com/</Web>
+		<Mail>contact@hp.com</Mail>
+	</Fabricante>
+	<Fabricante Nome="Dell">
+		<Web>http://www.dell.com/</Web>
+		<Mail>support@dell.com</Mail>
+	</Fabricante>
+	<Fabricante Nome="OKI">
+		<Web>http://www.oki.com/</Web>
+		<Mail>commercial@oki.com</Mail>
+	</Fabricante>
+	<Fabricante Nome="Fujitsu-Siemens">
+		<Web>http://www.fujitsu.com/</Web>
+		<Mail>info.spain@ts.fujitsu.com</Mail>
+	</Fabricante>
+	<Fabricante Nome="Lexmark">
+		<Web>http://www.lexmark.com/</Web>
+		<Mail>spcustom@lexmark.com</Mail>
+	</Fabricante>
+	<Espazo Nome="Aula_ASIR1" Tipo="aula">
+		<Ubicación>Primeiro piso</Ubicación>
+	</Espazo>
+	<Espazo Nome="Dpto_Informática" Tipo="departamento">
+		<Ubicación>Xunto Aula ASIR1</Ubicación>
+	</Espazo>
+	<Espazo Nome="Sala_Profesores" Tipo="sala">
+		<Ubicación>Segundo piso</Ubicación>
+	</Espazo>
+	<Espazo Nome="Taller_Informática"/>
+</Hardware>
+

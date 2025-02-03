@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE datasImportantes [
+  <!ELEMENT datasImportantes (cumpleanos|aniversarioBoda)*>
+  <!ELEMENT cumpleanos (persoa, data)>
+  <!ELEMENT persoa (#PCDATA)>
+  <!ELEMENT data (mes, dia)>
+  <!ELEMENT mes (#PCDATA)>
+  <!ELEMENT dia (#PCDATA)>
+   <!ELEMENT aniversarioBoda (data)>
+]>
+<datasImportantes>
+  <cumpleanos>
+    <persoa>Marta</persoa>
+    <data>
+      <mes>Xullo</mes>
+      <dia>14</dia>
+    </data>
+  </cumpleanos>
+  <cumpleanos>
+    <persoa>Marga</persoa>
+    <data>
+      <mes>Maio</mes>
+      <dia>10</dia>
+    </data>
+  </cumpleanos>
+  <cumpleanos>
+    <persoa>Xurxo</persoa>
+    <data>
+      <mes>Xaneiro</mes>
+      <dia>9</dia>
+    </data>
+  </cumpleanos>
+  <aniversarioBoda>
+    <data>
+      <mes>Setembro</mes>
+      <dia>30</dia>
+    </data>
+</aniversarioBoda>
+</datasImportantes>

@@ -1,0 +1,22 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="garderia">
+    <xs:complexType>
+      <xs:sequence>
+         <xs:element name="neno" minOccurs="1" maxOccurs="50"
+              type="tipoNeno"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="tipoNeno">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string"/>
+      <xs:element name="dataNacemento" type="xs:date"/>
+      <xs:element name="peso" type="xs:decimal"/>
+      <xs:element name="altura" type="xs:unsignedByte"/>
+	  <xs:element name="vacunas" type="xs:boolean"/>
+    </xs:sequence>
+    <xs:attribute name="numeroExpedente" type="xs:unsignedShort"/>
+  </xs:complexType>
+  
+</xs:schema>
+

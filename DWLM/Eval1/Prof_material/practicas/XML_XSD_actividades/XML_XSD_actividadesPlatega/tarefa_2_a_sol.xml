@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: tarefa2_a_sol.xml
+      Observaciones: archivo datos-xml, de enunciado de tarefa 2.a, vinculado a su correspondiente XSD -->
+<Ciclo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	       xsi:noNamespaceSchemaLocation="tarefa_2_a_sol.xsd"
+familia="IFC" tipo="CS">
+    <Nome>Administración de Sistemas Informáticos</Nome>
+    <Modulo>Redes de Area Local</Modulo>
+    <Modulo>Sistemas Informáticos Monousuario e Multiusuario</Modulo>
+    <Modulo>Sistemas Xestores de Bases de Datos</Modulo>
+</Ciclo>
+

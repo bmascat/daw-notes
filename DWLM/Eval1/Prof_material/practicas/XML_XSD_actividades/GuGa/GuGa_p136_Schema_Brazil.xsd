@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: GuGa_p136_Schema_Brazil.xsd
+      Observaciones: descripción XSD para GuGa_p136_Brazil.xml  -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="pelicula">
+      <complexType>
+        <sequence>
+          <element name="titulo" type="string"/>
+        </sequence>
+      </complexType>
+  </element>
+</schema>

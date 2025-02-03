@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nota[
+  
+
+]>
+<nota>A linguaxe <acronimo>XML</acronimo> 
+          ou <ingles>Extensible Markup Language</ingles> 
+          é un subconxunto de <acronimo>SGML</acronimo>
+          que ten como propósito principal facilitar a transferencia 
+          de datos a través de diferentes plataformas, 
+          especialmente as conectadas a Internet
+</nota>

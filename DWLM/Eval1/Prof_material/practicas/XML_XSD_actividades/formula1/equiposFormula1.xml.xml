@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<formula1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:noNamespaceSchemaLocation="equiposFormula1.xsd">
+  <equipos>
+    <equipo>
+      <nombre>Mercedes-AMG Petronas F1 Team</nombre>
+      <temporada>
+        <año>2020</año>
+        <pilota id="1"/>
+        <pilota id="2"/>
+      </temporada>
+      <temporada>
+        <año>2021</año>
+        <pilota id="1"/>
+        <pilota id="2"/>
+      </temporada>
+    </equipo>
+    <equipo>
+      <nombre>Red Bull Racing Honda</nombre>
+      <temporada>
+        <año>2019</año>
+        <pilota id="6"/>
+        <pilota id="4"/>
+      </temporada>
+      <temporada>
+        <año>2020</año>
+        <pilota id="3"/>
+        <pilota id="4"/>
+      </temporada>
+      <temporada>
+        <año>2021</año>
+        <pilota id="3"/>
+        <pilota id="5"/>
+      </temporada>
+    </equipo>
+    <equipo>
+      <nombre>Scuderia Ferrari</nombre>
+      <temporada>
+        <año>2020</año>
+        <pilota id="6"/>
+        <pilota id="7"/>
+      </temporada>
+      <temporada>
+        <año>2021</año>
+        <pilota id="7"/>
+        <pilota id="6"/>
+      </temporada>
+    </equipo>
+  </equipos>
+  <pilotos>
+    <piloto codigoPiloto="1">
+      <nombre>Lewis Hamilton</nombre>
+      <edad>37</edad>
+    </piloto>
+    <piloto codigoPiloto="2">
+      <nombre>Valtteri Bottas</nombre>
+      <edad>32</edad>
+    </piloto>
+    <piloto codigoPiloto="3">
+      <nombre>Max Verstappen</nombre>
+      <edad>24</edad>
+    </piloto>
+    <piloto codigoPiloto="4">
+      <nombre>Alexander Albon</nombre>
+      <edad>25</edad>
+    </piloto>
+    <piloto codigoPiloto="5">
+      <nombre>Sergio Pérez</nombre>
+      <edad>31</edad>
+    </piloto>
+    <piloto codigoPiloto="6">
+      <nombre>Sebastian Vettel</nombre>
+      <edad>34</edad>
+    </piloto>
+    <piloto codigoPiloto="7">
+      <nombre>Charles Leclerc</nombre>
+      <edad>23</edad>
+    </piloto>
+    <piloto codigoPiloto="8">
+      <nombre>Carlos Sainz Jr.</nombre>
+      <edad>27</edad>
+    </piloto>
+  </pilotos>
+</formula1>

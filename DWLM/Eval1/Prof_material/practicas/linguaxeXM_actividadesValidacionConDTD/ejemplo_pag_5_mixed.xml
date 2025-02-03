@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE obxecto [
+  <!ELEMENT obxecto (#PCDATA | imaxe?)*>
+  <!ELEMENT imaxe (#PCDATA)>
+  ]>
+<obxecto>
+texto texto
+<imaxe>esto esta en imaxe</imaxe>
+texto texto
+</obxecto>
+
+

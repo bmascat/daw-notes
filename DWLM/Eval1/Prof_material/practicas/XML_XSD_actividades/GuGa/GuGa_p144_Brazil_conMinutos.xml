@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pelicula
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="GuGa_p144_Schema_Brazil_conMinutos.xsd">
+  <!-- Documento: GuGa_p144_Brazil_conMinutos.xml
+      Observaciones: derivado de GuGa_p136_Brazil.xml; añadimos minutos -->
+<titulo>Brazil</titulo>
+<minutos>124</minutos>
+</pelicula>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ciclos [
+  <!ELEMENT ciclos ((medio | superior)*)>
+  <!ELEMENT familia (#PCDATA)>
+  <!ELEMENT codigo (#PCDATA)>
+  <!ELEMENT nome (#PCDATA)>
+]>
+
+<ciclos>
+  <ciclo>
+    <superior />
+    <familia>Informática e comunicacións</familia>
+    <codigo>CSIFC03</codigo>
+    <nome>Desenvolvemento de aplicacións web</nome>
+  </ciclo>
+  <ciclo>
+    <medio />
+    <familia>Madeira, Moble e Cortiza</familia>
+    <codigo>CMMMC01</codigo>
+    <nome>Carpintaría e Moble</nome>
+  </ciclo>
+</ciclos>
+

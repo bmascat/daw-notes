@@ -1,0 +1,97 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="garderia">
+    <xs:complexType>
+      <xs:sequence>
+         <xs:element name="neno" minOccurs="1" maxOccurs="50"
+              type="tipoNeno"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="tipoNeno">
+    <xs:sequence>
+      <xs:element ref="nome" />
+      <xs:element name="dataNacemento" type="xs:date"/>
+      <xs:element name="peso" type="tipoPeso"/>
+      <xs:element name="altura" type="xs:unsignedByte"/>
+	  <xs:element name="vacunas" type="xs:boolean"/>
+	  <xs:element name="sexo" type="tipoSexo"/>
+	  <xs:element name="contacto" type="tipoContacto" maxOccurs="4"/>
+	  <xs:element name="idade" type="tipoIdade"/>
+    </xs:sequence>
+    <xs:attribute name="numeroExpedente" type="xs:unsignedShort"/>
+    <xs:attribute name="codigo" type="tipoCodigo"/>
+  </xs:complexType>
+  
+  <xs:simpleType name="tipoSexo">
+      <xs:restriction base="xs:string">
+          <xs:enumeration value="H"/>
+          <xs:enumeration value="M"/>
+      </xs:restriction>
+  </xs:simpleType>
+  
+    <xs:simpleType name="tipoPeso">
+      <xs:restriction base="xs:decimal">
+          <xs:fractionDigits value="1"/>
+      </xs:restriction>
+  </xs:simpleType>
+  
+    <xs:element name="nome">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+              <xs:minLength value="3"/>
+              <xs:maxLength value="80"/>
+        </xs:restriction>
+  </xs:simpleType>
+    
+    </xs:element>    
+  
+  
+  <xs:simpleType name="tipoCodigo">
+      <xs:restriction base="xs:string">
+          <xs:pattern value="[PM][3-7]{2}(-[0-9]{3})?" />
+      </xs:restriction>
+  </xs:simpleType>
+  
+<xs:complexType name="tipoContacto" >
+    <xs:simpleContent>
+        <xs:extension base="tipoTelefono">
+            <xs:attribute name="relación" type="tipoRelacion" use="required"/>
+        </xs:extension>
+    </xs:simpleContent>
+</xs:complexType> 
+  
+    <xs:simpleType name="tipoTelefono">
+      <xs:restriction base="xs:string">
+          <xs:pattern value="[0-9]{9}" />
+      </xs:restriction>
+  </xs:simpleType>
+  
+    <xs:simpleType name="tipoRelacion">
+      <xs:restriction base="xs:string">
+          <xs:enumeration value="nai"/>
+          <xs:enumeration value="pai"/>
+          <xs:enumeration value="avó/a"/>
+          <xs:enumeration value="titor"/>
+          <xs:enumeration value="outra"/>
+      </xs:restriction>
+  </xs:simpleType>  
+  
+    <xs:complexType name="tipoIdade" >
+        <xs:attribute name="anos" type="tipoAnos"/>
+        <xs:attribute name="meses" type="tipoMeses"/>
+    </xs:complexType> 
+    
+    <xs:simpleType name="tipoAnos">
+      <xs:restriction base="xs:unsignedByte">
+          <xs:maxInclusive value="3"/>
+      </xs:restriction>
+  </xs:simpleType>  
+  
+      <xs:simpleType name="tipoMeses">
+      <xs:restriction base="xs:unsignedByte">
+          <xs:maxInclusive value="11"/>
+      </xs:restriction>
+      </xs:simpleType> 
+  
+</xs:schema>
+

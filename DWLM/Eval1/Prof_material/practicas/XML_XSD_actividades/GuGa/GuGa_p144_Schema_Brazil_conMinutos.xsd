@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: GuGa_p144_Schema_Brazil_conMinutos.xsd
+      Observaciones: derivado de GuGa_p136_Brazil_conSchema.xml; añadido elemento minutos-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="pelicula">
+      <complexType>
+        <sequence>
+          <element name="titulo" type="string"/>
+          <element name="minutos" type="integer"/>
+        </sequence>
+      </complexType>
+  </element>
+</schema>

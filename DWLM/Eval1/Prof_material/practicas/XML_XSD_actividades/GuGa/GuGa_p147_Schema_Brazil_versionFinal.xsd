@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento: GuGa_p147_Schema_Brazil_conAtributos.xsd
+      Observaciones: derivado de GuGa_p136_Brazil_conSchema.xml; cambiamos elementos por atributos-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="pelicula">
+      <complexType>
+          <sequence>
+              <element name="director" type="string"/>
+              <element name="protagonista" type="string"/>
+          </sequence>
+          <attribute name="titulo" type="string" use="required"/>
+          <attribute name="minutos" type="integer" use="optional" default="90"/>
+      </complexType>
+  </element>
+</schema>
