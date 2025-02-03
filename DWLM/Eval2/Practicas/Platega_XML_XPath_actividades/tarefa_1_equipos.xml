@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<equipos>
+  <máquina nome="PC017">
+    <hardware>
+      <tipo>PC Sobremesa</tipo>
+      <fabricante>Dell</fabricante>
+      <procesador marca="Intel" num_nucleos="4" velocidade="3,1">i7</procesador>
+      <memoria tecnoloxía="DDR3">8</memoria>
+      <disco tecnoloxía="SATA" capacidade="2000"/>
+      <gravadora tipo="DVD"/>
+    </hardware>
+    <config>
+      <OS>Windows 7</OS>
+      <IP>192.168.20.105</IP>
+      <gateway>192.168.20.1</gateway>
+    </config>
+  </máquina>
+  <máquina nome="GALILEO">
+    <hardware>
+      <tipo>Torre</tipo>
+      <fabricante>Fujitsu-Siemens</fabricante>
+      <procesador marca="Intel" num_nucleos="4" velocidade="3">Xeon</procesador>
+      <memoria tecnoloxía="DDR2">2</memoria>
+      <disco tecnoloxía="SCSI" capacidade="200"/>
+      <disco tecnoloxía="SCSI" capacidade="200"/>
+      <disco tecnoloxía="SCSI" capacidade="200"/>
+      <lectora tipo="DVD"/>
+    </hardware>
+    <config>
+      <role>Servidor de dominio</role>
+      <OS>Windows 2008 Server R2</OS>
+      <IP>192.168.20.10</IP>
+      <gateway>192.168.20.1</gateway>
+    </config>
+  </máquina>
+</equipos>

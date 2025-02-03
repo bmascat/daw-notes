@@ -1,0 +1,63 @@
+1) As máquinas con nome comezando por "PC".
+//máquina[starts-with(@nome,"PC")]
+
+2) O nome das máquinas con máis de un disco duro.
+
+//máquina[count(hardware/disco)>1]/@nome
+
+3) A suma dos GB de memoria RAM de todas as máquinas.
+sum(//memoria)
+concat('Total= ',sum(//memoria), ' GB') 
+
+4) A suma das capacidades dos discos duros de tipo "SCSI".
+sum(//disco[@tecnoloxía='SCSI']/@capacidade)
+
+5) Os nomes das máquinas das que se coñeza a súa cantidade de memoria, pero non a tecnoloxía desta.
+//máquina[hardware/memoria][not(hardware/memoria/@tecnoloxía)]/@nome
+//máquina/hardware[memoria][not(memoria/@tecnoloxía)]/../@nome
+//máquina/hardware/memoria[not(@tecnoloxía)]/../../@nome
+//máquina/hardware/memoria[not(@tecnoloxía)]/ancestor::máquina/@nome
+//memoria[not(@tecnoloxía)]/ancestor::máquina/@nome
+
+6) As máquinas con sistema operativo da familia Windows  e gravadora de DVD
+//máquina[starts-with(config/OS, "Windows")][hardware/gravadora/@tipo="DVD"]
+
+7) As máquinas nas que non figure o sistema operativo
+//máquina[config/OS]   , y la negamos //máquina[not(config/OS)]
+
+8) O nome da máquina e do SO daquelas máquinas con máis de un disco duro
+//máquina[count(hardware/disco)>1]/@nome | //máquina[count(hardware/disco)>1]/config/OS
+
+9) A configuración daquelas máquinas nas que figura unha dirección IP pero non o gateway.
+//máquina/config[IP and not(gateway)]
+obtenemos el nombre:
+//máquina/config[IP and not(gateway)]/../@nome
+
+10) Os elementos baleiros (non conteñen texto).
+/*[text()] y lo negamos //*[not(text())]
+	mejor: //*[not(node())]
+
+11) As direccións IP dentro da rede 192.168.10.0/24.
+//IP[starts-with(.,"192.168.10.")]
+también //IP[starts-with(text(),"192.168.10.")]
+
+12) Os nomes das máquinas con procesador multinúcleo e 2GB ou menos de memoria.
+//máquina/hardware[procesador/@num_nucleos>1][memoria<=2]/../@nome
+y las contamos count(//máquina/hardware[procesador/@num_nucleos>1][memoria<=2]/../@nome
+
+13) As máquinas que teñan disco duro (un ou varios) con capacidade total maior de 1000GB.
+//máquina[sum(hardware/disco/@capacidade)>1000]
+
+14) As máquinas que teñan disco duro (un ou varios) con capacidade total menor de 80GB
+//máquina[hardware/disco][sum(hardware/disco/@capacidade)<80]
+también: //máquina/hardware[disco][sum(disco/@capacidade)<80]/..
+	//máquina/hardware/disco[sum(@capacidade)<80]/../..
+
+
+
+
+
+
+
+
+

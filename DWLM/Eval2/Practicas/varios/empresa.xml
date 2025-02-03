@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<empresa>
+  <departamentos>
+    <departamento id="1">
+      <nombre>IT</nombre>
+      <empleados>
+        <empleado id="1">
+          <nombre>Juan Pérez</nombre>
+          <edad>30</edad>
+          <proyectos>
+            <proyecto>
+              <nombre>Desarrollo Web</nombre>
+              <fechaInicio>2023-01-01</fechaInicio>
+            </proyecto>
+            <proyecto>
+              <nombre>Base de Datos</nombre>
+              <fechaInicio>2024-03-15</fechaInicio>
+            </proyecto>
+          </proyectos>
+        </empleado>
+        <empleado id="3">
+          <nombre>Carlos Gómez</nombre>
+          <edad>35</edad>
+          <experiencia>
+            <empresa>ABC Corp</empresa>
+            <años>5</años>
+          </experiencia>
+        </empleado>
+      </empleados>
+    </departamento>
+    
+    <departamento id="2">
+      <nombre>Marketing</nombre>
+      <empleados>
+        <empleado id="2">
+          <nombre>Ana López</nombre>
+          <edad>28</edad>
+          <contacto>
+            <telefono>555-1234</telefono>
+            <correo>ana.lopez@email.com</correo>
+          </contacto>
+        </empleado>
+      </empleados>
+      <clientes>
+        <cliente id="1">
+          <nombre>Cliente A</nombre>
+          <contacto>
+            <telefono>555-6789</telefono>
+          </contacto>
+        </cliente>
+        <cliente id="2">
+          <nombre>Cliente B</nombre>
+          <contacto>
+            <telefono>555-9876</telefono>
+            <correo>clienteB@email.com</correo>
+          </contacto>
+        </cliente>
+      </clientes>
+    </departamento>
+    
+  </departamentos>
+  
+  <equipos>
+    <equipo id="1">
+      <nombre>Equipo de Desarrollo</nombre>
+      <lider>
+        <nombre>Juan Pérez</nombre>
+      </lider>
+      <miembros>
+        <miembro>Juan Pérez</miembro>
+        <miembro>Carlos Gómez</miembro>
+      </miembros>
+    </equipo>
+    <equipo id="2">
+      <nombre>Equipo de Marketing</nombre>
+      <lider>
+        <nombre>Ana López</nombre>
+      </lider>
+      <miembros>
+        <miembro>Ana López</miembro>
+      </miembros>
+    </equipo>
+  </equipos>
+  
+  <proyectos>
+    <proyecto id="1">
+      <nombre>Rediseño de Web</nombre>
+      <fechaInicio>2022-06-15</fechaInicio>
+      <estatus>En progreso</estatus>
+      <equipos>
+        <equipo id="1"/>
+      </equipos>
+    </proyecto>
+    <proyecto id="2">
+      <nombre>Campaña Publicitaria</nombre>
+      <fechaInicio>2024-06-10</fechaInicio>
+      <estatus>Planificado</estatus>
+      <equipos>
+        <equipo id="2"/>
+      </equipos>
+    </proyecto>
+  </proyectos>
+  
+  <clientes>
+    <cliente id="1">
+      <nombre>Cliente A</nombre>
+      <contacto>
+        <telefono>555-6789</telefono>
+      </contacto>
+    </cliente>
+    <cliente id="2">
+      <nombre>Cliente B</nombre>
+      <contacto>
+        <telefono>555-9876</telefono>
+        <correo>clienteB@email.com</correo>
+      </contacto>
+    </cliente>
+  </clientes>
+</empresa>

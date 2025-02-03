@@ -1,0 +1,38 @@
+Tomando como base o mesmo documento XML da tarefa 4, escribir as expresións XPath para obter:
+1) As películas nas que o título sexa igual ao título orixinal.
+//película[título=títuloorixinal]
+
+2) O atributo "id" correspondente á actriz "Elisabeth Shue".
+//actor[nome='Elisabeth Shue']/@id  
+
+3) Os títulos das películas nas que participou o actor con atributo id=51.
+//película[actúa/@id=51]/título
+
+4) Baseándote nos dous resultados anteriores, escribe a expresión correspondente aos títulos das películas nas que participou a actriz de nome "Elisabeth Shue".
+//película[actúa/@id=//actor[nome='Elisabeth Shue']/@id]/título
+//película[actúa/@id=/descendant::actor[nome='Elisabeth Shue']/@id]/título
+//película[actúa/@id=descendant::actor[nome='Elisabeth Shue']/@id]/título
+esa última no devuelve resultado, ojo con el contexto del predicado.
+
+idem para  Johnny Depp
+//película[actúa/@id=//actor[nome='Johnny Depp']/@id]/título
+
+y las películas en que no actúa Johnny Depp?
+//película[not(actúa/@id=//actor[nome='Johnny Depp']/@id)]/título
+para las películas en que no actúa  Elisabeth Shue
+//película[not(actúa/@id=//actor[nome='Elisabeth Shue']/@id)]/título
+
+5) O título da última película que aparece no documento.
+//película[last()]/título
+//película[count(//película)]/título   , es equivalente a //película[3]
+
+6) A suma dos importes daquelas películas nas que o mesmo figura en dólares.
+sum(//importe[@moneda="dólar"])
+
+7) A suma en euros dos importes das películas, considerando un cambio de 1€ = 1,4$.
+sum(//importe[@moneda="dólar"]) div 1.4 + sum(//importe[@moneda="euro"])
+concat('El importe de las películas asciende a ',sum(//importe[@moneda="dólar"]) div 1.4 + sum(//importe[@moneda="euro"]), ' Euros')
+
+
+
+

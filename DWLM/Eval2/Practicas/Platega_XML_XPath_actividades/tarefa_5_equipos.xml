@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<equipos>
+ <máquina nome="PC017">
+  <hardware>
+   <tipo>PC Sobremesa</tipo>
+   <fabricante>Dell</fabricante>
+   <procesador marca="Intel" num_nucleos="4" velocidade="3.1">i7</procesador>
+   <memoria tecnoloxía="DDR3">8</memoria>
+   <disco tecnoloxía="SATA" capacidade="2000"/>
+   <gravadora tipo="DVD"/>
+  </hardware>
+  <config>
+   <OS>Windows 7</OS>
+   <IP>192.168.20.105</IP>
+   <gateway>192.168.20.1</gateway>
+  </config>
+ </máquina>
+ <máquina nome="PC053">
+  <hardware>
+   <tipo>Semitorre</tipo>
+   <memoria>0.5</memoria>
+   <disco capacidade="40"/>
+   <lectora tipo="CD"/>
+  </hardware>
+  <config>
+   <OS>Windows XP</OS>
+  </config>
+ </máquina>
+ <máquina nome="PC007">
+  <hardware>
+   <tipo>Semitorre</tipo>
+   <memoria tecnoloxía="DDR">0.5</memoria>
+   <disco capacidade="40"/>
+   <lectora tipo="CD"/>
+  </hardware>
+  <config>
+   <OS>Windows XP</OS>
+  </config>
+  <notas>Sin tarxeta de rede</notas>
+ </máquina>
+ <máquina nome="PR003">
+  <hardware>
+   <tipo>Impresora Inyección</tipo>
+   <fabricante>Lexmark</fabricante>
+  </hardware>
+  <config/>
+ </máquina>
+ <máquina nome="PC011">
+  <hardware>
+   <tipo>Semitorre</tipo>
+   <memoria>1</memoria>
+   <disco capacidade="80"/>
+   <lectora tipo="CD"/>
+  </hardware>
+  <config>
+   <OS>Windows 2000 SP4</OS>
+   <IP>192.168.10.221</IP>
+  </config>
+ </máquina>
+ <máquina nome="PC019">
+  <hardware>
+   <tipo>Semitorre</tipo>
+   <procesador marca="AMD" velocidade="1.4">Athlon</procesador>
+   <memoria>0.5</memoria>
+   <disco capacidade="40"/>
+   <gravadora tipo="CD"/>
+  </hardware>
+  <config>
+   <OS>Mandriva 2007</OS>
+   <IP>192.168.10.45</IP>
+   <gateway>192.168.10.1</gateway>
+  </config>
+ </máquina>
+ <máquina nome="PR007">
+  <hardware>
+   <tipo>Impresora Láser</tipo>
+   <fabricante>OKI</fabricante>
+  </hardware>
+  <config/>
+  <notas>Monocromo, dúplex, red</notas>
+ </máquina>
+ <máquina nome="COPERNICO">
+  <hardware>
+   <tipo>Torre</tipo>
+   <fabricante>Fujitsu-Siemens</fabricante>
+   <procesador marca="Intel" num_nucleos="4" velocidade="3">Xeon</procesador>
+   <memoria tecnoloxía="DDR">2</memoria>
+   <disco tecnoloxía="SCSI" capacidade="500"/>
+   <disco tecnoloxía="SCSI" capacidade="500"/>
+   <gravadora tipo="DVD"/>
+  </hardware>
+  <config>
+   <role>Servidor de dominio</role>
+   <OS>Windows 2003 Server R2</OS>
+   <IP>192.168.20.11</IP>
+   <gateway>192.168.20.1</gateway>
+  </config>
+ </máquina>
+ <máquina nome="GALILEO">
+  <hardware>
+   <tipo>Torre</tipo>
+   <fabricante>Fujitsu-Siemens</fabricante>
+   <procesador marca="Intel" num_nucleos="4" velocidade="3">Xeon</procesador>
+   <memoria tecnoloxía="DDR2">2</memoria>
+   <disco tecnoloxía="SCSI" capacidade="200"/>
+   <disco tecnoloxía="SCSI" capacidade="200"/>
+   <disco tecnoloxía="SCSI" capacidade="200"/>
+   <lectora tipo="DVD"/>
+  </hardware>
+  <config>
+   <role>Servidor de dominio</role>
+   <OS>Windows 2008 Server R2</OS>
+   <IP>192.168.20.10</IP>
+   <gateway>192.168.20.1</gateway>
+  </config>
+ </máquina>
+ <máquina nome="KEPLER">
+  <hardware>
+   <tipo>Rack</tipo>
+   <fabricante>HP</fabricante>
+   <procesador marca="Intel" num_nucleos="2" velocidade="3">Core2 Duo</procesador>
+   <memoria tecnoloxía="DDR2">4</memoria>
+   <disco tecnoloxía="SATA" capacidade="500"/>
+   <disco tecnoloxía="SATA" capacidade="500"/>
+   <disco tecnoloxía="SATA" capacidade="500"/>
+   <gravadora tipo="DVD"/>
+  </hardware>
+  <config>
+   <role>Servidor de arquivos</role>
+   <OS>Ubuntu 8.04 Server</OS>
+   <IP>192.168.10.10</IP>
+   <gateway>192.168.10.1</gateway>
+  </config>
+ </máquina>
+ <máquina nome="NEWTON">
+  <hardware>
+   <tipo>Rack</tipo>
+   <fabricante>HP</fabricante>
+   <procesador marca="Intel" num_nucleos="2" velocidade="3">Core2 Duo</procesador>
+   <memoria tecnoloxía="DDR2">4</memoria>
+   <disco tecnoloxía="SATA" capacidade="500"/>
+   <disco tecnoloxía="SATA" capacidade="500"/>
+   <gravadora tipo="DVD"/>
+  </hardware>
+  <config>
+   <role>Servidor web</role>
+   <OS>Ubuntu 8.04 Server</OS>
+   <IP>192.168.10.11</IP>
+   <gateway>192.168.10.1</gateway>
+  </config>
+ </máquina>
+</equipos>
