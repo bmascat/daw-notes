@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de tarjeta descuento</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .tarjeta{
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 300px;
+            background-color: turquoise;
+            font-family: sans-serif;
+            box-shadow: 3px 3px 10px 5px grey;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .titulo{
+            flex:1;
+            background-color: black;
+            color: lightgrey;
+            display: flex;
+            justify-content: center;
+        }
+        .cuerpo{
+            flex:4;
+            padding: 35px;
+        }
+        .pie{
+            flex:1;
+            background-color: lightgray;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tarjeta">
+        <div class="titulo"><h2>Tarjeta de descuento</h2></div>
+        <div class="cuerpo">Benefíciate de un descuento especial del 50% en tu primera compra. Acumula puntos en cada compra y utilízalos antes del 25 de septiembre.</div>
+        <div class="pie"><h4>*Válida para todos nuestros establecimientos</h4></div>
+    </div>
+</body>
+</html>

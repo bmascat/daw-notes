@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    <style>
+        /* flex-direction */
+        .contenedor1{
+            display: flex;
+            flex-direction: row;
+        }
+        .contenedor2{
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .contenedor3{
+            display: flex;
+            flex-direction: column;
+        }
+        .contenedor4{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        /* justify-content */
+        .contenedor5{
+            display: flex;
+            justify-content: flex-start;
+        }
+        .contenedor6{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .contenedor7{
+            display: flex;
+            justify-content: center;
+        }
+        .contenedor8{
+            display: flex;
+            justify-content: space-between;
+        }
+        .contenedor9{
+            display: flex;
+            justify-content: space-around;
+        }
+        /* align-items */
+        .contenedor10{
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .contenedor11{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .contenedor12{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .contenedor13{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contenedor14{
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+        }
+        /* flex-wrap */
+        .contenedor15{
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .contenedor16{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .contenedor17{
+            display: flex;
+            flex-wrap: wrap-reverse;
+        }
+        /* propiedad flex */
+        .contenedor18{
+            display: flex;
+        }
+        .item1{
+            background-color: lightcoral;
+            flex: 1 1 150px;
+        }
+        .item2{
+            background-color: lightblue;
+            flex: 2 1 100px;
+        } 
+        .item3{
+            background-color: lightgreen;
+            flex: 3 0 200px;
+        }
+        /* propiedad order */
+        .contenedor19{
+            display: flex;
+        }
+        .item4{
+            background-color: lightcoral;
+            order:2;
+        }
+        .item5{
+            background-color: lightblue;
+            order:3;
+        } 
+        .item6{
+            background-color: lightgreen;
+            order:1;
+        }
+        /* propiedad align-self */
+        .contenedor20{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .item7{
+           align-self: flex-end;
+        }
+        /* color properties */
+        div{
+            background-color: lightblue;
+        }
+        div div{
+            color: lightcyan;
+            background-color: blue;
+        }
+        div:nth-child(1){
+            font-size: large;
+        }
+        div:nth-child(3){
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+    <p>Ejemplo 1: flex-direction: row</p>
+    <div class="contenedor1">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 2: flex-direction: row-reverse</p>
+    <div class="contenedor2">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 3: flex-direction: column</p>
+    <div class="contenedor3">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 4: flex-direction: column-reverse</p>
+    <div class="contenedor4">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 5: justify-content: flex-start</p>
+    <div class="contenedor5">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 6: justify-content: flex-end</p>
+    <div class="contenedor6">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div> 
+    <p>Ejemplo 7: justify-content: center</p>
+    <div class="contenedor7">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div> 
+    <p>Ejemplo 8: justify-content: space-between</p>
+    <div class="contenedor8">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div> 
+    <p>Ejemplo 9: justify-content: space-around</p>
+    <div class="contenedor9">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 10: align-items: stretch</p>
+    <div class="contenedor10">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div> 
+    <p>Ejemplo 11: align-items: flex-start</p>
+    <div class="contenedor11">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 12: align-items: flex-end</p>
+    <div class="contenedor12">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 13: align-items: center</p>
+    <div class="contenedor13">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div> 
+    <p>Ejemplo 14: align-items: baseline</p>
+    <div class="contenedor14">
+        <div>Elemento 1</div>
+        <div>Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+    <p>Ejemplo 15: flex-wrap: nowrap</p>
+    <div class="contenedor15">
+        <div>Elemento 1 Elemento 1 Elemento 1 Elemento 1 Elemento 1 Elemento 1</div>
+        <div>Elemento 2 Elemento 2 Elemento 2 Elemento 2 Elemento 2 Elemento 2</div>
+        <div>Elemento 3 Elemento 3 Elemento 3 Elemento 3 Elemento 3 Elemento 3</div>
+    </div>
+    <p>Ejemplo 16: flex-wrap: wrap</p>
+    <div class="contenedor16">
+        <div>Elemento 1 Elemento 1 Elemento 1 Elemento 1 Elemento 1 Elemento 1</div>
+        <div>Elemento 2 Elemento 2 Elemento 2 Elemento 2 Elemento 2 Elemento 2</div>
+        <div>Elemento 3 Elemento 3 Elemento 3 Elemento 3 Elemento 3 Elemento 3</div>
+    </div> 
+    <p>Ejemplo 17: flex-wrap: wrap-reverse</p>
+    <div class="contenedor17">
+        <div>Elemento 1 Elemento 1 Elemento 1 Elemento 1 Elemento 1 Elemento 1</div>
+        <div>Elemento 2 Elemento 2 Elemento 2 Elemento 2 Elemento 2 Elemento 2</div>
+        <div>Elemento 3 Elemento 3 Elemento 3 Elemento 3 Elemento 3 Elemento 3</div>
+    </div>
+    <p>Ejemplo 18: flex: [grow] [shrink] [basis]</p>
+    <div class="contenedor18">
+        <div class="item1">Elemento 1</div>
+        <div class="item2">Elemento 2</div>
+        <div class="item3">Elemento 3</div>
+    </div> 
+    <p>Ejemplo 19: order</p>
+    <div class="contenedor19">
+        <div class="item4">Elemento 1</div>
+        <div class="item5">Elemento 2</div>
+        <div class="item6">Elemento 3</div>
+    </div>
+    <p>Ejemplo 20: align-self</p>
+    <div class="contenedor20">
+        <div>Elemento 1</div>
+        <div class="item7">Elemento 2</div>
+        <div>Elemento 3</div>
+    </div>
+</body>
+</html>
