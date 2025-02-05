@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página con Estilo Personalizado</title>
+    <style>
+        @font-face {
+            font-family: 'CustomScript';
+            src: url('font/PlayWriteIN-VariableFont_wght.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Estilos generales para pantalla */
+        body {
+            font-family: 'CustomScript', cursive;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .main-title{
+            text-align: center;
+            color: #2b5797;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+            color: #55A9DC;
+        }
+
+        .roman-list {
+            list-style-type: upper-roman;
+        }
+
+        /* Estilos para impresión */
+        @media print {
+            @page {
+                size: A5 landscape;
+                margin: 10mm;
+            }
+
+            body {
+                font-family: 'CustomScript', serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            .main-title {
+                page-break-after: always;
+            }
+
+            .content {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-title">Página con Estilo Personalizado</h1>
+    <div class="content">
+        <h1>Subtítulo de la Página</h1>
+        <p>Esta es una página de ejemplo que utiliza una fuente personalizada aplicada a todos los elementos del documento. Además, incluye estilos diferentes para impresión, con una configuración específica para un documento en tamaño A5 y orientación horizontal. Aquí demostramos cómo se puede adaptar el diseño de un sitio web para diferentes medios.</p>
+        <h2>Lista ordenada</h2>
+        <ol class="roman-list">
+            <li>Elemento uno</li>
+            <li>Elemento dos</li>
+            <li>Elemento tres</li>
+            <li>Elemento cuatro</li>
+            <li>Elemento cinco</li>
+        </ol>
+    </div>
+</body>
+</html> 
