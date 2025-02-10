@@ -1,0 +1,10 @@
+Hay que ejecutar:
+
+java  -jar saxon-he-12.0.jar -s:source -xsl:stylesheet -o:output
+
+source-> el archivo xml que hay que procesar
+stylesheet-> el archivo xsl con las reglas de procesamiento
+output-> el nombre de archivo de salida que se va a generar
+
+
+Instalar Saxon como procesador de XSLT. SourceForge de Saxonica, en  https://sourceforge.net/projects/saxon/files/Saxon-HE/11/Java/
