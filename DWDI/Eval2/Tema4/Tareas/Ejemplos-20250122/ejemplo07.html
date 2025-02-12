@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejemplo 7- Medios de presentación</title>
+  <style>
+    @font-face {
+      font-family: "Playwrite";
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      font-display: swap;
+      unicode-range: U+00-52F, U+1E00-1FFF, U+2200-22FF;
+      src: url("fonts/PlaywriteHUGuides-Regular.ttf");
+    }
+
+    body {
+      font-family: "Playwrite", "Open Sans", Arial, Helvetica, sans-serif;
+      background-color: #222222;
+      color: lightGray;
+      padding: 10px;
+    }
+
+    .no-imprimir {
+      color: red;
+    }
+
+    /* Regla @media print */
+    @media print {
+      body {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        background-color: #ffffff;
+        color: black;
+      }
+
+      .no-imprimir {
+        display: none;
+      }
+
+      /* Regla @page*/
+      @page {
+        size: A4 landscape;
+        margin: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <h1>Ejemplo de Impresión</h1>
+    <p>
+      Ejemplo de como se utiliza la regla @page y @media print en CSS para
+      personalizar el diseño de las paginas impresas. Puedes ajustar los
+      márgenes , la orientación y otras propiedades específicas para optimizar
+      la presentación impresa.
+    </p>
+    <p class="no-imprimir">
+      Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Sed vel est at nunc malesuada feugiat. Nulla facilisi.
+      Donec eget libero non neque hendrerit laoreet. Sed non velit vitae
+      lectus consectetur dignissim. Sed facilisis, justo in dignissim
+      consectetur, dui velit hendrerit ipsum, in semper ligula ligula eu
+      neque. Nulla facilisi. Donec vel ligula non mi condimentum finibus.
+    </p>
+  </header>
+</body>
+
+</html>
