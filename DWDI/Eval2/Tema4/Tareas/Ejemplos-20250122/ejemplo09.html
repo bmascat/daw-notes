@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Tarea 4.7</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .emoji{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            font-size: 50px;
+        }
+        .emoji-diamante{
+            background-color: pink;
+            /* transform: rotate(45deg); otra forma de rotar el emoji */
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        /* .emoji-diamante span {
+            transform: rotate(-45deg); } /* Rotamos el emoji en dirección contraria para mantenerlo derecho */
+        .emoji-corazon{
+            background-color: cyan;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji emoji-diamante">
+        <span>😀</span>
+    </div>
+    <div class="emoji emoji-corazon">
+        <span>❤️</span>
+    </div>
+</body>
+</html>
