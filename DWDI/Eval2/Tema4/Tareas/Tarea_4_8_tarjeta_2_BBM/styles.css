@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background-color: white;
+    border: none;
+    color: #007bff;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: rgb(189, 188, 188); /* Cambia el color al pasar el ratón */
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.avatar {
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.info p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.history {
+    background-color: #b8860b;
+}
+
+.history:hover {
+    background-color: #8b6508;
+}
