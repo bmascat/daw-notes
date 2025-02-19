@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo Tarea 4.7</title>
     <style>
-        body{
+        body {
             display: flex;
-            flex-direction: row;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            gap: 20px;
         }
-        .emoji{
+        .emoji {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,16 +21,28 @@
             height: 150px;
             font-size: 50px;
         }
-        .emoji-diamante{
+        .emoji-diamante {
             background-color: pink;
-            /* transform: rotate(45deg); otra forma de rotar el emoji */
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
-        /* .emoji-diamante span {
-            transform: rotate(-45deg); } /* Rotamos el emoji en dirección contraria para mantenerlo derecho */
-        .emoji-corazon{
+        .emoji-corazon {
             background-color: cyan;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            clip-path: circle(50%);
+        }
+        .emoji-ovalo {
+            background-color: yellow;
+            height: 80%;
+            border-radius: 50%;
+            border: 5px solid green;
+        }
+        .emoji-triangulo {
+            background-color: lime;
+            align-items: end;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        .emoji-trapecio {
+            background-color: orange;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
         }
     </style>
 </head>
@@ -38,7 +51,34 @@
         <span>😀</span>
     </div>
     <div class="emoji emoji-corazon">
-        <span>❤️</span>
+        <span>🎉</span>
+    </div>
+    <div class="emoji emoji-ovalo">
+        <span>👽</span>
+    </div>
+    <div class="emoji emoji-triangulo">
+        <span>🐌</span>
+    </div>
+    <div class="emoji emoji-trapecio">
+        <span>🤖</span>
+    </div>
+    <div class="emoji">
+        <svg width="150" height="150" viewBox="0 0 100 100">
+            <path d="M50 15 
+                     C52 15, 55 30, 58 35
+                     C58 37, 75 35, 80 35
+                     C82 35, 65 45, 62 50
+                     C60 52, 68 65, 70 70
+                     C70 72, 55 60, 50 58
+                     C48 58, 35 70, 30 70
+                     C28 70, 35 55, 38 50
+                     C40 48, 22 37, 20 35
+                     C18 35, 40 35, 42 35
+                     C45 35, 48 15, 50 15" 
+                  fill="red"
+                  transform="translate(50 50) scale(1.5) translate(-50 -50)"/>
+            <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-size="20">😎</text>
+        </svg>
     </div>
 </body>
 </html>
