@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributos</title>
+    <style>
+        body{
+            /* ejemplo background */
+            background: url(assets/persona.png) no-repeat fixed center;
+            
+            /* ejemplo fuente */
+            /* font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 700; negrita */
+            /* font: italic 700 18px 'Times New Roman', Times, serif;
+            letter-spacing: 2px;
+            word-spacing: 10px;
+            text-align: right;
+            text-decoration: overline;
+            text-transform: capitalize;
+            font-variant: small-caps; */
+        }
+
+        /* Ejemplo de diseño de enlaces */
+        a:link{
+            color: blue;        
+        }
+        a:visited{
+            color:purple;
+        }
+        a:hover{
+            color:orange;
+        }
+        a:active{
+            color:red;
+        }
+
+    /* Ejemplo de diseño de listas */
+    ul{
+        list-style-type: circle;
+    }
+    ol{
+        list-style-position: inside;
+        list-style-type: decimal-leading-zero;
+    }
+    .vineta{
+        list-style-image: url(assets/vineta.png);
+    }
+    .atajo{
+        list-style: square inside url(assets/vineta.png);
+    }
+
+    /* Ejemplo de diseño de tablas */
+    table{
+        border: 4px solid red;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td{
+        border: 2px solid green;
+    }
+    .tabla{
+        border-collapse: separate;
+        border-spacing: 15px;
+        caption-side: bottom;
+        empty-cells: hide;
+    }
+    .tabla th{
+        border-color: blueviolet;
+    }
+
+    /* Diferencia entre inline, block e inline-block */
+    .inline{
+        display: inline;
+        background-color: lightblue;
+        width: 150px; /* no tiene efecto*/
+        height: 50px; /* no tiene efecto*/
+    }
+    .block{
+        display: block;
+        background-color: lightcoral;
+        /* visibility: hidden; */
+        display: none;
+    }
+    .inline-block{
+        display: inline-block;
+        background-color: lightgreen;
+        width: 150px;
+        height: 50px;
+        align-content: center;
+        text-align: center;
+    }
+
+    </style>
+</head>
+<body>
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum dictum diam et iaculis. Fusce vitae facilisis justo, iaculis aliquet odio. Donec malesuada urna eget leo tempus varius. Ut ornare bibendum nisl vitae rhoncus. Pellentesque eleifend ipsum bibendum libero feugiat faucibus. Ut eu tortor dapibus, interdum tellus at, tristique lacus. Cras id quam in diam eleifend tincidunt. Suspendisse justo nulla, convallis quis lorem id, auctor tempus ante. Suspendisse consequat, libero vel blandit pellentesque, lorem ipsum vestibulum ipsum, eu ultrices turpis mi a leo. Cras aliquet nisl eget condimentum cursus. Vivamus mauris erat, condimentum sed posuere at, fringilla vel leo. Nunc maximus, libero eget feugiat bibendum, elit magna sagittis erat, eu rutrum nunc dolor a nisi. In mi odio, tincidunt ut pretium sit amet, aliquam nec enim. Ut bibendum tincidunt risus, ut cursus nulla aliquam quis. Nam viverra auctor nisi, sed volutpat nunc dictum eu.
+
+Nullam blandit lectus a tincidunt posuere. Vestibulum sit amet lectus sagittis eros blandit facilisis sit amet imperdiet nisi. Maecenas laoreet iaculis hendrerit. Nulla non tortor neque. Duis finibus ipsum sit amet arcu aliquet, et interdum neque mollis. Vestibulum quis neque facilisis, porta massa in, dictum purus. Quisque sit amet porttitor nunc, ac iaculis orci. Sed ut metus maximus erat consequat pretium. Vestibulum efficitur condimentum risus eleifend semper. Quisque dignissim semper sapien, sit amet tristique tortor scelerisque ac. Nunc pellentesque elit vel risus efficitur consequat. Maecenas dolor nisl, porttitor id nisl id, varius molestie nisi. Duis vehicula dignissim neque, non pharetra sapien euismod vel. Etiam in odio ipsum.
+
+Nunc ex tortor, euismod ac nisl a, rhoncus commodo eros. Mauris sit amet sodales sapien. Integer et dolor libero. Ut suscipit, dolor ac sollicitudin tristique, quam metus efficitur tortor, eu ultrices ipsum nisi nec nunc. Quisque laoreet, dui eget ultricies varius, turpis erat fringilla leo, et vulputate nulla neque lacinia eros. Donec sollicitudin magna mi, vel gravida tellus facilisis nec. Cras in congue leo. In quam massa, elementum at vehicula a, porttitor ac eros. Suspendisse potenti. In dapibus risus sed ante faucibus elementum. Integer elit metus, blandit quis purus quis, ullamcorper tincidunt turpis. Phasellus ex arcu, accumsan ac urna non, venenatis vulputate velit. Curabitur ullamcorper fringilla tincidunt. Duis id egestas ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pretium turpis quis magna hendrerit, ultrices blandit lacus pellentesque.
+
+Praesent vel sem nunc. Nulla ac justo non eros ullamcorper mattis. Nunc justo risus, hendrerit vel ultrices eu, scelerisque eget leo. Cras pretium convallis velit id iaculis. Etiam tempus magna non tortor finibus, non ullamcorper turpis hendrerit. Proin tempor, lorem non iaculis vulputate, leo mauris aliquam sem, vitae rhoncus nunc lorem ac ex. Donec non orci sem. Etiam at neque blandit, tincidunt erat ac, lacinia mi.
+
+Vivamus vel velit elementum, blandit eros ac, mattis dui. Ut gravida, ipsum nec laoreet porttitor, magna leo tempus tortor, id rutrum arcu lacus ac enim. Vestibulum nunc lectus, elementum at sem sed, pellentesque porta est. Aliquam blandit rhoncus nisl sed ultricies. Sed ex libero, laoreet eget molestie in, hendrerit vitae purus. Sed tristique nisi et elit semper, id finibus libero porta. Vivamus maximus lectus nisi, vel efficitur lorem dictum vitae. Morbi in est id quam feugiat fermentum. Aliquam ut elit a turpis mattis sollicitudin vitae tincidunt libero. Proin hendrerit malesuada dolor in condimentum. Phasellus at accumsan lectus. Integer id fringilla sapien, id venenatis turpis.
+    </div>
+    <p><a href="https://www.google.es" target="_blank">Enlace google</a></p>
+    <p><a href="https://www.mozilla.org" target="_blank">Enlace mozilla</a></p>
+<ul>
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+</ul>
+<ol>
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+</ol>
+<ol class="vineta">
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+</ol>
+<ol class="atajo">
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+</ol>
+<table>
+    <caption>Ejemplo de tabla</caption>
+    <tr>
+        <th>Columna1</th>
+        <th>Columna2</th>
+        <th>Columna3</th>
+    </tr>
+    <tr>
+        <td>Dato A</td>
+        <td>Dato B</td>
+        <td>Dato C</td>
+    </tr>
+</table>
+<table class="tabla">
+    <caption>Ejemplo de tabla</caption>
+    <tr>
+        <th>Columna1</th>
+        <th></th>
+        <th>Columna3</th>
+    </tr>
+    <tr>
+        <td>Dato A</td>
+        <td></td>
+        <td>Dato C</td>
+    </tr>
+</table>
+<p class="inline">Inline</p>
+<p class="block">Block</p>
+<p class="inline-block">Inline-Block</p>
+</body>
+</html>
