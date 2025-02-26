@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout with Areas</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 200px auto auto 150px;
+            grid-template-rows: 100px auto auto 50px;
+            border: 1px solid black;
+            gap: 10px;
+            height: 300px;
+            grid-template-areas:
+                "header header . ."
+                "sidebar-left main-content main-content ."
+                ". main-content main-content sidebar-right"
+                ". . footer footer";
+        }
+        .header {
+            grid-area: header;
+            background-color: lightblue;
+        }
+        .sidebar-left {
+            grid-area: sidebar-left;
+            background-color: lightcoral;
+        }
+        .main-content {
+            grid-area: main-content;
+            background-color: lightgreen;
+        }
+        .sidebar-right {
+            grid-area: sidebar-right;
+            background-color: lightcoral;
+        }
+        .footer {
+            grid-area: footer;
+            background-color: lightgray;
+        }
+        .item {
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4em;
+            padding: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header item">Header</div>
+        <div class="sidebar-left item">Sidebar</div>
+        <div class="main-content item">Main Content</div>
+        <div class="sidebar-right item">Sidebar</div>
+        <div class="footer item">Footer</div>
+    </div>
+</body>
+</html>
