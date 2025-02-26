@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Grid template areas</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 100px auto 200px;
+            grid-template-rows: 50px auto 100px;
+            gap: 10px 20px;
+            height: 400px;
+
+            /*Definición de las areas SIEMPRE RECTANGULARES, el punto (.) es un vacio*/
+            grid-template-areas:
+                "A A D"
+                "B B D"
+                ". C C";
+        }
+
+        .area-A {
+            grid-area: A;
+            background-color: aqua;
+        }
+
+        .area-B {
+            grid-area: B;
+            background-color: greenyellow;
+        }
+
+        .area-C {
+            grid-area: C;
+            background-color: violet;
+        }
+
+        .area-D {
+            grid-area: D;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="area-A">A</div>
+        <div class="area-B">B</div>
+        <div class="area-C">C</div>
+        <div class="area-D">D</div>
+
+    </div>
+</body>
+
+</html>

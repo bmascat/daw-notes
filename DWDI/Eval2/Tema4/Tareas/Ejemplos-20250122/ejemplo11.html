@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Grid Layout</title>
+    <style>
+        .grid-container {
+            display: grid;
+            background-color: beige;
+
+            /*numero de columnas y tamaño*/
+            /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));*/
+            grid-template-columns: 100px 200px auto;
+            /*grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-columns: repeat(3,100px);
+            grid-template-columns: [inicio] 100px [medio] auto [final];*/
+
+            /*numero de filas y tamaño*/
+            /*grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));*/
+            grid-template-rows: 50px 100px auto;
+            /*grid-template-rows: 1fr 1fr 1fr;
+             grid-template-rows: repeat(3,1fr);
+             grid-template-rows: repeat(2,45px);
+             grid-template-rows: [inicio] 100px [medio] auto [final];*/
+
+            /*separacion filas columnas*/
+            /* grid-gap: 20px; */
+            gap: 10px 20px;
+
+            /*distribucion del espacio disponible*/
+            height: 250px;
+            justify-content: center;
+            align-content: space-between;
+            /*hay que definir una atura fija para que funcione el el align content*/
+
+            /*distribucion de los elementos dentro del grid*/
+            justify-items: stretch;
+            /*strech es por defecto, ocupatoda la celda*/
+            justify-items: end;
+            align-items: center;
+            /*center es por defecto, ocupa la celda en el centro*/
+            align-items: start;
+
+            place-items: start end;
+            /*es justo lo mismo que lo que tenemos sin comentar antes justify end y align start*/
+
+        }
+
+        /* FóRMULA: n vale como en matematicas n=0, n=1, n=3,.....*/
+        .item:nth-child(3n+1) {
+            background-color: aqua;
+            /* padding: 20px;
+            text-align: center; */
+        }
+
+        .item:nth-child(3n+2) {
+            background-color: greenyellow;
+            /* padding: 20px;
+            text-align: center; */
+        }
+
+        .item:nth-child(3n+3) {
+            background-color: violet;
+            /* padding: 20px;
+            text-align: center; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+    </div>
+</body>
+
+</html>
