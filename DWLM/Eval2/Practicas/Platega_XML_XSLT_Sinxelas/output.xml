@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<máquinas>
+   <máquina tipo="PC Sobremesa"
+             fabricante="Dell"
+             procesador="Intel 4 núcleos a 3,1 GHz"
+             discos="1 con 2000GB"/>
+   <máquina tipo="Torre"
+             fabricante="Fujitsu-Siemens"
+             procesador="Intel 4 núcleos a 3 GHz"
+             discos="3 con 600GB"/>
+</máquinas>
