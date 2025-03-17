@@ -1,0 +1,3 @@
+java -jar saxon-he-11.4.jar -t
+
+C:\Saxon>java -jar saxon-he-11.4.jar -xsl:transformaRaiz.xsl -s:biblioteca.xml -o:salida.txt
