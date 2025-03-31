@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo Grid Template Areas</title>
+    <style>
+      .container {
+        height: 500px;
+        display: grid;
+        grid-template-columns: 100px auto 100px;
+        grid-template-rows: 50px auto 50px;
+       
+        /* Definimos las áreas de nuestro grid */
+        grid-template-areas:
+          ". A A"
+          "B E C"
+          "D D .";
+      }
+
+      /* Estilo base para todas las áreas */
+      .container > div {
+        background-color: #7FFFD4;
+      }
+
+      /* Aplicamos bordes específicos a cada área */
+      .areaA {
+        grid-area: A;
+        border-top: 5px solid black;
+        border-right: 5px solid black;
+        border-left: 5px solid black;
+      }
+      .areaB {
+        grid-area: B;
+        border-left: 5px solid black;
+        border-top:  5px solid black;
+      }
+      .areaC {
+        grid-area: C;
+        border-right: 5px solid black;
+        border-bottom: 5px solid black;
+      }
+      .areaD {
+        grid-area: D;
+        border-left: 5px solid black;
+        border-bottom: 5px solid black;
+        border-right: 5px solid black;
+      }
+      .areaE {
+        grid-area: E;
+        border: 5px solid black; 
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="areaA"></div>
+      <div class="areaB"></div>
+      <div class="areaC"></div>
+      <div class="areaD"></div>
+      <span class="areaE"></span>
+    </div>
+  </body>
+</html>
