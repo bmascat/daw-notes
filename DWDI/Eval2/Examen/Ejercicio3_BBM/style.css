@@ -1,0 +1,58 @@
+@font-face {
+    font-family: CustomScript;
+    src: url(./font/PlaywriteIN-VariableFont_wght.ttf);
+    font-weight: normal;
+}
+body{   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 90vw;
+    background-color: #f4f4f4;
+}
+
+.container{
+   border: darkorange dotted 5px;
+   display: grid;
+   gap: 20px;
+   padding: 20px;
+   width: 600px;
+   height: 450px;
+   grid-template-columns: 200px auto auto 150px;
+   grid-template-rows: 100px auto auto 75px;
+   grid-template-areas: 
+                        "B B A A"
+                        "B B D ."
+                        "B B D C" 
+                        "E E E ." ;
+}
+.item{
+    font-family: customScript;
+    color: white;
+    text-align: center;
+    font-size: 35px;
+    align-content: center;
+    border: black solid 5px;
+
+}
+.A{
+    grid-area: A;
+    background-color: darkblue;
+}
+.B{
+    grid-area: B;
+    background-color: darkkhaki;
+}
+.C{
+    grid-area: C;
+    background-color:darkmagenta ;
+}
+.D{
+    grid-area: D;
+    background-color: darkolivegreen;
+}
+.E{
+    grid-area: E;
+    background-color: darkgoldenrod ;
+}

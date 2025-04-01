@@ -1,0 +1,65 @@
+@font-face {
+    font-family: CustomScript;
+    src: url(font/AmaticSC-Regular.ttf);
+    font-weight: normal;
+}
+
+body{
+    font-family: CustomScript;
+    background-color:#333;
+    color: whitesmoke;
+    font-size: 2rm;
+    line-height: double;
+    text-align: justify;
+}
+
+h1{
+    color: darkmagenta;
+    text-align: center;
+}
+
+h2{
+    color: #0077cc;
+    text-align: center;
+    text-decoration: underline;
+}
+
+span{
+    color: #0077cc;
+    font-weight: bold;
+}
+
+li{
+    list-style: upper-roman;
+}
+
+@media (max-width: 600px) {
+    body{
+        font-family: CustomScript;
+        background-color: whitesmoke;
+        color: black;
+        font-size: 16px;
+        line-height: normal;
+        text-align: left;
+    }
+    
+    h1{
+        color: darkmagenta;
+        font-size: 22px;
+        text-align: left;
+    }
+    
+    h2{
+        color: #0077cc;
+        font-size: 18px;
+        text-align: left;
+    }
+    span{
+        color: #0077cc;
+        font-weight: bold;
+    }
+    
+    li{
+        list-style: upper-roman;
+    }
+}

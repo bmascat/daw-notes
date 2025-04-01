@@ -1,0 +1,99 @@
+@font-face {
+    font-family: CustomScript;
+    src: url(font/Gruppo-Regular.ttf);
+    font-weight: normal;
+}
+body{
+    font-family: CustomScript; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f4f4f4;
+
+}
+img{
+    border-radius: 10px;
+}
+.card{
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    border-radius: 10px;
+    background-color: lightseagreen;
+    width: 400px;
+    height: 239px;
+    padding: 20px;
+    box-shadow: rgba(63, 63, 63, 0.6) 5px 5px ;
+}
+
+.card-header{
+    display: flex;
+    padding: 0px 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.bank-name{
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+.card-type{
+    font-size: 18px;
+}
+
+.cls-btn{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: lightseagreen;
+    border: none;
+    border-radius: none;
+    background-color: aliceblue;
+}
+.cls-btn:hover{
+    background-color: #ccc;
+}
+.card-body{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.credit-number{
+    font-size: 20px;
+    letter-spacing: 4px;
+    word-spacing: 7px;
+}
+.card-footer{
+    border-top: double 4px seagreen;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.ft-btn{
+    font-family: CustomScript;
+    font-size: 15px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: aliceblue ;
+    border: none;
+    background-color: seagreen;
+}
+.ft-btn:hover{
+    background-color: rgb(36, 106, 66);
+}
+.pay-btn{
+    font-family: CustomScript;
+    font-size: 15px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: aliceblue ;
+    border: none;
+    background-color: goldenrod;
+}
+.pay-btn:hover{
+    background-color: darkgoldenrod;
+}
