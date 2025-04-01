@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores Avanzados</title>
+    <style>
+        /* Selectores de atributos */
+        a[href$=".rar"] {
+            color: orange;
+            text-decoration: underline;
+        }
+        a[href$=".rar"]::before {
+            content: "💊 ";
+        }
+
+        a[href^="https://"] {
+            color: green;
+        }
+        a[href^="https://"]::after {
+            content: " 🔗";
+        }
+
+        /* Selectores jerárquicos */
+        ul > li {
+            background: white; /* Base para alternar luego */
+        }
+
+        tr > td {
+            background-color: #ffffe0; /* Amarillo claro */
+        }
+
+        /* Pseudo-clases */
+        ul > li:first-child {
+            color: blue;
+            font-weight: bold;
+        }
+
+        ul > li:nth-child(odd) {
+            background-color: #ccffcc; /* Verde claro */
+        }
+
+        ul > li:nth-child(even) {
+            background-color: #f0f0f0; /* Gris claro */
+        }
+
+        input[type="text"]:focus {
+            border: 5px solid red;
+        }
+
+        /* Pseudo-elementos */
+        h1::before, h2::before {
+            content: "* ";
+            color: green;
+        }
+
+        input[type="text"]::after {
+            content: "Campo obligatorio";
+        }
+
+        form input + span {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Título Principal</h1>
+    <h2>Subtítulo</h2>
+
+    <p>Este es un párrafo introductorio para mostrar el uso de selectores avanzados en HTML y CSS.</p>
+
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+        <li>Elemento 5</li>
+    </ul>
+
+    <a href="archivo.rar">Descargar archivo RAR</a><br>
+    <a href="https://www.google.com">Ir a Google</a>
+
+    <table border="1">
+        <tr>
+            <td>Fila 1, Columna 1</td>
+            <td>Fila 1, Columna 2</td>
+        </tr>
+        <tr>
+            <td>Fila 2, Columna 1</td>
+            <td>Fila 2, Columna 2</td>
+        </tr>
+        <tr>
+            <td>Fila 3, Columna 1</td>
+            <td>Fila 3, Columna 2</td>
+        </tr>
+    </table>
+
+    <form>
+        <label for="campo">Campo de texto:</label>
+        <input type="text" id="campo" name="campo">
+        <span>(Campo obligatorio)</span>
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
