@@ -55,6 +55,97 @@ normalize-space() # Normaliza espacios
 not()             # Negación
 ```
 
+### Sintaxis Avanzada XPath
+
+#### Expresiones con Variables
+```xpath
+//libro[@id = $var]              # Comparación con variable
+//venta[categoria = $cat-actual] # Filtrado usando variable
+//*[precio > $precio-min]        # Comparación numérica con variable
+```
+
+#### Predicados Compuestos
+```xpath
+//libro[autor='Cervantes'][año>1600]    # Múltiples condiciones (AND)
+//libro[@tipo='novela' or @tipo='poesía']# Condición OR
+//autor[not(nacionalidad)]              # Negación
+//libro[position() mod 2 = 0]           # Elementos pares
+```
+
+#### Expresiones de Ruta Complejas
+```xpath
+//libro[autor = preceding::autor[1]]     # Comparación con elemento anterior
+//venta[categoria = following::categoria]# Comparación con elemento siguiente
+//libro[count(autor) > 1]               # Conteo en predicado
+//capitulo[not(. = preceding::capitulo)] # Elementos únicos
+```
+
+#### Funciones en Predicados
+```xpath
+//precio[sum(../cantidad) > 1000]        # Suma en predicado
+//libro[contains(titulo, 'Don')]         # Búsqueda en texto
+//autor[starts-with(nombre, 'A')]        # Comienza con
+//fecha[substring(., 1, 4) = '2024']     # Substring en predicado
+```
+
+#### Expresiones de Comparación
+```xpath
+//libro[precio > //precio[1]]            # Comparación con otro elemento
+//venta[importe = max(//importe)]        # Uso de funciones de agregación
+//empleado[salario > avg(//salario)]     # Comparación con promedio
+```
+
+#### Navegación Contextual
+```xpath
+.//libro                        # Búsqueda desde nodo actual
+../hermano                      # Elemento hermano
+ancestor::seccion              # Ancestro específico
+descendant::párrafo           # Descendiente específico
+preceding-sibling::capitulo   # Hermano anterior
+following-sibling::seccion    # Hermano siguiente
+```
+
+#### Ejemplos Prácticos
+```xpath
+# Encontrar ventas de una categoría específica
+//venta[categoria = $cat-actual]
+
+# Encontrar libros con precio mayor al promedio
+//libro[precio > sum(//libro/precio) div count(//libro)]
+
+# Encontrar elementos únicos
+//elemento[not(. = preceding::elemento)]
+
+# Encontrar elementos relacionados
+//pedido[cliente = //cliente[ciudad='Madrid']/@id]
+
+# Filtrado múltiple con variables
+//producto[precio > $min and precio < $max]
+[categoria = $cat][stock > 0]
+```
+
+#### Notas Importantes
+1. **Uso de Variables**
+   - Las variables siempre van precedidas de `$`
+   - Deben estar definidas en XSLT con `<xsl:variable>`
+   - Se usan para comparaciones dinámicas
+
+2. **Predicados**
+   - Se pueden encadenar múltiples predicados
+   - Se evalúan de izquierda a derecha
+   - Pueden contener expresiones complejas
+
+3. **Funciones**
+   - Se pueden usar dentro de predicados
+   - Permiten operaciones complejas
+   - Pueden anidarse
+
+4. **Contexto**
+   - `.` se refiere al nodo actual
+   - `..` se refiere al nodo padre
+   - `//` busca en todo el documento
+   - `/` busca desde la raíz
+
 ## XSLT - Transformaciones
 
 ### Estructura Básica XSLT
@@ -560,5 +651,4 @@ order=""         # Orden (ascending/descending)
 <xsl:template match="libro">
     <!-- implementación -->
 </xsl:template>
-```
 ```
