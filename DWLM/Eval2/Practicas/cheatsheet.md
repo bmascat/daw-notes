@@ -562,7 +562,3 @@ order=""         # Orden (ascending/descending)
 </xsl:template>
 ```
 ```
-
-Estas nuevas secciones complementan perfectamente el contenido existente y proporcionan información adicional valiosa sobre aspectos importantes de XSLT que no estaban cubiertos anteriormente. La cheatsheet ahora es más completa y cubre prácticamente todos los aspectos importantes que podrían aparecer en un examen de XSLT.
-
-¿Hay algún otro aspecto específico que te gustaría que explique o profundice?
