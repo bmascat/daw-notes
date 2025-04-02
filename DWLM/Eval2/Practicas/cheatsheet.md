@@ -4,7 +4,7 @@
 
 ### Selectores Básicos
 ```xpath
-elemento           # Selecciona elementos con ese nombre
+elemento          # Selecciona elementos con ese nombre
 *                 # Cualquier elemento
 @nombre           # Atributo específico
 @*                # Cualquier atributo
@@ -238,4 +238,331 @@ order=""         # Orden (ascending/descending)
     </table>
 </xsl:template>
 ```
+
+### Ejemplos Detallados con apply-templates
+
+#### XML a HTML - Ejemplos
+
+##### 1. Estructura Jerárquica
+```xml
+<!-- XML de entrada
+<empresa>
+    <departamento nombre="Ventas">
+        <empleado>
+            <nombre>Juan</nombre>
+            <cargo>Vendedor</cargo>
+        </empleado>
+        <empleado>
+            <nombre>Ana</nombre>
+            <cargo>Gerente</cargo>
+        </empleado>
+    </departamento>
+</empresa>
+-->
+
+<xsl:template match="/">
+    <html>
+        <body>
+            <h1>Estructura de la Empresa</h1>
+            <xsl:apply-templates select="empresa/departamento"/>
+        </body>
+    </html>
+</xsl:template>
+
+<xsl:template match="departamento">
+    <div class="departamento">
+        <h2>Departamento: <xsl:value-of select="@nombre"/></h2>
+        <xsl:apply-templates select="empleado"/>
+    </div>
+</xsl:template>
+
+<xsl:template match="empleado">
+    <div class="empleado">
+        <h3><xsl:value-of select="nombre"/></h3>
+        <p>Cargo: <xsl:value-of select="cargo"/></p>
+    </div>
+</xsl:template>
 ```
+
+##### 2. Listas Anidadas
+```xml
+<!-- XML de entrada
+<categorias>
+    <categoria nombre="Libros">
+        <subcategoria nombre="Ficción">
+            <item>Novela</item>
+            <item>Poesía</item>
+        </subcategoria>
+        <subcategoria nombre="No Ficción">
+            <item>Historia</item>
+            <item>Ciencia</item>
+        </subcategoria>
+    </categoria>
+</categorias>
+-->
+
+<xsl:template match="/">
+    <html>
+        <body>
+            <h1>Catálogo</h1>
+            <xsl:apply-templates select="categorias/categoria"/>
+        </body>
+    </html>
+</xsl:template>
+
+<xsl:template match="categoria">
+    <div>
+        <h2><xsl:value-of select="@nombre"/></h2>
+        <xsl:apply-templates select="subcategoria"/>
+    </div>
+</xsl:template>
+
+<xsl:template match="subcategoria">
+    <h3><xsl:value-of select="@nombre"/></h3>
+    <ul>
+        <xsl:apply-templates select="item"/>
+    </ul>
+</xsl:template>
+
+<xsl:template match="item">
+    <li><xsl:value-of select="."/></li>
+</xsl:template>
+```
+
+#### XML a XML - Ejemplos
+
+##### 1. Reestructuración con Atributos
+```xml
+<!-- XML de entrada
+<biblioteca>
+    <libro id="1">
+        <titulo>Don Quijote</titulo>
+        <autor>Cervantes</autor>
+        <año>1605</año>
+    </libro>
+</biblioteca>
+-->
+
+<xsl:template match="/">
+    <catalogo>
+        <xsl:apply-templates select="biblioteca/libro"/>
+    </catalogo>
+</xsl:template>
+
+<xsl:template match="libro">
+    <obra tipo="libro" id="{@id}">
+        <xsl:apply-templates select="titulo"/>
+        <xsl:apply-templates select="autor"/>
+        <fecha-publicacion><xsl:value-of select="año"/></fecha-publicacion>
+    </obra>
+</xsl:template>
+
+<xsl:template match="titulo">
+    <nombre-obra><xsl:value-of select="."/></nombre-obra>
+</xsl:template>
+
+<xsl:template match="autor">
+    <escritor><xsl:value-of select="."/></escritor>
+</xsl:template>
+```
+
+##### 2. Transformación con Modos
+```xml
+<!-- XML de entrada
+<datos>
+    <persona>
+        <nombre>Juan</nombre>
+        <edad>30</edad>
+    </persona>
+</datos>
+-->
+
+<xsl:template match="/">
+    <resultado>
+        <formato-detallado>
+            <xsl:apply-templates select="//persona" mode="detallado"/>
+        </formato-detallado>
+        <formato-resumido>
+            <xsl:apply-templates select="//persona" mode="resumido"/>
+        </formato-resumido>
+    </resultado>
+</xsl:template>
+
+<xsl:template match="persona" mode="detallado">
+    <persona-detalle>
+        <nombre-completo><xsl:value-of select="nombre"/></nombre-completo>
+        <años><xsl:value-of select="edad"/></años>
+    </persona-detalle>
+</xsl:template>
+
+<xsl:template match="persona" mode="resumido">
+    <persona nombre="{nombre}" edad="{edad}"/>
+</xsl:template>
+```
+
+##### 3. Agrupación Avanzada
+```xml
+<!-- XML de entrada
+<ventas>
+    <venta>
+        <producto>A</producto>
+        <categoria>Electrónica</categoria>
+        <precio>100</precio>
+    </venta>
+</ventas>
+-->
+
+<xsl:template match="/">
+    <resumen-ventas>
+        <xsl:apply-templates select="//categoria[not(. = preceding::categoria)]" mode="grupo"/>
+    </resumen-ventas>
+</xsl:template>
+
+<xsl:template match="categoria" mode="grupo">
+    <xsl:variable name="cat-actual" select="."/>
+    <categoria-ventas nombre="{.}">
+        <productos>
+            <xsl:apply-templates select="//venta[categoria = $cat-actual]"/>
+        </productos>
+        <total>
+            <xsl:value-of select="sum(//venta[categoria = $cat-actual]/precio)"/>
+        </total>
+    </categoria-ventas>
+</xsl:template>
+
+<xsl:template match="venta">
+    <producto>
+        <nombre><xsl:value-of select="producto"/></nombre>
+        <precio><xsl:value-of select="precio"/></precio>
+    </producto>
+</xsl:template>
+```
+
+### Consejos para apply-templates
+
+1. **Uso de Modos**
+   - Permite procesar el mismo elemento de diferentes formas
+   - Útil para generar múltiples vistas del mismo dato
+   - Mantiene el código organizado
+
+2. **Prioridad de Plantillas**
+   - Las plantillas más específicas tienen prioridad
+   - Se puede usar el atributo `priority` para control explícito
+   - El orden de declaración importa cuando hay igual especificidad
+
+3. **Contexto**
+   - `current()` para referirse al nodo actual en procesamiento
+   - `position()` para obtener la posición en el conjunto actual
+   - Variables para almacenar valores temporales
+
+4. **Buenas Prácticas**
+   - Mantener plantillas pequeñas y específicas
+   - Usar nombres descriptivos para los modos
+   - Documentar el propósito de cada plantilla
+   - Estructurar jerárquicamente las transformaciones
+```
+### Control de Espacios en Blanco
+```xml
+<xsl:strip-space elements="*"/>        # Elimina espacios en blanco de todos los elementos
+<xsl:preserve-space elements="pre"/>    # Preserva espacios en elementos específicos
+<xsl:text>&#10;</xsl:text>             # Insertar salto de línea explícito
+```
+
+### Variables y Parámetros
+```xml
+<!-- Definición de variables -->
+<xsl:variable name="nombre" select="expresión"/>
+<xsl:variable name="nombre">
+    <!-- contenido complejo -->
+</xsl:variable>
+
+<!-- Uso de variables -->
+<xsl:value-of select="$nombre"/>
+
+<!-- Parámetros -->
+<xsl:param name="titulo" select="'Valor por defecto'"/>
+```
+
+### Manipulación de Texto
+```xml
+<xsl:value-of select="concat(string1, string2)"/>     # Concatenar strings
+<xsl:value-of select="substring(string, start, len)"/> # Extraer subcadena
+<xsl:value-of select="translate(string, 'abc', 'ABC')"/> # Reemplazar caracteres
+<xsl:value-of select="normalize-space(string)"/>       # Normalizar espacios
+```
+
+### Procesamiento Condicional Avanzado
+```xml
+<!-- Selección múltiple con when -->
+<xsl:choose>
+    <xsl:when test="@tipo='libro'">
+        <libro><xsl:apply-templates/></libro>
+    </xsl:when>
+    <xsl:when test="@tipo='revista'">
+        <revista><xsl:apply-templates/></revista>
+    </xsl:when>
+    <xsl:otherwise>
+        <documento><xsl:apply-templates/></documento>
+    </xsl:otherwise>
+</xsl:choose>
+
+<!-- Condiciones con if -->
+<xsl:if test="precio > 100">
+    <span class="caro"><xsl:value-of select="precio"/></span>
+</xsl:if>
+```
+
+### Numeración y Conteo
+```xml
+<xsl:number value="position()" format="1"/>    # Números (1,2,3...)
+<xsl:number value="position()" format="a"/>    # Letras (a,b,c...)
+<xsl:number value="position()" format="i"/>    # Números romanos (i,ii,iii...)
+<xsl:value-of select="count(//libro)"/>        # Contar elementos
+<xsl:value-of select="sum(//precio)"/>         # Sumar valores
+```
+### Manejo de Errores
+```xml
+<!-- Verificar existencia antes de procesar -->
+<xsl:if test="autor">
+    <xsl:value-of select="autor"/>
+</xsl:if>
+
+<!-- Valores por defecto -->
+<xsl:value-of select="autor"/>
+<xsl:text>Autor desconocido</xsl:text>
+```
+
+### Ordenamiento Avanzado
+```xml
+<!-- Ordenamiento múltiple -->
+<xsl:for-each select="libro">
+    <xsl:sort select="autor"/>
+    <xsl:sort select="titulo"/>
+    <!-- contenido -->
+</xsl:for-each>
+
+<!-- Ordenamiento personalizado -->
+<xsl:sort select="precio" 
+          data-type="number" 
+          order="descending"/>
+```
+
+### Comentarios y Documentación
+```xml
+<!-- Comentario normal -->
+
+<!--
+    Documentación de plantilla:
+    - Propósito: Procesa elementos libro
+    - Parámetros: ninguno
+    - Salida: elemento HTML div
+-->
+<xsl:template match="libro">
+    <!-- implementación -->
+</xsl:template>
+```
+```
+
+Estas nuevas secciones complementan perfectamente el contenido existente y proporcionan información adicional valiosa sobre aspectos importantes de XSLT que no estaban cubiertos anteriormente. La cheatsheet ahora es más completa y cubre prácticamente todos los aspectos importantes que podrían aparecer en un examen de XSLT.
+
+¿Hay algún otro aspecto específico que te gustaría que explique o profundice?
