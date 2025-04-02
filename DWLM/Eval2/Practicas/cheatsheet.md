@@ -701,3 +701,89 @@ order=""         # Orden (ascending/descending)
     <!-- implementación -->
 </xsl:template>
 ```
+
+### Ejercicio Completo de Examen
+```xml
+<!-- XML de entrada:
+<empresa>
+    <empleado departamento="Ventas">
+        <nombre>Juan</nombre>
+        <salario>30000</salario>
+        <antiguedad>5</antiguedad>
+    </empleado>
+    <empleado departamento="IT">
+        <nombre>Ana</nombre>
+        <salario>35000</salario>
+        <antiguedad>3</antiguedad>
+    </empleado>
+</empresa>
+-->
+
+<!-- Crear un informe HTML que:
+     1. Agrupe por departamento
+     2. Calcule salario promedio por departamento
+     3. Resalte empleados con más de 4 años
+     4. Muestre estadísticas generales
+-->
+
+<xsl:template match="/">
+    <html>
+        <head>
+            <style>
+                .veterano { color: green; }
+                .departamento { margin: 20px; }
+            </style>
+        </head>
+        <body>
+            <h1>Informe de Empleados</h1>
+            
+            <!-- Procesamiento por departamentos -->
+            <xsl:for-each select="//empleado[not(@departamento = preceding::empleado/@departamento)]">
+                <xsl:variable name="dept-actual" select="@departamento"/>
+                <div class="departamento">
+                    <h2>Departamento: <xsl:value-of select="$dept-actual"/></h2>
+                    
+                    <!-- Lista de empleados -->
+                    <ul>
+                        <xsl:for-each select="//empleado[@departamento = $dept-actual]">
+                            <li>
+                                <xsl:choose>
+                                    <xsl:when test="antiguedad > 4">
+                                        <span class="veterano">
+                                            <xsl:value-of select="nombre"/> 
+                                            (<xsl:value-of select="antiguedad"/> años)
+                                        </span>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="nombre"/>
+                                        (<xsl:value-of select="antiguedad"/> años)
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </li>
+                        </xsl:for-each>
+                    </ul>
+                    
+                    <!-- Estadísticas del departamento -->
+                    <p>
+                        Salario promedio: 
+                        <xsl:value-of 
+                            select="format-number(sum(//empleado[@departamento = $dept-actual]/salario) 
+                                    div count(//empleado[@departamento = $dept-actual]), '#,##0')"/>€
+                    </p>
+                </div>
+            </xsl:for-each>
+            
+            <!-- Estadísticas generales -->
+            <div class="estadisticas">
+                <h2>Estadísticas Generales</h2>
+                <ul>
+                    <li>Total empleados: <xsl:value-of select="count(//empleado)"/></li>
+                    <li>Salario promedio general: 
+                        <xsl:value-of select="format-number(sum(//salario) div count(//empleado), '#,##0')"/>€
+                    </li>
+                    <li>Empleados veteranos: <xsl:value-of select="count(//empleado[antiguedad > 4])"/></li>
+                </ul>
+            </div>
+        </body>
+    </html>
+</xsl:template>
