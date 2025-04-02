@@ -702,7 +702,7 @@ order=""         # Orden (ascending/descending)
 </xsl:template>
 ```
 
-### Ejercicio Completo de Examen
+### Ejercicios Completos de Examen
 ```xml
 <!-- XML de entrada:
 <empresa>
@@ -787,3 +787,85 @@ order=""         # Orden (ascending/descending)
         </body>
     </html>
 </xsl:template>
+```
+#### Transformación XML a HTML con agrupación:
+```xml
+<!-- XML de entrada:
+<biblioteca>
+    <libro>
+        <genero>Ficción</genero>
+        <titulo>Don Quijote</titulo>
+        <autor>Cervantes</autor>
+    </libro>
+    <libro>
+        <genero>Ficción</genero>
+        <titulo>Cien años de soledad</titulo>
+        <autor>García Márquez</autor>
+    </libro>
+    <libro>
+        <genero>No Ficción</genero>
+        <titulo>Historia de España</titulo>
+        <autor>Pérez</autor>
+    </libro>
+</biblioteca>
+-->
+
+<!-- Solución: Agrupar libros por género en una tabla HTML -->
+<xsl:template match="/">
+    <html>
+        <body>
+            <h1>Biblioteca por Géneros</h1>
+            <xsl:for-each select="//libro[not(genero = preceding::libro/genero)]">
+                <xsl:variable name="genero-actual" select="genero"/>
+                <h2><xsl:value-of select="genero"/></h2>
+                <table border="1">
+                    <tr><th>Título</th><th>Autor</th></tr>
+                    <xsl:for-each select="//libro[genero = $genero-actual]">
+                        <tr>
+                            <td><xsl:value-of select="titulo"/></td>
+                            <td><xsl:value-of select="autor"/></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+            </xsl:for-each>
+        </body>
+    </html>
+</xsl:template>
+```
+#### Transformación con cálculos y condiciones:
+```xml
+<!-- XML de entrada:
+<ventas>
+    <venta>
+        <producto>A</producto>
+        <precio>100</precio>
+        <cantidad>2</cantidad>
+    </venta>
+    <venta>
+        <producto>B</producto>
+        <precio>50</precio>
+        <cantidad>3</cantidad>
+    </venta>
+</ventas>
+-->
+
+<xsl:template match="/">
+    <resumen>
+        <xsl:variable name="total" select="sum(//venta/precio * //venta/cantidad)"/>
+        <ventas-totales>
+            <xsl:for-each select="//venta">
+                <venta>
+                    <producto><xsl:value-of select="producto"/></producto>
+                    <subtotal>
+                        <xsl:value-of select="precio * cantidad"/>
+                    </subtotal>
+                    <porcentaje-del-total>
+                        <xsl:value-of select="format-number((precio * cantidad) div $total * 100, '##.##')"/>%
+                    </porcentaje-del-total>
+                </venta>
+            </xsl:for-each>
+            <total><xsl:value-of select="$total"/></total>
+        </ventas-totales>
+    </resumen>
+</xsl:template>
+```
