@@ -1,0 +1,1489 @@
+Dirección Xeral de Educación, Formación Profesional e Innovación Educativa
+
+Material para
+a formación profesional inicial
+Familia profesional
+
+IFC
+
+Informática e comunicacións
+
+Ciclo formativo
+
+CSIFC01
+CSIFC02
+CSIFC03
+
+Administración de sistemas informáticos e redes
+Desenvolvemento de aplicacións multiplataforma
+Desenvolvemento de aplicacións web
+
+Grao
+
+Superior
+
+Módulo profesional
+
+MP0373
+
+Linguaxes de marcas e sistemas de xestión da información
+
+Unidade didáctica
+
+UD05
+
+Transformación de documentos XML
+
+Actividade
+
+A01
+
+Expresións XPath
+
+Autores
+
+Margarita Pin Rodríguez, Víctor M. Lourido Estévez
+
+Nome do arquivo
+
+CSIFC01_MP0373_V000501_UD05_A01_Expresións_XPat
+h
+
+© 2013 Xunta de Galicia.
+Consellería de Cultura, Educación e Ordenación Universitaria.
+Este traballo foi realizado durante unha licenza de formación retribuída pola Consellería de Cultura,
+Educación e Ordenación Universitaria e ten licenza Creative Commons BY-NC-SA (recoñecemento non comercial - compartir igual). Para ver unha copia desta licenza, visitar a ligazón
+http://creativecommons.org/licenses/by-nc-sa/3.0/es/.
+
+Páxina 1 de 37
+
+1.
+
+XPath
+
+1.1
+
+Introdución
+Na actividade que nos ocupa aprenderanse os seguintes conceptos e manexo de destrezas:
+ Linguaxes para o procesamento de documentos XML.
+ Estrutura en árbore dun documento XML. O modelo DOM XML.
+ Sintaxe das expresións XPath. Rutas e pasos de localización.
+ Operadores e funcións da linguaxe XPath.
+ Creación de expresións con XPath.
+
+1.2
+
+Actividade
+Linguaxes para o procesamento de documentos XML
+
+Nas actividades anteriores traballamos con documentos XML, e vimos a súa sintaxe para
+poder crear documentos ben formados. Tamén estudamos dúas linguaxes (DTDs e XML
+Schemas) que nos permiten definir gramáticas específicas que podemos empregar para validar o contido dos documentos XML.
+Ao redor da linguaxe XML definíronse un conxunto de tecnoloxías que se empregan para
+procesar e obter información dos documentos XML. Algunhas destas tecnoloxías son:
+
+ XPath. É unha linguaxe que permite extraer información dun documento XML.
+ XLink. É unha linguaxe para a creación de hipervínculos nun documento XML.
+ XPointer. É unha linguaxe que permite que os hipervínculos enlacen con partes específicas dun documento XML.
+Páxina 2 de 37
+
+ XQuery. É unha linguaxe que permite realizar consultas a documentos XML, do mesmo
+xeito que SQL o fai coas bases de datos relacionais.
+ XSLT. É unha linguaxe que permite transformar documentos XML, obtendo novos documentos XML con diferente estrutura ou documentos noutros formatos.
+Procesamento dun documento XML: estrutura en árbore
+
+Moitas aplicacións integran un parser XML. Un parser é un programa capaz de procesar un
+documento XML, e xeralmente o resultado obtido é a representación deste documento en
+forma de árbore. Por exemplo, os navegadores web integran un parser XML, e amosan a
+árbore obtida como resultado do procesamento:
+
+O modelo máis empregado para almacenar e procesar as árbores XML é o DOM (Document
+Objetc Model, Modelo de Obxectos do Documento). O DOM é un estándar do W3C (World
+Wide Web Consortium) que tamén se emprega no procesamento dos documentos HTML
+que se empregan nas páxinas web. O estándar do DOM divídese en tres partes:
+ DOM base. É un modelo estándar para calquera documento estruturado.
+ DOM HTML. É o modelo específico para documentos HTML.
+ DOM XML. É o modelo específico para documentos XML.
+Por exemplo, o seguinte documento XML:
+<?xml version="1.0" encoding="utf-8"?>
+<venda>
+<cliente cod="CL09384">
+<nome>Uxío Fuentes Neira</nome>
+<enderezo>Rúa Europa 24, 3ºA</enderezo>
+</cliente>
+<produtos>
+<produto cod="LACT093">
+<descrición>Leite enteira envase 1L</descrición>
+</produto>
+<produto cod="LACT012">
+<descrición>Margarina vexetal tarrina 250g</descrición>
+</produto>
+</produtos>
+<importe>16,34€</importe>
+</venda>
+
+Preséntase do seguinte xeito empregando o modelo DOM XML:
+Páxina 3 de 37
+
+Nunha árbore DOM XML, o documento XML represéntase empregando nodos. Tódolos
+compoñentes dun documento XML son nodos. Parar crear a árbore debe terse en conta a orde na que aparecen os elementos dentro do documento XML; por exemplo, o produto de
+código "LACT093" é anterior ao de código "LACT012". Non é relevante a orde dos atributos
+dentro dun elemento.
+O estándar DOM XML define tamén unha interface de programación orientada a obxectos, cos obxectos correspondentes aos distintos nodos dun documento XML, e as propiedades e os métodos para acceder a eles (obter o seu contido, modificalos, eliminalos ou engadir novos nodos).
+Existe outro modelo que tamén se emprega con documentos XML: o XDM (XQuery and
+XPath Data Model, Modelo de Datos de XPath e XQuery). XDM emprégase en XQuery e
+nas versións 2.0 e 3.0 de XPath e XSLT, e baséase nos mesmos principios que DOM.
+Tipos de nodos no modelo DOM XML
+
+No modelo DOM XML, unha árbore correspondente a un documento XML está composta
+por nodos. Estes nodos poden ser de distintos tipos. Os principais son:
+ Nodo Document (Documento). Representa ao documento XML enteiro. Ten un único fillo de tipo elemento (o nodo raíz).
+ Nodo Element (Elemento). Representa un elemento dun documento XML. Poden ter
+identificadores únicos (pódese especificar no documento de validación) para acceder a
+eles de xeito directo.
+ Nodo Attr (Atributo). Representa un atributo dun elemento. Aínda que se lles denomina
+nodos, na estrutura de árbore considérase aos atributos como unha información engadida
+aos nodos "Elemento" e non como fillos deles.
+ Nodo Text (Texto). Representa ao texto dun elemento. Contén todos os carácteres que
+non están dentro dalgunha etiqueta.
+Tamén existen outros tipos de nodos, como:
+Páxina 4 de 37
+
+ Nodo Comment (Comentario).
+ Nodo CDATASection (Sección CData).
+ Nodo ProcessingInstruction (Instrución de Procesamento).
+ Nodo Entity (Entidade).
+As relacións entre os nodos dunha árbore DOM XML son as seguintes:
+ Soamente existe un nodo raíz, de tipo "Elemento".
+ Un nodo "Elemento" pode ter ou non nodos fillos. Un nodo "Elemento" sen fillos é un
+nodo folla. Os nodos dos outros tipos nunca teñen fillos.
+ Tódolos nodos a excepción do raíz teñen un e soamente un nodo pai. Tampouco teñen
+pai os nodos de tipo "Atributo", que como xa dixemos cólganse na árbore do nodo "Elemento" que os contén, pero non se consideran fillos deste.
+ Chámanse nodos irmáns a aqueles nodos "Elemento" que teñen o mesmo pai.
+A interface de programación DOM XML
+
+Como xa dixemos, DOM XML define tamén unha interface de programación para manexar
+os nodos da árbore correspondente a un documento XML. Esta interface de programación
+inclúe propiedades como:
+ nodeName, para obter o nome dun nodo.
+ parentNode, para obter o pai dun nodo.
+ attributes, para obter os atributos dun nodo.
+E tamén métodos como:
+ getElementsByTagName(nome), obtén os elementos cunha etiqueta determinada.
+ hasAttributes(), indica se un elemento ten ou non atributos.
+ removeChild(nodo), elimina a un fillo dado dun nodo.
+Así por exemplo, se quixéramos eliminar do documento anterior o nodo correspondente ao
+enderezo do cliente poderíamos facer:
+// supoñemos o documento XML cargado en docXML
+enderezo=docXML.getElementsByTagName("enderezo")[0];
+cliente=enderezo.parentNode;
+cliente.removeChild(enderezo);
+
+As expresións que empregan DOM para percorrer e localizar nodos nunha árbore XML son
+en moitos casos complexas e moi largas. Como veremos a continuación, a linguaxe XPath
+ofrece unha forma moito máis sinxela e efectiva de facer esta tarefa.
+Expresións XPath
+
+XPath (XML Path) é unha linguaxe para acceder ás distintas partes dun documento XML.
+Empregando XPath podemos seleccionar e facer referencia a texto, elementos, atributos e
+calquera outra información contida dentro dun documento XML. Non é unha linguaxe
+XML; ten a súa propia sintaxe.
+Por exemplo, no documento XML anterior poderíamos empregar a seguinte expresión
+para obter o enderezo do cliente:
+Páxina 5 de 37
+
+/venda/cliente/enderezo
+
+Existen tres versións de XPath. As dúas primeiras son recomendacións (versións finais) desenvolvidas polo W3C, e a terceira en xaneiro de 2013 é unha versión candidata. XPath 1.0
+(novembro 1999) emprega DOM XML e aínda segue a ser con diferenza a versión máis
+empregada, mentres que XPath 2.0 (decembro 2010) emprega o modelo XDM e XPath 3.0
+empregará XDM 3.0. Imos centrarnos en XPath 1.0.
+Na presente actividade, para avaliar as expresións XPath coas que traballaremos imos a
+empregar XPath Visualizer Tool e XPathBuilder.
+
+ No texto de apoio 1 temos unha guía con algunhas das principais ferramentas orientadas especificamente á avaliación de expresión XPath.
+
+Cargando o arquivo anterior (preme "Alt" para abrir os menús), podemos avaliar a expresión anterior e obteremos o seguinte resultado:
+
+En XPath 1.0, as expresións poden empregar e devolver os seguintes tipos de datos:
+ Números en punto flotante.
+ Valores booleanos (verdadeiro ou falso).
+ Cadeas de carácteres codificadas en Unicode.
+ Conxuntos de nodos, que poden conter cero, un ou máis nodos.
+Rutas de localización
+
+O tipo máis común de expresión en XPath é a ruta de localización. Unha ruta de localización permite a selección dun conxunto de nodos, partindo dun nodo contexto no que se avaliará a expresión. O resultado de avaliar unha ruta de localización é sempre un conxunto de
+nodos (de distintos tipos, non soamente nodos "Elemento").
+As rutas de localización poden ser absolutas ou relativas:
+ Se empregamos XPath como parte doutra linguaxe como XSLT, podemos avaliar expresións cuxo contexto sexa un conxunto de nodos dun documento XML (ruta relativa). EsPáxina 6 de 37
+
+tas rutas non comezan cunha barra "/". Por exemplo, poderíamos avaliar unha expresión
+tendo como contexto:
+<produto cod="LACT012">
+<descrición>Margarina vexetal tarrina 250g</descrición>
+</produto>
+
+De xeito que a expresión "produto/descrición" obteña o nodo "descrición" do produto.
+ Se empregamos XPath sobre un documento XML, as expresións comezarán cunha barra
+"/" (ruta absoluta), o que indica que o contexto da expresión é o nodo "Documento" (o
+documento XML enteiro).
+As expresións XPath tamén empregan a barra "/" para separar as diferentes partes das que
+se compoñen. Estas partes chámanse pasos de localización. Cada un dos pasos de localización vai refinando a procura de datos a través dos nodos da árbore.
+Por exemplo, a ruta de localización "/venda/cliente/enderezo" componse de tres pasos de localización. O primeiro fai referencia ao nodo raíz "venda", que colga do nodo documento "/"; o seguinte fai referencia ao nodo "cliente" que é fillo de "venda"; e o mesmo para o nodo "enderezo".
+
+ Na tarefa 1 empregaremos un documento XML para traballar con rutas de localización
+sinxelas e observar os resultados obtidos.
+
+Pasos de localización
+
+Os pasos de localización (location steps) son cada un dos elementos dunha ruta de localización. Co resultado obtido de avaliar un paso de localización, obtense o contexto do seguinte
+paso de localización. Constan dun eixo (axis), un test de nodo (node test) e opcionalmente
+dun predicado. A sintaxe é a seguinte:
+eixo::test-nodo[predicado]
+
+Eixos
+
+Os eixos indican, con respecto ao nodo contexto, o conxunto de nodos sobre os cales se avaliará o test de nodo e o predicado se existe. Basicamente trátase de realizar un primeiro filtro
+de nodos da árbore para obter o resultado cos datos buscados.
+Os eixos que podemos empregar en XPath 1.0 son:
+ self. O propio nodo contexto.
+ child. Os fillos do nodo contexto.
+ parent. O pai do nodo contexto.
+ ancestor. Os antepasados do nodo contexto.
+ ancestor-or-self. O nodo contexto e os seus antepasados.
+ descendant. Os descendentes do nodo contexto.
+ descendant-or-self. O nodo contexto e os seus descendentes.
+Páxina 7 de 37
+
+ following. Os nodos seguintes ao nodo contexto, sen descendentes.
+ following-sibling. Os nodos do mesmo nivel que seguen ao nodo contexto.
+ preceding. Os nodos anteriores ao nodo contexto, sen antepasados.
+ preceding-sibling. Os nodos do mesmo nivel que preceden ao nodo contexto.
+ attribute. Os nodos atributo do nodo contexto.
+ namespace. Os nodos de espazo de nomes do nodo contexto.
+Se non se pon ningún, o eixo por defecto é "child". Tamén se pode empregar o símbolo "@"
+no lugar do eixo "attribute". Por exemplo, as seguintes expresións son equivalentes:
+/venda/cliente/@cod
+/child::venda/child::cliente/attribute::cod
+
+ Na tarefa 2 empregaremos o mesmo documento da anterior tarefa para crear expresións XPath que inclúan diversos eixos.
+
+Tests de nodo
+
+O test de nodo serve para, unha vez identificado un conxunto de nodos co eixo adecuado,
+especificar exactamente que nodos dese conxunto son os que queremos. Os test de nodo poden ser:
+ nome_dun_nodo. Selecciona todos os nodos co nome indicado.
+ *. Selecciona todos os elementos e atributos.
+ node(). Selecciona todos os nodos (de calquera tipo).
+ text(). Selecciona os nodos de texto.
+ comment(). Selecciona os nodos de comentario.
+ processing-instructions(). Selecciona os nodos de procesamento de instrucións.
+Por exemplo, se quixéramos obter o conxunto de tódolos atributos do documento, poderíamos facer:
+Páxina 8 de 37
+
+//descendant-or-self::node()/@*
+
+Isto é, seleccionamos tódolos nodos do documento, e despois quedámonos cos seus atributos. Se quixeramos soamente os atributo de nome "cod", poderiamos facer:
+//descendant-or-self::node()/@cod
+
+E calquera das seguintes formas é válida para obter os textos das descricións dos produtos:
+/venda/produtos/produto/descrición/text()
+/descendant-or-self::node()/descrición/text()
+
+Obsérvese que non é o mesmo obter como resultado un conxunto de nodos sen filtrar
+("/descendant-or-self::node()/descrición"):
+
+Que indicar que queremos obter soamente os nodos de tipo "Texto" ("/descendant-orself::node()/descrición/text()"):
+
+Debido ao seu frecuente uso, existen abreviaturas para algunhas rutas de localización:
+ "//" equivale a "descendant-or-self::node()"
+ "." equivale a "self::node()"
+ ".." equivale a "parent::node()"
+Isto é, tamén poderíamos ter escrito a anterior expresión como:
+Páxina 9 de 37
+
+//descrición/text()
+
+Predicados
+
+Os predicados son condicións opcionais nun paso de localización, e introdúcense entre corchetes despois do test de nodo. Axúdannos a axustar a busca no conxunto de nodos que nos
+interesan.
+Cada predicado pode conter unha ruta de localización relativa ao nodo actual. Unha forma habitual que se emprega nos predicados fai uso dunha característica especial de XPath:
+calquera conxunto de nodos non baleiro é tratado de forma booleana como "verdadeiro",
+mentres que a un conxunto de nodos baleiro asígnaselle o valor booleano "falso". Desta
+forma, na expresión:
+//produto[child::descrición]
+
+O predicado filtra os produtos obtendo soamente aqueles que teñen un nodo elemento fillo
+de nome "descrición". O mesmo poderíase facer da seguinte forma abreviada:
+//produto[descrición]
+
+Tamén podemos poñer condicións ao resultado obtido pola ruta de localización indicada no
+predicado. Por exemplo, a expresión:
+//produto[@cod="LACT012"]
+
+obtería os nodos "produto" cun atributo "cod" con valor "LACT012". E para obter os
+clientes cun nome concreto, faríamos:
+//cliente[nome/text()="Uxío Fuentes Neira"]
+
+Un mesmo paso de localización pode conter cero, un ou varios predicados; neste último caso, poranse un a continuación do outro, cadanseu cos seus propios corchetes:
+//produto[descrición][@cod="LACT012"]
+
+Páxina 10 de 37
+
+ Na tarefa 3 traballaremos con expresións XPath que empreguen tests de nodo e predicados.
+
+ Na tarefa 4 podemos seguir a practicar as expresións XPath con tests de nodo e predicados.
+
+Operadores
+
+Nos predicados, ademais do operador "=", podemos utilizar outros operadores e funcións
+XPath para filtrar o conxunto de nodos en función do valor dalgunha estrutura do documento. XPath 1.0 define os seguintes operadores que se poden empregar nas expresións.
+Operador
+
+Tipo
+
+Descrición
+
+Exemplo
+
+=
+
+Booleano
+
+Devolve verdadeiro se o valor dos dous operandos coincide, falso en caso
+contrario.
+
+count(//produto) = 3
+
+!=
+
+Booleano
+
+Devolve verdadeiro se o valor dos dous operandos non coincide, falso en caso
+contrario.
+
+count(//produto) != 3
+
+<
+
+Booleano
+
+Devolve verdadeiro se o valor do primeiro operando é menor que o valor do
+segundo, falso en caso contrario.
+
+count(//produto) < 3
+
+<=
+
+Booleano
+
+Devolve verdadeiro se o valor do primeiro operando é menor ou igual que o
+valor do segundo, falso en caso contrario.
+
+count(//produto) <= 3
+
+>
+
+Booleano
+
+Devolve verdadeiro se o valor do primeiro operando é maior que o valor do
+segundo, falso en caso contrario.
+
+count(//produto) > 3
+
+>=
+
+Booleano
+
+Devolve verdadeiro se o valor do primeiro operando é maior ou igual que o valor count(//produto) >= 3
+do segundo, falso en caso contrario.
+
+and
+
+Booleano
+
+Devolve verdadeiro se o valor de ambos operandos é verdadeiro, falso en caso
+contrario.
+
+count(//produto) > 3 and
+count(//produto) < 7
+
+or
+
+Booleano
+
+Devolve falso se o valor de ambos operandos é falso, verdadeiro en caso
+contrario.
+
+count(//produto) < 3 or
+count(//produto) > 7
+
+-
+
+Numérico
+
+Devolve a resta dos operandos.
+
+count(//produto) - 1
+
+Páxina 11 de 37
+
++
+
+Numérico
+
+Devolve a suma dos operandos.
+
+count(//produto) + 1
+
+*
+
+Numérico
+
+Devolve o produto dos operandos.
+
+count(//produto) * 2
+
+div
+
+Numérico
+
+Devolve a división dos operandos.
+
+count(//produto) div 2
+
+mod
+
+Numérico
+
+Devolve o resto da división enteira dos operandos.
+
+count(//produto) mod 2
+
+|
+
+Conxunto de nodos Une os operandos, que deben ser conxuntos de nodos, nun novo conxunto de
+nodos.
+
+//produto | //cliente
+
+Funcións
+
+XPath 1.0 define as seguintes funcións que se poden empregar nas expresións.
+Función
+
+Parámetros
+
+Valor devolto
+
+boolean()
+
+Conxunto de nodos,
+Booleano
+booleano, numérico ou
+cadea de carácteres
+
+Descrición
+
+Exemplo
+
+Converte o parámetro a un valor booleano.
+
+boolean(//produto)
+
+false()
+
+Booleano
+
+Devolve falso.
+
+false()
+
+true()
+
+Booleano
+
+Devolve verdadeiro.
+
+true()
+
+not()
+
+Conxunto de nodos,
+Booleano
+booleano, numérico ou
+cadea de carácteres
+
+Devolve verdadeiro se o valor do operando
+é falso, verdadeiro en caso contrario.
+
+not (count(//produto) < 3)
+
+lang()
+
+Cadea de carácteres
+
+Booleano
+
+Devolve verdadeiro se a linguaxe definida
+con xml:lang coincide coa especificada no
+parámetro, falso en caso contrario.
+
+lang("es")
+
+ceiling()
+
+Numérico
+
+Numérico
+
+Devolve o primeiro enteiro maior que o valor ceiling(8 div 3)
+do parámetro.
+
+floor()
+
+Numérico
+
+Numérico
+
+Devolve o primeiro enteiro menor que o
+valor do parámetro.
+
+floor(8 div 3)
+
+round()
+
+Numérico
+
+Numérico
+
+Devolve o enteiro máis próximo ao valor do
+parámetro.
+
+round(8 div 3)
+
+sum()
+
+Conxunto de nodos
+
+Numérico
+
+Devolve a suma dos valores dos nodos que sum(//produto/@importe)
+se pasan como parámetros.
+
+concat()
+
+Varias cadeas de
+carácteres
+
+Cadea de carácteres
+
+Concatena nunha cadea tódalas que se lle
+pasan como parámetros.
+
+concat("Don ", //nome/text())
+
+contains()
+
+Dúas cadeas de
+carácteres
+
+Booleano
+
+Devolve verdadeiro se a primeira cadea
+contén á segunda, falso en caso contrario.
+
+contains(//nome/text(),"Uxío")
+
+normalize-space()
+
+Cadea de carácteres
+
+Cadea de carácteres
+
+Devolve unha cadea como a que se lle pasa normalize-space(//nome/text())
+como parámetro, quitando os espazos ao
+comezo, ao final, e os duplicados.
+
+starts-with()
+
+Dúas cadeas de
+carácteres
+
+Booleano
+
+Devolve verdadeiro se a primeira cadea
+comeza coa segunda, falso en caso contrario.
+
+starts-with(//nome/text(),"Uxío")
+
+string-length()
+
+Cadea de carácteres
+
+Numérico
+
+Devolve o número de carácteres da cadea.
+
+string-length(//nome/text())
+
+substring()
+
+1º: Cadea de carácteres
+2º e 3º: Numérico
+
+Cadea de carácteres
+
+Da cadea que recibe como primeiro parámetro, devolve tantos carácteres como
+indique o terceiro parámetro, contando a
+partir da posición que indique o segundo
+parámetro.
+
+substring(//nome/text(), 6, 7)
+
+substring-after()
+
+Dúas cadeas de
+carácteres
+
+Cadea de carácteres
+
+Devolve a cadea do primeiro parámetro a
+partir da primeira ocorrencia do segundo
+parámetro.
+
+substring-after(//nome/text()," ")
+
+substring-before()
+
+Dúas cadeas de
+carácteres
+
+Cadea de carácteres
+
+Devolve a cadea do primeiro parámetro
+anterior á primeira ocorrencia do segundo
+parámetro.
+
+substring-before(//nome/text(),"
+")
+
+translate()
+
+Tres cadeas de
+
+Cadea de carácteres
+
+Devolve a cadea do primeiro parámetro,
+
+translate(//enderezo/text(),",","-
+
+Páxina 12 de 37
+
+carácteres
+
+substituíndo tódalas ocorrencias dos carácteres do segundo parámetro polos carácteres do terceiro parámetro.
+
+")
+
+string()
+
+Conxunto de nodos,
+Cadea de carácteres
+booleano, numérico ou
+cadea de carácteres
+
+Devolve o parámetro convertido a unha
+cadea de carácteres.
+
+string(//nome)
+
+count()
+
+Conxunto de nodos
+
+Numérico
+
+Devolve o número de nodos do conxunto de count(//produto)
+nodos.
+
+id()
+
+Cadea de carácteres
+
+Conxunto de nodos
+
+Devolve o nodo do elemento co ID especificado como parámetro.
+
+id("G0097763")
+
+Conxunto de nodos
+
+Devolve o número de nodos no contexto
+actual. Pódese empregar para acceder ao
+último nodo do contexto.
+
+//produto[last()]
+
+last()
+
+local-name()
+
+Conxunto de nodos
+
+Cadea de carácteres
+
+Devolve o nome local (non o nome cualificado) do primeiro nodo no conxunto de
+nodos que se lle pasa como parámetro.
+
+local-name(//nome)
+
+name()
+
+Conxunto de nodos
+
+Cadea de carácteres
+
+Devolve o nome cualificado do primeiro
+nodo no conxunto de nodos que se lle pasa
+como parámetro.
+
+name(//nome)
+
+namespace-uri()
+
+Conxunto de nodos
+
+Cadea de carácteres
+
+Devolve o URI do espazo de nomes do
+namespace-uri(//produto)
+primeiro nodo no conxunto de nodos que se
+lle pasa como parámetro.
+
+Numérico
+
+Devolve a posición (comezando con 1) do
+nodo contexto no conxunto de nodos do
+contexto actual.
+
+position()
+
+//produto[position()=2]
+
+A función position() emprégase habitualmente no predicado para seleccionar o nodo correspondente a unha posición determinada dentro do conxunto de nodos do contexto. Isto
+pódese facer tamén de forma abreviada indicando a posición directamente no predicado, de
+tal xeito que ámbalas dúas expresións seguintes son equivalentes:
+//produto[position()=2]
+//produto[2]
+
+Outras expresións
+
+Aínda que a ruta de localización é o tipo máis común de expresión en XPath, podemos empregar os operadores e funcións anteriores para crear diversos tipos de expresións (moitas
+delas non devolven un conxunto de nodos, e polo tanto non funcionarán en XPath Visualizer) como por exemplo:
+Páxina 13 de 37
+
+ Contar o número de produtos dunha venda (devolve un número):
+count(//produto)
+
+ Comprobar se o número de produtos dunha venda cumple ou non certas condicións (devolve un valor booleano):
+count(//produto) > 3 and count(//produto) < 7
+
+ Obter os datos dun produto e os do cliente (devolve un conxunto de nodos):
+//produto[2] | //cliente
+
+Páxina 14 de 37
+
+ Comprobar o valor do código dun produto determinado (devolve un valor booleano):
+//produto[2]/@cod = "LACT012"
+
+ Comprobar se existe algún produto cun código determinado (devolve un valor booleano):
+//produto/@cod = "LACT012"
+
+Páxina 15 de 37
+
+ Obter o importe da venda, cambiando a coma por un punto (devolve unha cadea de texto):
+substring(translate(/venda/importe,",","."),1,5)
+
+ Nas tarefas 5 e 6 empregaremos operadores e funcións para construír expresións
+XPath avanzadas.
+
+XPath e espazos de nomes
+
+Cando nun documento XML se definen espazos de nomes, debemos empregar os prefixos
+respectivos onde corresponda dentro das expresións XPath. Por exemplo, no seguinte documento:
+<?xml version="1.0" encoding="utf-8"?>
+<venda xmlns:pr="http://www.atendadepaco.com/espazosdenomes/produtos/">
+<pr:produtos>
+
+Páxina 16 de 37
+
+<pr:produto>
+<pr:cod>LACT02330993</pr:cod>
+<pr:descrición>Leite enteira envase 1L</pr:descrición>
+</pr:produto>
+<pr:produto>
+<pr:cod>LACT00493112</pr:cod>
+<pr:descrición>Margarina vexetal tarrina 250g</pr:descrición>
+</pr:produto>
+</pr:produtos>
+<importe_total>16,34€</importe_total>
+</venda>
+
+A expresión correcta para obter o conxunto de nodos correspondente a todos os produtos será:
+//pr:produto
+
+Pero cando temos un documento no que estea definido un espazo de nomes por defecto; por
+exemplo:
+<?xml version="1.0" encoding="utf-8"?>
+<venda xmlns="http://www.atendadepaco.com/espazosdenomes/vendas/"
+xmlns:pr="http://www.atendadepaco.com/espazosdenomes/produtos/">
+<pr:produtos>
+<pr:produto>
+<pr:cod>LACT02330993</pr:cod>
+<pr:descrición>Leite enteira envase 1L</pr:descrición>
+</pr:produto>
+<pr:produto>
+<pr:cod>LACT00493112</pr:cod>
+<pr:descrición>Margarina vexetal tarrina 250g</pr:descrición>
+</pr:produto>
+</pr:produtos>
+<importe_total>16,34€</importe_total>
+</venda>
+
+Necesitamos especificar un prefixo para facer referencia ao espazo de nomes por defecto
+dentro das expresións XPath. Isto é, cando escribimos o nome dun elemento sen indicar un
+prefixo, como:
+/venda
+
+XPath busca os elementos "venda" que non estean asociados a ningún espazo de nomes. E
+por tanto, non obtemos ningún resultado ("venda" está asociado ao espazo de nomes por defecto).
+
+Páxina 17 de 37
+
+Necesitamos especificar dalgún xeito o prefixo que imos a empregar na expresión XPath para facer referencia ao espazo de nomes por defecto. Todos os procesadores XPath permiten
+especificalo dalgún xeito, e tamén a maioría de aplicacións para avaliar expresións.
+Por exemplo, en XPath Visualizer podemos despregar a sección "namespaces and prefixes" e modificar o prefixo a empregar para o espazo de nomes por defecto.
+
+Ademais tamén podemos marcar un espazo de nomes "por defecto" dentro dunha expresión,
+de xeito que o empregue dentro da expresión se non empregamos ningún.
+
+Páxina 18 de 37
+
+En XPath Builder, podemos ver pero non modificar o prefixo que asigna automaticamente a
+aplicación ao espazo de nomes por defecto. Teremos que empregar ese prefixo nas nosas
+expresións.
+
+Páxina 19 de 37
+
+1.3
+
+Tarefas
+As tarefas propostas son as seguintes.
+ Tarefa 1. Rutas de localización sinxelas. Nesta tarefa, sobre un documento XML dado,
+empregaremos rutas de localización sinxelas para obter conxuntos de nodos.
+ Tarefa 2. Rutas de localización con diversos eixos. Nesta tarefa, sobre o mesmo documento XML da tarefa anterior, crearemos expresións XPath variando os eixos.
+ Tarefa 3. Rutas de localización con tests de nodo e predicados. Nesta tarefa, sobre un
+documento XML dado, empregaremos rutas de localización que inclúan tests de nodo e
+predicados.
+ Tarefa 4. Rutas de localización con tests de nodo e predicados (II). Esta tarefa é similar á anterior, pero traballando sobre un documento XML diferente.
+ Tarefa 5. Rutas de localización avanzadas. Nesta tarefa empregaremos expresións
+XPath avanzadas que inclúan algúns dos operadores e funcións propios de XPath.
+ Tarefa 6. Rutas de localización avanzadas (II). Esta tarefa é similar á anterior, pero traballando sobre un documento XML diferente.
+
+1.3.1
+
+Tarefa 1. Rutas de localización sinxelas
+Tomando como base o seguinte documento XML:
+<?xml version="1.0" encoding="utf-8"?>
+<equipos>
+<máquina nome="PC017">
+<hardware>
+<tipo>PC Sobremesa</tipo>
+<fabricante>Dell</fabricante>
+<procesador marca="Intel" num_nucleos="4" velocidade="3,1">i7</procesador>
+<memoria tecnoloxía="DDR3">8</memoria>
+<disco tecnoloxía="SATA" capacidade="2000"/>
+<gravadora tipo="DVD"/>
+</hardware>
+<config>
+<OS>Windows 7</OS>
+<IP>192.168.20.105</IP>
+<gateway>192.168.20.1</gateway>
+</config>
+</máquina>
+<máquina nome="GALILEO">
+<hardware>
+<tipo>Torre</tipo>
+<fabricante>Fujitsu-Siemens</fabricante>
+<procesador marca="Intel" num_nucleos="4" velocidade="3">Xeon</procesador>
+<memoria tecnoloxía="DDR2">2</memoria>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<lectora tipo="DVD"/>
+</hardware>
+<config>
+<role>Servidor de dominio</role>
+
+Páxina 20 de 37
+
+<OS>Windows 2008 Server R2</OS>
+<IP>192.168.20.10</IP>
+<gateway>192.168.20.1</gateway>
+</config>
+</máquina>
+</equipos>
+
+Obtén as rutas de localización para obter os seguintes conxuntos de nodos:
+ As máquinas que contén o documento.
+ A información correspondente ao hardware das máquinas.
+ A información de configuración das máquinas.
+ A lista de fabricantes dos equipos.
+ A lista de discos que conteñen.
+ As direccións IP.
+Autoavaliación
+
+As expresións correspondentes son:
+ As máquinas que contén o documento.
+
+ A información correspondente ao hardware das máquinas.
+
+Páxina 21 de 37
+
+ A información de configuración das máquinas.
+
+ A lista de fabricantes dos equipos.
+
+Páxina 22 de 37
+
+ A lista de discos que conteñen.
+
+ As direccións IP.
+
+Páxina 23 de 37
+
+1.3.2
+
+Tarefa 2. Rutas de localización con diversos eixos
+Sobre o mesmo documento XML da tarefa anterior, escribir as expresións XPath para obter
+os seguintes conxuntos de nodos.
+ Os nomes das máquinas.
+ Os nomes das máquinas que teñan gravadora óptica.
+ O sistema operativo das máquinas nas que figure o "role".
+Autoavaliación
+
+Existen varias solucións posibles para cada unha das expresións que se solicitan.
+ Os nomes das máquinas.
+/equipos/máquina/@nome
+/child::equipos/child::máquina/attribute::nome
+/descendant-or-self::máquina/attribute::nome
+/descendant::máquina/@nome
+
+ Os nomes das máquinas que teñan gravadora óptica.
+/equipos/máquina/hardware/gravadora/ancestor::máquina/attribute::nome
+/equipos/máquina/hardware/gravadora/ancestor-or-self::máquina/@nome
+/equipos/máquina/hardware/gravadora/parent::hardware/parent::máquina/@nome
+
+ O sistema operativo das máquinas nas que figure o "role".
+/equipos/máquina/config/role/following::OS
+/equipos/máquina/config/role/parent::config/OS
+
+Páxina 24 de 37
+
+1.3.3
+
+Tarefa 3. Rutas de localización con tests de nodo e predicados
+Tomando como base o seguinte documento XML:
+<?xml version="1.0" encoding="utf-8"?>
+<equipos>
+<máquina nome="PC017">
+<hardware>
+<tipo>PC Sobremesa</tipo>
+<fabricante>Dell</fabricante>
+<procesador marca="Intel" num_nucleos="4" velocidade="3.1">i7</procesador>
+<memoria tecnoloxía="DDR3">8</memoria>
+<disco tecnoloxía="SATA" capacidade="2000"/>
+<gravadora tipo="DVD"/>
+</hardware>
+<config>
+<OS>Windows 7</OS>
+<IP>192.168.20.105</IP>
+<gateway>192.168.20.1</gateway>
+</config>
+</máquina>
+<máquina nome="PC053">
+<hardware>
+<tipo>Semitorre</tipo>
+<memoria>0.5</memoria>
+<disco capacidade="40"/>
+<lectora tipo="CD"/>
+</hardware>
+<config>
+<OS>Windows XP</OS>
+</config>
+</máquina>
+<máquina nome="PC007">
+<hardware>
+<tipo>Semitorre</tipo>
+<memoria tecnoloxía="DDR">0.5</memoria>
+<disco capacidade="40"/>
+<lectora tipo="CD"/>
+</hardware>
+<config>
+<OS>Windows XP</OS>
+</config>
+<notas>Sin tarxeta de rede</notas>
+</máquina>
+<máquina nome="PR003">
+<hardware>
+<tipo>Impresora Inyección</tipo>
+<fabricante>Lexmark</fabricante>
+</hardware>
+<config/>
+</máquina>
+<máquina nome="PC011">
+<hardware>
+<tipo>Semitorre</tipo>
+<memoria>1</memoria>
+<disco capacidade="80"/>
+<lectora tipo="CD"/>
+</hardware>
+<config>
+<OS>Windows 2000 SP4</OS>
+
+Páxina 25 de 37
+
+<IP>192.168.10.221</IP>
+</config>
+</máquina>
+<máquina nome="PC019">
+<hardware>
+<tipo>Semitorre</tipo>
+<procesador marca="AMD" velocidade="1.4">Athlon</procesador>
+<memoria>0.5</memoria>
+<disco capacidade="40"/>
+<gravadora tipo="CD"/>
+</hardware>
+<config>
+<OS>Mandriva 2007</OS>
+<IP>192.168.10.45</IP>
+<gateway>192.168.10.1</gateway>
+</config>
+</máquina>
+<máquina nome="PR007">
+<hardware>
+<tipo>Impresora Láser</tipo>
+<fabricante>OKI</fabricante>
+</hardware>
+<config/>
+<notas>Monocromo, dúplex, red</notas>
+</máquina>
+<máquina nome="COPERNICO">
+<hardware>
+<tipo>Torre</tipo>
+<fabricante>Fujitsu-Siemens</fabricante>
+<procesador marca="Intel" num_nucleos="4" velocidade="3">Xeon</procesador>
+<memoria tecnoloxía="DDR">2</memoria>
+<disco tecnoloxía="SCSI" capacidade="500"/>
+<disco tecnoloxía="SCSI" capacidade="500"/>
+<gravadora tipo="DVD"/>
+</hardware>
+<config>
+<role>Servidor de dominio</role>
+<OS>Windows 2003 Server R2</OS>
+<IP>192.168.20.11</IP>
+<gateway>192.168.20.1</gateway>
+</config>
+</máquina>
+<máquina nome="GALILEO">
+<hardware>
+<tipo>Torre</tipo>
+<fabricante>Fujitsu-Siemens</fabricante>
+<procesador marca="Intel" num_nucleos="4" velocidade="3">Xeon</procesador>
+<memoria tecnoloxía="DDR2">2</memoria>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<lectora tipo="DVD"/>
+</hardware>
+<config>
+<role>Servidor de dominio</role>
+<OS>Windows 2008 Server R2</OS>
+<IP>192.168.20.10</IP>
+<gateway>192.168.20.1</gateway>
+</config>
+
+Páxina 26 de 37
+
+</máquina>
+<máquina nome="KEPLER">
+<hardware>
+<tipo>Rack</tipo>
+<fabricante>HP</fabricante>
+<procesador marca="Intel" num_nucleos="2" velocidade="3">Core2
+Duo</procesador>
+<memoria tecnoloxía="DDR2">4</memoria>
+<disco tecnoloxía="SATA" capacidade="500"/>
+<disco tecnoloxía="SATA" capacidade="500"/>
+<disco tecnoloxía="SATA" capacidade="500"/>
+<gravadora tipo="DVD"/>
+</hardware>
+<config>
+<role>Servidor de arquivos</role>
+<OS>Ubuntu 8.04 Server</OS>
+<IP>192.168.10.10</IP>
+<gateway>192.168.10.1</gateway>
+</config>
+</máquina>
+<máquina nome="NEWTON">
+<hardware>
+<tipo>Rack</tipo>
+<fabricante>HP</fabricante>
+<procesador marca="Intel" num_nucleos="2" velocidade="3">Core2
+Duo</procesador>
+<memoria tecnoloxía="DDR2">4</memoria>
+<disco tecnoloxía="SATA" capacidade="500"/>
+<disco tecnoloxía="SATA" capacidade="500"/>
+<gravadora tipo="DVD"/>
+</hardware>
+<config>
+<role>Servidor web</role>
+<OS>Ubuntu 8.04 Server</OS>
+<IP>192.168.10.11</IP>
+<gateway>192.168.10.1</gateway>
+</config>
+</máquina>
+</equipos>
+
+Escribir as expresións XPath para obter os seguintes conxuntos de nodos.
+ Os discos de tecnoloxía "SCSI".
+ O nome do sistema operativo da máquina con IP "192.168.10.45".
+ Os atributos que figuran nos procesadores da marca "AMD".
+ Os textos (soamente) que figuran na configuración (elemento "config") do equipo de
+nome "COPERNICO".
+ As máquinas de tipo "Semitorre" con sistema operativo "Windows XP".
+ Os fabricantes das máquinas que teñan 4GB de memoria "DDR2".
+ O sistema operativo das máquinas nas que figure o número de núcleos do procesador.
+ Os nomes das máquinas que empreguen memoria con tecnoloxía "DDR2".
+ As máquinas con procesador da marca "Intel" e gravadora de DVD.
+ A configuración daquelas máquinas nas que figura un gateway.
+
+Páxina 27 de 37
+
+Autoavaliación
+
+As solucións propostas para cada unha das expresións que se solicitan son as seguintes:
+ Os discos de tecnoloxía "SCSI".
+//disco[@tecnoloxía,"SCSI"]
+
+ O nome do sistema operativo da máquina con IP "192.168.10.45".
+//máquina/config[IP="192.168.10.45"]/OS
+
+ Os atributos que figuran nos procesadores da marca "AMD".
+//procesador[@marca="AMD"]/@*
+
+ Os textos (soamente) que figuran na configuración (elemento "config") do equipo de
+nome "COPERNICO".
+//máquina[@nome="COPERNICO"]/config/*/text()
+
+ As máquinas de tipo "Semitorre" con sistema operativo "Windows XP".
+//máquina[hardware/tipo="Semitorre"][config/OS="Windows XP"]
+
+ Os fabricantes das máquinas que teñan 4GB de memoria "DDR2".
+//máquina[hardware/memoria=4][hardware/memoria/@tecnoloxía="DDR2"]/hardware/
+fabricante
+
+ O sistema operativo das máquinas nas que figure o número de núcleos do procesador.
+//máquina[hardware/procesador/@num_nucleos]/config/OS
+
+ Os nomes das máquinas que empreguen memoria con tecnoloxía "DDR2".
+//máquina[hardware/memoria/@tecnoloxía="DDR2"]/@nome
+
+ As máquinas con procesador da marca "Intel" e gravadora de DVD.
+Dúas solucións:
+//máquina[hardware/procesador/@marca="Intel"][hardware/gravadora/@tipo="DVD"
+]
+//procesador[@marca="Intel"]/../gravadora[@tipo="DVD"]/ancestor::máquina
+
+ A configuración daquelas máquinas nas que figura un gateway.
+//máquina/config[gateway]
+
+1.3.4
+
+Tarefa 4. Rutas de localización con tests de nodo e predicados (II)
+Tomando como base o seguinte documento XML:
+<?xml version="1.0" encoding="utf-8"?>
+<videoteca data_creación="24/02/2009">
+<película id="1">
+<importe moneda="dólar">13.56</importe>
+<título>El santo</título>
+<títuloorixinal>The Saint</títuloorixinal>
+
+Páxina 28 de 37
+
+<ano>1997</ano>
+<director>Phillip Noyce</director>
+<xénero>Acción</xénero>
+<duración>111</duración>
+<!-- Elisabeth Shue -->
+<actúa id="51"/>
+<!-- Val Kilmer -->
+<actúa id="156"/>
+</película>
+<película id="3">
+<importe moneda="euro">22.18</importe>
+<título>Leaving Las Vegas</título>
+<títuloorixinal>Leaving Las Vegas</títuloorixinal>
+<ano>1995</ano>
+<director>Mike Figgis</director>
+<xénero>Drama</xénero>
+<duración>107</duración>
+<!-- Nicolas Cage -->
+<actúa id="187"/>
+<!-- Elisabeth Shue -->
+<actúa id="51"/>
+</película>
+<película id="4">
+<importe moneda="dólar">11.52</importe>
+<título>¿A quién ama Gilbert Grape?</título>
+<títuloorixinal>What's Eating Gilbert Grape?</títuloorixinal>
+<ano>1993</ano>
+<director>Lasse Hallström</director>
+<xénero>Drama</xénero>
+<duración>118</duración>
+<!-- Johnny Depp -->
+<actúa id="139"/>
+</película>
+<actor id="51">
+<nome>Elisabeth Shue</nome>
+<sexo>muller</sexo>
+<datanacemento>06/10/1963</datanacemento>
+<url>http://www.imdb.com/name/nm0000223/</url>
+</actor>
+<actor id="139">
+<nome>Johnny Depp</nome>
+<sexo>home</sexo>
+<datanacemento>09/06/1963</datanacemento>
+<url>http://www.imdb.com/name/nm0000136/</url>
+</actor>
+<actor id="156">
+<nome>Val Kilmer</nome>
+<sexo>home</sexo>
+<datanacemento>31/12/1959</datanacemento>
+</actor>
+<actor id="187">>
+<nome>Nicolas Cage</nome>
+<sexo>home</sexo>
+<datanacemento>07/01/1964</datanacemento>
+</actor>
+</videoteca>
+
+Escribir as expresións XPath para obter os seguintes conxuntos de nodos.
+ Os comentarios.
+ Os comentarios da película "Leaving Las Vegas".
+Páxina 29 de 37
+
+ As películas de xénero "Drama".
+ Os nomes das actrices.
+ Os elementos non baleiros (conteñen algún texto).
+Autoavaliación
+
+As solucións propostas para cada unha das expresións que se solicitan son as seguintes:
+ Os comentarios.
+//comment()
+
+ Os comentarios da película "Leaving Las Vegas".
+//película[título="Leaving Las Vegas"]/comment()
+
+ As películas de xénero "Drama".
+//película[xénero="Drama"]
+
+ Os nomes das actrices.
+//actor[sexo="muller"]/nome
+
+ Os elementos non baleiros (conteñen algún texto).
+//*[text()]
+
+1.3.5
+
+Tarefa 5. Rutas de localización avanzadas
+Tomando como base o mesmo documento XML da tarefa 3, escribir as expresións XPath
+para obter:
+ As máquinas con nome comezando por "PC".
+ O nome das máquinas con máis de un disco duro.
+ A suma dos GB de memoria RAM de todas as máquinas.
+ A suma das capacidades dos discos duros de tipo "SCSI".
+ Os nomes das máquinas das que se coñeza a súa cantidade de memoria, pero non a tecnoloxía desta.
+ As máquinas con sistema operativo da familia Windows e gravadora de DVD.
+ As máquinas nas que non figure o sistema operativo.
+ O nome da máquina e do SO daquelas máquinas con máis de un disco duro.
+ A configuración daquelas máquinas nas que figura unha dirección IP pero non o gateway.
+ Os elementos baleiros (non conteñen texto).
+ As direccións IP dentro da rede 192.168.10.0/24.
+ Os nomes das máquinas con procesador multinúcleo e 2GB ou menos de memoria.
+ As máquinas que teñan disco duro (un ou varios) con capacidade total maior de 1000GB.
+Páxina 30 de 37
+
+ As máquinas que teñan disco duro (un ou varios) con capacidade total menor de 80GB.
+Autoavaliación
+
+As solucións propostas para cada unha das expresións que se solicitan son as seguintes:
+ As máquinas con nome comezando por "PC".
+//máquina[starts-with(@nome,"PC")]
+
+ O nome das máquinas con máis de un disco duro.
+//máquina[count(hardware/disco)>1]/@nome
+
+ A suma dos GB de memoria RAM de todas as máquinas.
+sum(//memoria)
+
+ A suma das capacidades dos discos duros de tipo "SCSI".
+sum(//disco[@tecnoloxía="SCSI"]/@capacidade)
+
+ Os nomes das máquinas das que se coñeza a súa cantidade de memoria, pero non a tecnoloxía desta.
+//máquina[hardware/memoria][not(hardware/memoria/@tecnoloxía)]/@nome
+
+ As máquinas con sistema operativo da familia Windows e gravadora de DVD.
+//máquina[starts-with(config/OS, "Windows")][hardware/gravadora/@tipo="DVD"]
+
+ As máquinas nas que non figure o sistema operativo.
+//máquina[not(config/OS)]
+
+ O nome da máquina e do SO daquelas máquinas con máis de un disco duro.
+//máquina[count(hardware/disco)>1]/@nome |
+//máquina[count(hardware/disco)>1]/config/OS
+
+ A configuración daquelas máquinas nas que figura unha dirección IP pero non o gateway.
+//máquina/config[IP and not(gateway)]
+
+ Os elementos baleiros (non conteñen texto).
+//*[not(text())]
+
+ As direccións IP dentro da rede 192.168.10.0/24.
+Dúas solucións:
+//IP[starts-with(.,"192.168.10.")]
+//IP[starts-with(text(),"192.168.10.")]
+
+ Os nomes das máquinas con procesador multinúcleo e 2GB ou menos de memoria.
+//máquina[hardware/procesador/@num_nucleos>1][hardware/memoria <= 2]/@nome
+
+Páxina 31 de 37
+
+ As máquinas que teñan disco duro (un ou varios) con capacidade total maior de 1000GB.
+//máquina[sum(hardware/disco/@capacidade)>1000]
+
+ As máquinas que teñan disco duro (un ou varios) con capacidade total menor de 80GB.
+//máquina[hardware/disco][sum(hardware/disco/@capacidade)<80]
+
+1.3.6
+
+Tarefa 6. Rutas de localización avanzadas (II)
+Tomando como base o mesmo documento XML da tarefa 4, escribir as expresións XPath
+para obter:
+ As películas nas que o título sexa igual ao título orixinal.
+ O atributo "id" correspondente á actriz "Elisabeth Shue".
+ Os títulos das películas nas que participou o actor con atributo id=51.
+ Baseándote nos dous resultados anteriores, escribe a expresión correspondente aos títulos
+das películas nas que participou a actriz de nome "Elisabeth Shue".
+ O título da última película que aparece no documento.
+ A suma dos importes daquelas películas nas que o mesmo figura en dólares.
+ A suma en euros dos importes das películas, considerando un cambio de 1€ = 1,4$.
+Autoavaliación
+
+As solucións propostas para cada unha das expresións que se solicitan son as seguintes:
+ As películas nas que o título sexa igual ao título orixinal.
+//película[título=títuloorixinal]
+
+ O atributo "id" correspondente á actriz "Elisabeth Shue".
+//actor[nome="Elisabeth Shue"]/@id
+
+ Os títulos das películas nas que participou o actor con atributo id=51.
+//película[actúa/@id=51]/título
+
+ Baseándote nos dous resultados anteriores, escribe a expresión correspondente aos títulos
+das películas nas que participou a actriz de nome "Elisabeth Shue".
+//película[actúa/@id=//actor[nome="Elisabeth Shue"]/@id]/título
+
+ O título da última película que aparece no documento.
+Dúas solucións:
+//película[count(//película)]/título
+//película[last()]/título
+
+ A suma dos importes daquelas películas nas que o mesmo figura en dólares.
+sum(//importe[@moneda="dólar"])
+
+ A suma en euros dos importes das películas, considerando un cambio de 1€ = 1,4$.
+Páxina 32 de 37
+
+sum(//importe[@moneda="dólar"]) div 1.4 + sum(//importe[@moneda="euro"])
+
+Páxina 33 de 37
+
+2.
+
+Materiais
+
+2.1
+
+Textos de apoio ou de referencia
+ XML in a Nutshell, 2nd Ed, Elliotte Rusty Harold e W. Scott Means, Ed. O’Reilly.
+ Beginning XML, 5th Ed, Joe Fawcett, Liam R. E. Quin e Danny Ayers, Ed. Wrox.
+ XPath Essentials, Andrew Watt, Ed. John Wiley & Sons.
+ XPath and XPointer, John E. Simpson, Ed. O’Reilly.
+ XPath: Navigating XML with XPath 1.0 and 2.0 Kick Start, Steven Holzner, Sams
+Publishing.
+ TA1. Software para avaliación de expresións XPath.
+
+2.2
+
+Recursos didácticos
+ Ordenador persoal, con navegador web e software de avaliación de expresións XPath.
+
+Páxina 34 de 37
+
+TA1. Software para avaliación de expresións XPath
+Cando queiramos asegurarnos de que estamos escribindo correctamente a expresión XPath
+que necesitamos, podemos recorrer a aplicacións específicas de avaliación das mesmas. Estas aplicacións son pequenas, lixeiras e ofrecen algunhas funcionalidades específicas para o
+fin que perseguen.
+Algunhas son aplicacións independentes, pero existen tamén aplicacións web ou extensións para o navegador que se avalían sobre o documento que teñamos aberto no mesmo.
+Tamén podemos empregar para avaliar expresións XPath aplicacións de edición de documentos XML que aporten esta funcionalidade, como aquelas que vimos no tema dedicado
+a XML.
+XPathBuilder
+
+XPathBuilder é unha ferramenta moi sinxela e se adapta ben as necesidades que podemos
+ter para realizar as tarefas da presente actividade (ás veces convén desactivar a opción "Display XPath help", que pode resultar un pouco incómoda).
+
+Soamente ten versión para sistemas operativos Windows. É gratuíta e pódese descargar desde a dirección http://www.bubasoft.net/product/xpath-builder/.
+XPath Visualizer Tool
+
+É outra ferramenta para sistemas operativos Windows, de código libre, semellante á anterior, que podemos descargar dende a dirección http://xpathvisualizer.codeplex.com/.
+A principal diferenza con XPathBuilder é que amosa o resultado resaltando o conxunto
+de nodos obtido; e polo tanto, soamente funciona con expresións que obteñan como resultado un conxunto de nodos. Non é capaz de avaliar expresións como "count(//produtos)".
+
+Páxina 35 de 37
+
+XMLQuire
+
+Esta ferramenta é un pouco máis completa e complexa que as anteriores. Tamén é gratuíta e
+pódese descargar desde http://qutoric.com/xmlquire/.
+
+XPath Checker
+
+É un complemento para o navegador Firefox que permite avaliar expresións XPath sobre os
+documentos abertos.
+
+Páxina 36 de 37
+
+Descárgase dende a URL https://addons.mozilla.org/es-ES/firefox/addon/1095.
+XPath Tester
+
+Trátase nesta ocasión dunha ferramenta web, que permite introducir o documento XML e a
+expresión a avaliar.
+
+Pódese acceder na URL http://xpath.online-toolz.com/tools/xpath-editor.php.
+
+Páxina 37 de 37
+
+

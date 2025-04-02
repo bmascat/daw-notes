@@ -1,0 +1,1478 @@
+Dirección Xeral de Educación, Formación Profesional e Innovación Educativa
+
+Material para
+a formación profesional inicial
+Familia profesional
+
+IFC
+
+Informática e comunicacións
+
+Ciclo formativo
+
+CSIFC01
+CSIFC02
+CSIFC03
+
+Administración de sistemas informáticos e redes
+Desenvolvemento de aplicacións multiplataforma
+Desenvolvemento de aplicacións web
+
+Grao
+
+Superior
+
+Módulo profesional
+
+MP0373
+
+Linguaxes de marcas e sistemas de xestión da información
+
+Unidade didáctica
+
+UD05
+
+Transformación de documentos XML
+
+Actividade
+
+A02
+
+Transformacións XSLT sinxelas
+
+Autores
+
+Margarita Pin Rodríguez, Víctor M. Lourido Estévez
+
+Nome do arquivo
+
+CSIFC01_MP0373_V000502_UD05_A02_XSLT_Sinxelas
+
+© 2013 Xunta de Galicia.
+Consellería de Cultura, Educación e Ordenación Universitaria.
+Este traballo foi realizado durante unha licenza de formación retribuída pola Consellería de Cultura,
+Educación e Ordenación Universitaria e ten licenza Creative Commons BY-NC-SA (recoñecemento non comercial - compartir igual). Para ver unha copia desta licenza, visitar a ligazón
+http://creativecommons.org/licenses/by-nc-sa/3.0/es/.
+
+Páxina 1 de 35
+
+1.
+
+A2. Transformacións XSLT sinxelas
+
+1.1
+
+Introdución
+Na actividade que nos ocupa aprenderanse os seguintes conceptos e manexo de destrezas:
+▪ Identificar a estrutura e o os principais elementos das especificacións de transformación
+XSLT.
+▪ Crear e empregar especificacións de transformación XSLT sinxelas.
+
+1.2
+
+Actividade
+Que é XSL?
+
+O termo XSL (eXtensible Stylesheet Language, Linguaxe de Follas de Estilos Extensible)
+xurdiu como agrupación dun conxunto de estándares co obxectivo común de transformar e
+aplicar estilos visuais aos documentos XML. Os estándares que abrangue o termo XSL son:
+▪ XPath. Como xa vimos, é unha linguaxe que serve para construír expresións que busquen
+e accedan a partes concretas do documento XML.
+▪ XSLT (XSL Transformations, Transformacións XSL). É unha linguaxe XML que emprégase xunto con XPath para converter un documento XML nun documento HTML ou
+XHTML, nun documento de texto, ou noutro documento XML.
+
+▪ XSL-FO (XSL Formatting Objects, Obxectos de Formato XSL). É outra linguaxe XML,
+pensada neste caso para dar formato aos datos contidos no documento XML. Traballa
+con áreas, bloques, rexións, anchuras e alturas das páxinas, das marxes, etc. É moi utilizado para xerar arquivos PDF a partir de documentos XML.
+Nos imos a estudar as posibilidades da linguaxe XSLT para realizar transformacións de documentos XML. Existen tres versións de XSLT:
+▪ XSLT 1.0, que foi publicada polo W3C como recomendación en novembro de 1999.
+Páxina 2 de 35
+
+▪ XSLT 2.0, que aproveita as vantaxes de XPath 2.0, pero non é moi empregada (recomendación de xaneiro de 2007).
+▪ XSLT 3.0, que a comezos de 2013 segue en desenrolo polo W3C (borrador de traballo).
+Para facer as transformación precisamos un procesador XSLT, isto é, unha aplicación que
+comprenda as linguaxes XSLT e XPath e realice sobre o documento XML o procesamento
+que se indica no documento XSLT.
+A maioría dos navegadores web modernos inclúen soporte para XSLT 1.0, pero non para
+as versións posteriores da linguaxe. Isto é, poden coller un documento XML orixinal e
+transformalo seguindo as instrucións XSLT nunha páxina web (ou noutro documento XML
+ou de texto) e amosala.
+Existen outros procesadores XSLT dispoñibles como aplicacións independentes (non integrados nun navegador web), como Saxon, Xalan ou MSXML. Os tres soportan XSLT 1.0,
+e algunhas versións de Saxon soportan tamén versións posteriores da linguaxe.
+Transformacións XSLT
+
+Imos comezar cunha transformación sinxela, tomando como orixe o seguinte documento
+XML:
+<?xml version="1.0" encoding="utf-8"?>
+<ciclo>
+<módulo sesións="5" horas="133">Linguaxes de marcas</módulo>
+<profesor>Xaime Louzán</profesor>
+</ciclo>
+
+Empregando un navegador web, queremos obter unha páxina HTML como a seguinte:
+
+A especificación da transformación a realizar almacénase nun documento XSLT (normalmente con extensión ".xsl"). Para que o navegador coñeza o nome do documento XSLT onde se especifica a transformación, deberemos vincular o documento XML con este. Isto faise engadíndolle unha instrución de procesamento como a seguinte:
+<?xml-stylesheet type="text/xsl" href="Exemplo01.xsl" ?>
+
+Esta instrución debe figurar dentro do prólogo, concretamente despois da declaración XML
+e antes do elemento raíz do documento XML. Por tanto, o documento XML orixinal quedaría:
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="Exemplo01.xsl" ?>
+
+Páxina 3 de 35
+
+<ciclo>
+<módulo sesións="5" horas="133">Linguaxes de marcas</módulo>
+<profesor>Xaime Louzán</profesor>
+</ciclo>
+
+No caso de empregar outra ferramenta distinta a un navegador para realizar a transformación, tamén é común que exista algún outro xeito de indicar o documento XSLT que queremos aplicar. Por exemplo, se empregamos a ferramenta Kernow (baseada no procesador
+XSLT Saxon), podemos escribir directamente os documentos XML e XSLT e executar a
+transformación.
+
+ No texto de apoio 1 temos un resumo con algunhas das principais ferramentas que podemos empregar para a realización de transformacións XSLT.
+
+En algúns casos queremos empregar un mesmo documento XML orixe para obter varios resultados de saída aplicando distintas transformacións. Por exemplo, a partir dun documento
+XML cos datos dunha venda, poderíamos xerar unha factura en formato HTML para presentar nun navegador, un documento XML cun resumo da mesma para engadir na contabilidade, e incluso un novo documento HTML específico para visualizar nun terminal móbil.
+Tamén deberemos ter en conta que non calquera navegador vai ser capaz de realizar calquera transformación. Por exemplo, o navegador Chrome non soporta, por motivos de seguPáxina 4 de 35
+
+ridade, transformacións XSLT cando estean aplicadas a documentos XML locais.
+Documentos XSLT
+
+Un documento XSLT é un documento XML cunha estrutura específica. Polo tanto, deberá
+comezar cun prólogo XML como o seguinte:
+<?xml version="1.0" encoding="utf-8"?>
+
+O elemento raíz dun documento XSLT é normalmente "<stylesheet>" (aínda que tamén
+se pode empregar "<transform>", son sinónimos e pódese empregar calquera deles indistintamente), indicando de xeito obrigatorio a versión empregada.
+Tamén é preciso facer referencia no documento ao espazo de nomes
+"http://www.w3.org/1999/XSL/Transform". As etiquetas pertencentes a este espazo de nomes serán as que conterán as instrucións destinadas ao procesador XSLT que indican a
+transformación a realizar.
+<?xml version="1.0" encoding="utf-8"?>
+<stylesheet version="1.0" xmlns="http://www.w3.org/1999/XSL/Transform">
+…
+</stylesheet>
+
+E como os documentos XSLT soen conter tamén outras etiquetas non destinadas directamente ao procesador XSLT, é aconsellable empregar un prefixo para o espazo de nomes (e
+non poñelo como espazo de nomes por defecto). Pódese coller calquera prefixo, pero é común empregar "xsl" (así figura nos exemplos de aquí en diante), de xeito que a estrutura base dun documento XSLT é a seguinte:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+…
+</xsl:stylesheet>
+
+Por exemplo, o documento XSLT da transformación anterior é:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<!-- Exemplo01.xsl -->
+<xsl:template match="/">
+<HTML>
+<HEAD>
+<TITLE>Ciclo</TITLE>
+</HEAD>
+<BODY>
+<H1><xsl:value-of select="//módulo"/></H1>
+<H2>- <xsl:value-of select="//profesor"/> -</H2>
+<P><xsl:value-of select="//módulo/@horas"/> horas
+(<xsl:value-of select="//módulo/@sesións"/> sesións semanais.)</P>
+</BODY>
+</HTML>
+</xsl:template>
+</xsl:stylesheet>
+
+Páxina 5 de 35
+
+Como vemos, o espazo de nomes "http://www.w3.org/1999/XSL/Transform" emprégase
+para identificar as instrucións destinadas ao procesador XSLT, de forma que non intente interpretar as outras etiquetas do documento como "<HTML>".
+Formatos de saída
+
+Coa etiqueta "<xsl:output>" definimos as características do documento de saída.
+<xsl:output
+method="xml|html|text"
+indent="yes|no"
+version="string"
+encoding="string"
+omit-xml-declaration="yes|no"
+standalone="yes|no"
+doctype-public="string"
+doctype-system="string"
+cdata-section-elements="namelist"
+media-type="string"
+/>
+
+Tódolos atributos da etiqueta son opcionais. É importante o atributo "method", que indica o
+formato do documento resultante. Se non se inclúe, o formato de saída por defecto é XML
+(a non ser que o elemento raíz do documento resultante sexa "HTML"; nese caso o formato
+de saída será HTML se non se indica ningún outro, tal e como sucedía no exemplo anterior).
+Cando o documento obtido está en formato HTML, normalmente o procesador XSLT
+emprega sangrado para mellorar a súa lexibilidade. Isto pódese evitar (ou aplicar tamén a
+outros formatos de saída) empregando o atributo "indent".
+Aínda que depende do procesador XSLT que empreguemos, na maioría das ocasións se o
+documento resultante é XML incluirase no mesmo, de forma automática, unha declaración
+XML. Este comportamento pódese controlar empregando o atributo "omit-xml-declaration".
+Os atributos "version" e "encoding" permiten indicar a versión XML e a codificación a
+empregar no documento XML resultante. Os tipos de codificación admitidos dependen do
+procesador XSLT, aínda que deberán soportar cando menos "utf-8" e "utf-16".
+Por exemplo, poderíamos modificar a transformación anterior para obter un documento
+XML engadindo no documento XSLT despois do elemento "<xsl:stylesheet>" o seguinte elemento:
+<xsl:output method="xml" version="1.1" encoding="utf-16" indent="yes"
+
+/>
+
+Tamén é posible engadir unha declaración de tipo de documento (DTD) ao documento
+XML resultante, empregando os atributos "standalone", "doctype-public" e "doctypesystem".
+Patróns XSLT
+
+O documento XSLT do exemplo anterior contén soamente un elemento como fillo directo
+do elemento raíz: o elemento "<xsl:template>". Estes elementos, que chamaremos patróns, son unha parte fundamental das transformacións XSLT.
+Os patróns indican unha transformación a realizar a certos elementos do documento orixinal. A forma máis habitual de indicar os elementos do documento orixinal aos que se vai a
+aplicar o patrón, é empregando unha expresión XPath co atributo "match". Por exemplo, se
+queremos aplicar o patrón ao documento XML completo, podemos facer:
+Páxina 6 de 35
+
+<xsl:template match="/">
+…
+</xsl:template>
+
+O patrón pode conter texto e etiquetas (por exemplo, código en formato HTML), que pasarán a copiarse no documento de saída. Por exemplo, o seguinte documento XSLT obtén como resultado sempre o mesmo documento HTML baleiro a partires dun documento XML
+calquera.
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<HTML>
+<HEAD>
+<TITLE>Documento HTML</TITLE>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>
+</xsl:template>
+</xsl:stylesheet>
+
+A expresión XPath do atributo "match" debe coincidir con algún elemento do documento
+orixinal. O procedemento concreto empregado polo procesador XSLT ao realizar unha
+transformación é o seguinte:
+▪ O procesador XSLT vai collendo nodos do documento XML orixe comezando polo nodo
+raíz.
+Páxina 7 de 35
+
+▪ Para cada nodo busca un patrón que o referencie no seu atributo "match".
+▪ Unha vez atopado o patrón, aplica a transformación definida no mesmo ao nodo do documento orixe.
+Por exemplo, obteríamos o mesmo resultado da transformación anterior se tivéramos posto:
+<xsl:template match="/ciclo">
+…
+</xsl:stylesheet>
+
+É moi importante ter en conta que cando o procesador atopa un patrón que fai referencia ao
+nodo que está a procesar, logo de aplicar a transformación correspondente marca ao nodo e
+a tódolos seus fillos como procesados, polo que non buscará outro patrón co que transformalos.
+Por exemplo, se o documento XML do exemplo anterior o transformáramos cun XSLT
+como o seguinte:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="ciclo">
+…
+</xsl:template>
+<xsl:template match="módulo">
+…
+</xsl:template>
+</xsl:stylesheet>
+
+O primeiro nodo do documento orixe que procesa é "<ciclo>", e unha vez aplicada a transformación que indica o seu patrón correspondente, os nodos "<módulo>" e "<profesor>"
+tamén quedan marcados como procesados, polo que o segundo patrón do documento XSLT
+nunca se executará (xa veremos posteriormente como se levan a cabo as transformacións
+XSLT con varios patróns).
+Patróns predefinidos
+
+Cando empregamos a expresión XPath "/ciclo/módulo" no atributo "match", o resultado
+obtido non é o que en principio poderiamos esperar.
+
+Páxina 8 de 35
+
+Isto é debido a unha característica de XSLT chamada patróns predefinidos, que fai que se
+apliquen uns patróns fixos a aqueles elementos non procesados por ningún outro patrón.
+Cando empregábamos as expresións "/" ou "/ciclo", estas abranguían a tódolos seus fillos e polo tanto ao documento orixinal completo. Non quedaba ningún elemento do documento orixinal sen procesar.
+Agora ao empregar a expresión "/ciclo/módulo" no patrón, os elementos "<ciclo>" e
+"<profesor>" non se atopan cubertos por el; por isto o procesador XSLT aplícalles un patrón predefinido. Basicamente, o comportamento destes patróns predefinidos é procesar o
+elemento e tódolos seus fillos, copiando ao documento de saída o texto que conteñen.
+No noso exemplo:
+▪ Ao procesar o elemento "<ciclo>", o procesador XSLT non atopa un patrón e aplica o
+patrón predefinido. Este copia ao documento de saída o salto de liña que existe antes do
+elemento "<módulo>". Por iso aparece unha liña baleira ao comezo do documento resultante.
+▪ O elemento "<módulo>" ven recollido no patrón "/ciclo/módulo", e ao procesalo cópianse no documento de saída as etiquetas correspondentes ao documento HTML baleiro.
+▪ Por último, o procesador XSLT chega ao elemento "<profesor>" que tampouco ten un
+patrón específico, co cal copia tamén o seu contido (o nome do profesor) ao documento
+de saída.
+Fíxate que ao contrario que sucede cos patróns que nos definimos no documento XSLT, ao
+empregar un patrón predefinido non se marcan como procesados os fillos do nodo correspondente do documento XML.
+Páxina 9 de 35
+
+ Imos facer a tarefa 1, na que crearemos a nosa primeira especificación dunha transformación XSLT.
+
+Creación de texto e elementos
+
+Existen algúns elementos XSLT que podemos engadir dentro dos patróns, e que nos permiten crear novo contido no documento resultante.
+Texto
+
+O elemento "<xsl:text>" emprégase para incluír texto no documento resultante. O resultado é semellante a escribir directamente o texto dentro do patrón, pero neste caso temos maior control sobre os espazos e os saltos de liña. Por exemplo, o resultado da transformación:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+Documento HTML
+</xsl:template>
+</xsl:stylesheet>
+
+E o resultado da seguinte diferéncianse soamente nun salto de liña e uns espazos:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<xsl:text>Documento HTML</xsl:text>
+
+Páxina 10 de 35
+
+</xsl:template>
+</xsl:stylesheet>
+
+O elemento "<xsl:text>" deberá conter soamente texto, non outras etiquetas. Por exemplo,
+o seguinte documento XSLT dará error ao procesalo.
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<xsl:text><HTML></xsl:text>
+</xsl:template>
+</xsl:stylesheet>
+
+Elementos
+
+Dentro dun patrón podemos empregar "<xsl:element>" para crear un novo elemento no
+documento de saída. É obrigatorio indicar o nome do novo elemento mediante o atributo
+"name". Por exemplo, se quixeramos obter un documento de saída cun elemento raíz "<documento>" baleiro, poderiamos facer:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<documento />
+</xsl:template>
+</xsl:stylesheet>
+
+Ou tamén:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+Páxina 11 de 35
+
+<xsl:template match="/">
+<xsl:element name="documento" />
+</xsl:template>
+</xsl:stylesheet>
+
+Un bo motivo para empregar "<xsl:element>" é que o contido do atributo "name" pode estar calculado empregando expresións XPath (por exemplo, a partires de texto, variables, valores retornados por funcións, etc). Neste caso, a expresión debe figurar entre chaves.
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/ciclo">
+<xsl:element name="{concat(name(), '_asir')}" />
+</xsl:template>
+</xsl:stylesheet>
+
+Atributos
+
+Cando creamos un novo elemento no documento de saída empregando "<xsl:element>",
+tamén podemos especificar os seus atributos. Simplemente teremos que engadir como fillos
+deste tantos elementos "<xsl:attribute>" como necesitemos, indicando en cada un deles
+o seu nome co atributo "name". O seu valor será o texto que conteña.
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/ciclo">
+<xsl:element name="{concat(name(), '_asir')}">
+<xsl:attribute name="duración">2000 horas</xsl:attribute>
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+Páxina 12 de 35
+
+Selección de valores do documento orixe
+
+Nalgúns casos necesitamos obter o valor dun elemento ou atributo do documento orixe para
+empregalo como parte do documento de saída. Para isto empregaremos "<xsl:value-of>",
+indicando co atributo "select" a expresión XPath que identifique o contido a extraer.
+Por exemplo, se partindo do seguinte documento XML:
+<?xml version="1.0" encoding="utf-8"?>
+<módulo>
+<profesor>Xaime Louzán</profesor>
+</módulo>
+
+Queremos crear unha transformación que obteña:
+<?xml version="1.0" encoding="UTF-8"?>
+<profesor nome="Xaime Louzán"/>
+
+Teremos que aplicarlle un documento XSLT como o seguinte:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/módulo/profesor">
+<xsl:element name="{name()}">
+<xsl:attribute name="nome">
+<xsl:value-of select="text()" />
+</xsl:attribute>
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+O elemento "<xsl:value-of>" tamén admite o atributo opcional "disable-outputescaping", que pode tomar os valores "yes" ou "no".
+Co valor "yes" indícase que os caracteres especiais do documento orixe, como "<", deben ser pasados tal cual ao documento de saída. Co valor "no", que é a opción por defecto se
+non se inclúe o atributo, indícase que os caracteres especiais deben ser transformados nas
+súas respectivas entidades (por exemplo, "&lt;").
+
+ Na tarefa 2 procesaremos un documento XML creando novos elementos e atributos
+para o documento de saída.
+
+Conxuntos de atributos
+
+Tamén é posible definir un conxunto de atributos para despois empregalo en un ou varios
+elementos. O conxunto de atributos defínese empregando "<xsl:attribute-set>". Débese
+indicar o nome do conxunto cun atributo "name", por exemplo:
+<xsl:attribute-set name="atr_módulo">
+<xsl:attribute name="nome">
+<xsl:value-of select="."/>
+</xsl:attribute>
+<xsl:attribute name="sesións_anuais">
+<xsl:value-of select="@horas * 1.2"/>
+
+Páxina 13 de 35
+
+</xsl:attribute>
+</xsl:attribute-set>
+
+A definición do conxunto de atributos debe facerse como fillo directo do elemento raíz
+"<xsl:stylesheet>", fora de calquera patrón.
+Para empregar o conxunto na definición dun elemento, engádeselle o atributo "useattribute-sets". Por exemplo:
+<xsl:element name="módulo" use-attribute-sets="atr_módulo">
+
+Deste xeito, aplicando a seguinte transformación ao documento XML co que vimos traballando.
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+<xsl:attribute-set name="atr_módulo">
+<xsl:attribute name="nome">
+<xsl:value-of select="ciclo/módulo" />
+</xsl:attribute>
+<xsl:attribute name="sesións_anuais">
+<xsl:value-of select="ciclo/módulo/@horas * 1.2"/>
+</xsl:attribute>
+</xsl:attribute-set>
+<xsl:template match="/">
+<xsl:element name="módulo" use-attribute-sets="atr_módulo">
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+Obteríamos como resultado:
+<?xml version="1.0" encoding="UTF-8"?>
+<módulo nome="Linguaxes de marcas" sesións_anuais="159.6"/>
+
+Creación de comentarios e instrucións de procesamento
+Comentarios
+
+Para crear un comentario no documento de saída teremos que empregar "<xsl:comment>".
+Por exemplo, poñendo:
+<xsl:comment>Primeiro exemplo</xsl:comment>
+
+Obteremos:
+<!--Primeiro exemplo-->
+
+Instrucións de procesamento
+
+Engádense empregando "<xsl:processing-instruction>" e indicando obrigatoriamente
+o seu atributo "name". Por exemplo, poderiamos asociar o documento XML resultante cun
+documento XSLT facendo:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+Páxina 14 de 35
+
+<xsl:template match="/ ">
+<xsl:processing-instruction name="xml-stylesheet">href="profes.xsl"
+type="text/xml"</xsl:processing-instruction>
+<!-</xsl:template>
+</xsl:stylesheet>
+
+O resultado obtido é:
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="profes.xsl" type="text/xml"?>
+…
+
+Documentos XSLT con varios patróns
+
+Xa vimos o que ocorre cando non existe un patrón para algún elemento do documento XML
+orixe. E ata o de agora estivemos a empregar documentos XSLT cun único patrón. Imos ver
+que ocorre cando temos un documento XSLT con varios patróns, como o seguinte.
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="xml" indent="yes" />
+<xsl:template match="/módulo/profesor">
+<Profesor />
+</xsl:template>
+<xsl:template match="/módulo">
+<Módulo />
+</xsl:template>
+</xsl:stylesheet>
+
+Cando aplicamos a anterior transformación ao documento XML.
+<?xml version="1.0" encoding="utf-8"?>
+<módulo>
+<profesor>Xaime Louzán</profesor>
+</módulo>
+
+Obtemos como saída.
+<?xml version="1.0" encoding="UTF-8"?>
+<Módulo />
+
+Isto é, o primeiro patrón non chega a procesarse. Cal é a explicación a este comportamento?
+O motivo é que o procesador XSLT vai collendo os nodos do documento orixinal de un en
+un, comezando co elemento raíz, e buscando algún patrón que se lle poida aplicar.
+Polo tanto o elemento raíz do documento orixe, "<módulo>", é o primeiro en ser procesado, e con el tódolos seus fillos. O patrón seleccionado polo procesador XSLT para este
+elemento é "<xsl:template match="/módulo">", e como resultado cópiase "<Módulo
+/>" no documento de saída.
+Unha vez procesados o elemento raíz xunto cos seus fillos, xa non quedan máis nodos
+por procesar no documento orixinal, co cal o patrón "<xsl:template
+match="/módulo/profesor">" non chega a executarse.
+
+Páxina 15 de 35
+
+Procesar un elemento e os seus fillos
+
+Existe unha forma de facer que no procesamento dun elemento se procesen tamén os patróns correspondentes aos seus fillos. Isto faise empregando "<xsl:apply-templates>"
+dentro dun patrón.
+Por exemplo, se aplicásemos a seguinte transformación ao documento anterior.
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="text"/>
+<xsl:template match="/">
+<xsl:apply-templates />
+</xsl:template>
+</xsl:stylesheet>
+
+Ao elemento "profesor" aplícalle o patrón predefinido, e polo tanto copia o texto que contén na saída, obtendo:
+Xaime Louzán
+
+Outro exemplo; no caso anterior poderíamos modificar o documento XSLT poñendo:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="xml" indent="yes" />
+<xsl:template match="/módulo/profesor">
+<Profesor />
+</xsl:template>
+<xsl:template match="/módulo">
+<xsl:element name="Módulo">
+<xsl:apply-templates select="profesor" />
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+Neste caso, ao procesar o elemento raíz "<módulo>", crea o elemento "<Módulo>" no documento de saída, e despois busca algún patrón adecuado para procesar ao elemento "<profesor>",
+o
+que
+fai
+que
+se
+execute
+o
+patrón
+"<xsl:template
+match="/módulo/profesor">". O resultado sería:
+<?xml version="1.0" encoding="UTF-8"?>
+<Módulo>
+<Profesor/>
+</Módulo>
+
+É moi habitual atopar documentos XSLT coa seguinte estrutura:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+…
+<xsl:apply-templates />
+…
+</xsl:template>
+<xsl:template match="nodos1">
+
+Páxina 16 de 35
+
+…
+<xsl:apply-templates />
+…
+</xsl:template>
+<xsl:template match="nodos2">
+…
+<xsl:apply-templates />
+…
+</xsl:template>
+</xsl:stylesheet>
+
+En ocasións non queremos que se procesen todos os fillos dun elemento. Nestes casos podemos empregar o atributo "select" de "<xsl:apply-templates>" para indicar a expresión XPath que se corresponda con aqueles nodos que queremos que se procesen. Por
+exemplo:
+<xsl:apply-templates select="profesor" />
+
+Neste caso, se o elemento "<módulo>" tivera varios fillos, soamente continuaría o procesamento de "<profesor>".
+
+ Imos facer agora as tarefas 3 e 4, nas que crearemos especificacións de transformacións compostas por varios patróns.
+
+Páxina 17 de 35
+
+1.3
+
+Tarefas
+As tarefas propostas son as seguintes.
+▪ Tarefa 1. Busca dun nodo concreto. Nesta tarefa imos crear a nos primeira transformación. Trátase de localizar un nodo concreto no documento XML orixe.
+▪ Tarefa 2. Creación de novos elementos e atributos. Nesta tarefa imos facer unha transformación que cree un novo documento de saída a partir da información do documento
+XML orixe.
+▪ Tarefa 3. Transformacións con varios patróns. Nesta tarefa teremos que crear transformacións que necesitan da inclusión de varios patróns para obter o resultado que se pide.
+▪ Tarefa 4. Transformacións con varios patróns (II). Nova tarefa semellante á anterior
+na que teremos que crear transformacións que necesitan da inclusión de varios patróns
+para obter o resultado que se pide.
+
+1.3.1
+
+Tarefa 1. Busca dun nodo concreto
+Trátase de crear unha transformación XSLT que busque a existencia dun nodo específico no
+documento XML orixe. En concreto, tomando como orixe o seguinte documento XML:
+<?xml version="1.0" encoding="utf-8"?>
+<venda>
+<cliente cod="CL09384" />
+<produtos>
+<produto cod="LACT093" />
+<produto cod="LACT012" />
+<produto cod="ACEI015" />
+<produto cod="AUGA005" />
+<produto cod="CONS121" />
+</produtos>
+</venda>
+
+Deberás crear un documento XSLT que ao procesalo obteña como resultado un documento
+de texto. Cando no documento orixe existe o produto co atributo "cod="LACT012"", o documento de saída deberá conter o texto "Atopado!!".
+Autoavaliación
+
+A solución pasa por crear un patrón que se cumpra soamente cando exista o elemento, e nese caso escriba o texto necesario no documento de saída.
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="text"/>
+<xsl:template match="produto[@cod='LACT012']">
+Atopado!!
+</xsl:template>
+</xsl:stylesheet>
+
+Páxina 18 de 35
+
+1.3.2
+
+Tarefa 2. Creación de novos elementos e atributos
+Partindo do mesmo documento XML da tarefa anterior, imos crear algunhas transformacións que obteñan documentos de saída de diversos tipos.
+a) Tarefa 2_a
+
+Nesta tarefa obteremos como saída un novo documento XML. Este novo documento XML
+deberá conter soamente un nodo raíz no que o nome obterase a partires do atributo "cod" do
+cliente. Tamén teremos que crear un atributo para ese elemento con nome "num_produtos"
+que conteña como valor o número de produtos que figuren no documento orixe.
+Por exemplo, a transformación deberá transformar o documento anterior no seguinte:
+<?xml version="1.0" encoding="utf-8"?>
+<CL09384 num_produtos="5"/>
+
+b) Tarefa 2_b
+
+Agora trátase de obter como saída un documento de texto que conteña unha lista cos códigos dos produtos do documento orixe. Por exemplo:
+LACT093
+LACT012
+ACEI015
+AUGA005
+CONS121
+
+De momento é normal que no documento de saída aparezan espazos ou saltos de liña non
+desexados.
+c) Tarefa 2_c
+
+Crear unha especificación de transformación XSLT para obter, a partires do documento
+XML dado, unha páxina web como a seguinte:
+
+Facer a tarefa de dúas formas:
+▪ Empregando etiquetas HTML embebidas dentro do documento XSLT.
+▪ Empregando elementos "<xsl:element>", "<xsl:attribute>" e "<xsl:text>" para
+xerar o documento HTML de saída.
+d) Tarefa 2_d
+
+Crear unha transformación que obteña un documento de texto como saída, que transforme
+cada produto do documento orixe nunha liña co seguinte formato:
+Produto da familia FAML con código CCC para o cliente de código CL0000
+
+Páxina 19 de 35
+
+Isto é, deberemos obter como documento de saída (ademais de liñas en branco e outros espazos):
+Produto
+Produto
+Produto
+Produto
+Produto
+
+da
+da
+da
+da
+da
+
+familia
+familia
+familia
+familia
+familia
+
+LACT
+LACT
+ACEI
+AUGA
+CONS
+
+con
+con
+con
+con
+con
+
+código
+código
+código
+código
+código
+
+093
+012
+015
+005
+121
+
+para
+para
+para
+para
+para
+
+o
+o
+o
+o
+o
+
+cliente
+cliente
+cliente
+cliente
+cliente
+
+de
+de
+de
+de
+de
+
+código
+código
+código
+código
+código
+
+CL09384
+CL09384
+CL09384
+CL09384
+CL09384
+
+Autoavaliación
+a) Tarefa 2_a
+
+O documento XSLT obtido debe ser como o seguinte:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="xml"/>
+<xsl:template match="venda">
+<xsl:element name="{cliente/@cod}">
+<xsl:attribute name="num_produtos">
+<xsl:value-of select="count(produtos/produto)" />
+</xsl:attribute>
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+b) Tarefa 2_b
+
+Para xerar a lista podemos empregar a seguinte transformación:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="text"/>
+<xsl:template match="produto">
+<xsl:value-of select="@cod" />
+</xsl:template>
+</xsl:stylesheet>
+
+c) Tarefa 2_c
+
+O código da páxina web que temos que xerar é o seguinte:
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Cliente CL09384</title>
+</head>
+<body>
+<p>Cliente: CL09384</p>
+<p>N&uacute;mero de produtos: 5</p>
+</body>
+</html>
+
+Para xerar a páxina web empregando etiquetas HTML embebidas, serve a seguinte especificación de transformación:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+
+Páxina 20 de 35
+
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="html"/>
+<xsl:template match="/">
+<html>
+<head>
+<title>Cliente <xsl:value-of select="//cliente/@cod" /></title>
+</head>
+<body>
+<p>Cliente: <xsl:value-of select="//cliente/@cod" /></p>
+<p>Número de produtos: <xsl:value-of select="count(//produto)" /></p>
+</body>
+</html>
+</xsl:template>
+</xsl:stylesheet>
+
+A mesma transformación empregando soamente elementos propios da linguaxe XSLT quedaría:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="html"/>
+<xsl:template match="/">
+<xsl:element name="html">
+<xsl:element name="head">
+<xsl:element name="title">
+<xsl:text>Cliente </xsl:text>
+<xsl:value-of select="//cliente/@cod" />
+</xsl:element>
+</xsl:element>
+<xsl:element name="body">
+<xsl:element name="p">
+<xsl:text>Cliente: </xsl:text>
+<xsl:value-of select="//cliente/@cod" />
+</xsl:element>
+<xsl:element name="p">
+<xsl:text>Número de produtos: </xsl:text>
+<xsl:value-of select="count(//produto)" />
+</xsl:element>
+</xsl:element>
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+d) Tarefa 2_d
+
+A especificación de transformación proposta é:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="text"/>
+<xsl:template match="produto">
+<xsl:text>Produto da familia </xsl:text>
+<xsl:value-of select="substring(@cod,1,4)" />
+<xsl:text> con código </xsl:text>
+<xsl:value-of select="substring(@cod,5,3)" />
+<xsl:text> para o cliente de código </xsl:text>
+<xsl:value-of select="/venda/cliente/@cod" />
+</xsl:template>
+</xsl:stylesheet>
+
+Páxina 21 de 35
+
+1.3.3
+
+Tarefa 3. Transformacións con varios patróns
+Tomando como base o seguinte documento XML:
+<?xml version="1.0" encoding="UTF-8"?>
+<equipos>
+<máquina nome="PC017">
+<hardware>
+<tipo>PC Sobremesa</tipo>
+<fabricante>Dell</fabricante>
+<procesador marca="Intel" num_nucleos="4" velocidade="3,1">i7</procesador>
+<memoria tecnoloxía="DDR3">8</memoria>
+<disco tecnoloxía="SATA" capacidade="2000"/>
+<gravadora tipo="DVD"/>
+</hardware>
+<config>
+<OS>Windows 7</OS>
+<IP>192.168.20.105</IP>
+<gateway>192.168.20.1</gateway>
+</config>
+</máquina>
+<máquina nome="GALILEO">
+<hardware>
+<tipo>Torre</tipo>
+<fabricante>Fujitsu-Siemens</fabricante>
+<procesador marca="Intel" num_nucleos="4" velocidade="3">Xeon</procesador>
+<memoria tecnoloxía="DDR2">2</memoria>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<disco tecnoloxía="SCSI" capacidade="200"/>
+<lectora tipo="DVD"/>
+</hardware>
+<config>
+<role>Servidor de dominio</role>
+<OS>Windows 2008 Server R2</OS>
+<IP>192.168.20.10</IP>
+<gateway>192.168.20.1</gateway>
+</config>
+</máquina>
+</equipos>
+
+a) Tarefa 3_a
+
+Obter un listado en formato XML dos discos que figuran no documento XML orixe, engadíndolles un atributo co nome da máquina no que se atopan. Por exemplo:
+<?xml version="1.0" encoding="UTF-8"?>
+<discos>
+<disco tecnoloxía="SATA" capacidade="2000" máquina="PC017"/>
+<disco tecnoloxía="SCSI" capacidade="200" máquina="GALILEO"/>
+<disco tecnoloxía="SCSI" capacidade="200" máquina="GALILEO"/>
+<disco tecnoloxía="SCSI" capacidade="200" máquina="GALILEO"/>
+</discos>
+
+b) Tarefa 3_b
+
+Obter un documento HTML como o seguinte como saída da transformación.
+
+Páxina 22 de 35
+
+c) Tarefa 3_c
+
+Engadirlle á páxina web xerada na transformación anterior, un enlace na primeira columna
+de xeito que premendo no nome da máquina se abra a páxina web coa URL correspondente
+á dirección IP da máquina (por exemplo, http://192.168.20.105).
+Engadir tamén unha nova columna ao final, na que figure para cada máquina unha lista
+non numerada dos seus discos, tal e como figura na imaxe.
+
+d) Tarefa 3_d
+
+Transformar o documento orixe noutro documento XML co seguinte formato.
+<?xml version="1.0" encoding="UTF-8"?>
+<máquinas>
+<máquina tipo="PC Sobremesa" fabricante="Dell" procesador="Intel 4 núcleos a
+3,1 GHz" discos="1 con 2000GB"/>
+<máquina tipo="Torre" fabricante="Fujitsu-Siemens" procesador="Intel 4 núcleos a 3 GHz" discos="3 con 600GB"/>
+</máquinas>
+
+Empregar un conxunto de atributos na especificación de transformación.
+
+Páxina 23 de 35
+
+Autoavaliación
+a) Tarefa 3_a
+
+Documento XSLT:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+<xsl:template match="equipos">
+<discos>
+<xsl:apply-templates select="máquina/hardware/disco"/>
+</discos>
+</xsl:template>
+<xsl:template match="disco">
+<xsl:element name="disco">
+<xsl:attribute name="tecnoloxía">
+<xsl:value-of select="@tecnoloxía" />
+</xsl:attribute>
+<xsl:attribute name="capacidade">
+<xsl:value-of select="@capacidade" />
+</xsl:attribute>
+<xsl:attribute name="máquina">
+<xsl:value-of select="../../@nome" />
+</xsl:attribute>
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+b) Tarefa 3_b
+
+Documento XSLT:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="html"/>
+<xsl:template match="/">
+<html>
+<head>
+<title>Táboa máquinas</title>
+</head>
+<body>
+<h1>Táboa das máquinas</h1>
+<table border="1">
+<tr>
+<th>Máquina</th>
+<th>Procesador</th>
+<th>Memoria</th>
+</tr>
+<xsl:apply-templates select="equipos/máquina" />
+</table>
+</body>
+</html>
+</xsl:template>
+<xsl:template match="máquina">
+<tr>
+<td><xsl:value-of select="@nome" /></td>
+<td><xsl:value-of select="hardware/procesador/@marca" /><xsl:value-of select="hardware/procesador/text()" /></td>
+<td><xsl:value-of select="hardware/memoria" />GB <xsl:value-of se-
+
+Páxina 24 de 35
+
+lect="hardware/memoria/@tecnoloxía" /></td>
+</tr>
+</xsl:template>
+</xsl:stylesheet>
+
+c) Tarefa 3_c
+
+Documento XSLT:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" method="html"/>
+<xsl:template match="/">
+<html>
+<head>
+<title>Táboa máquinas</title>
+</head>
+<body>
+<h1>Táboa das máquinas</h1>
+<table border="1">
+<tr>
+<th>Máquina</th>
+<th>Procesador</th>
+<th>Memoria</th>
+<th>Disco(s)</th>
+</tr>
+<xsl:apply-templates select="equipos/máquina" />
+</table>
+</body>
+</html>
+</xsl:template>
+<xsl:template match="máquina">
+<tr>
+<td><a href="http://{config/IP}"><xsl:value-of select="@nome"
+/></a></td>
+<td><xsl:value-of select="hardware/procesador/@marca" /><xsl:value-of select="hardware/procesador/text()" /></td>
+<td><xsl:value-of select="hardware/memoria" />GB <xsl:value-of select="hardware/memoria/@tecnoloxía" /></td>
+<td><ul><xsl:apply-templates select="hardware/disco" /></ul></td>
+</tr>
+</xsl:template>
+<xsl:template match="disco">
+<li><xsl:value-of select="@capacidade" />GB (<xsl:value-of select="@tecnoloxía" />)</li>
+</xsl:template>
+</xsl:stylesheet>
+
+d) Tarefa 3_d
+
+Documento XSLT:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+<xsl:attribute-set name="atr_máquina">
+<xsl:attribute name="tipo">
+<xsl:value-of select="hardware/tipo"/>
+</xsl:attribute>
+<xsl:attribute name="fabricante">
+
+Páxina 25 de 35
+
+<xsl:value-of select="hardware/fabricante"/>
+</xsl:attribute>
+<xsl:attribute name="procesador">
+<xsl:value-of select="concat(hardware/procesador/@marca, ' ', hardware/procesador/@num_nucleos, ' núcleos a ', hardware/procesador/@velocidade,
+' GHz')" />
+</xsl:attribute>
+<xsl:attribute name="discos">
+<xsl:value-of select="concat(count(hardware/disco), ' con ',
+sum(hardware/disco/@capacidade), 'GB') "/>
+</xsl:attribute>
+</xsl:attribute-set>
+<xsl:template match="equipos">
+<xsl:element name="máquinas">
+<xsl:apply-templates select="máquina"/>
+</xsl:element>
+</xsl:template>
+<xsl:template match="máquina">
+<xsl:element name="máquina" use-attribute-sets="atr_máquina" />
+</xsl:template>
+</xsl:stylesheet>
+
+1.3.4
+
+Tarefa 4. Transformacións con varios patróns (II)
+Tomando como base o seguinte documento XML:
+<horario ciclo="ASIR Ordinario" grupo="1º" centro="IES San Clemente"
+ano="2013">
+<horas>
+<hora id="1">
+<inicio>08:45</inicio>
+<fin>09:35</fin>
+</hora>
+<hora id="2">
+<inicio>09:35</inicio>
+<fin>10:25</fin>
+</hora>
+<hora id="3">
+<inicio>10:25</inicio>
+<fin>11:15</fin>
+</hora>
+<hora id="4">
+<inicio>11:15</inicio>
+<fin>12:05</fin>
+</hora>
+<hora id="5">
+<inicio>12:05</inicio>
+<fin>12:55</fin>
+</hora>
+<hora id="6">
+<inicio>12:55</inicio>
+<fin>13:45</fin>
+</hora>
+<hora id="7">
+<inicio>13:45</inicio>
+<fin>14:35</fin>
+</hora>
+<hora id="8">
+<inicio>16:20</inicio>
+<fin>17:10</fin>
+
+Páxina 26 de 35
+
+</hora>
+<hora id="9">
+<inicio>17:10</inicio>
+<fin>18:00</fin>
+</hora>
+</horas>
+<dia num="1">
+<materia hora="1" nome="Planificación e Administración de Redes" />
+<materia hora="2" nome="Planificación e Administración de Redes" />
+<materia hora="3" nome="Formación e Orientación Laboral" />
+<materia hora="4" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación" />
+<materia hora="5" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación" />
+<materia hora="6" nome="Implanación de Sistemas Operativos" />
+<materia hora="7" nome="Implanación de Sistemas Operativos" />
+</dia>
+<dia num="2">
+<materia hora="1" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación" />
+<materia hora="2" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación" />
+<materia hora="3" nome="Xestión de Bases de Datos" />
+<materia hora="4" nome="Xestión de Bases de Datos" />
+<materia hora="5" nome="Xestión de Bases de Datos" />
+<materia hora="6" nome="Implanación de Sistemas Operativos" />
+<materia hora="7" nome="Implanación de Sistemas Operativos" />
+</dia>
+<dia num="3">
+<materia hora="1" />
+<materia hora="2" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación" />
+<materia hora="3" nome="Formación e Orientación Laboral" />
+<materia hora="4" nome="Planificación e Administración de Redes" />
+<materia hora="5" nome="Planificación e Administración de Redes" />
+<materia hora="6" nome="Fundamentos Hardware" />
+<materia hora="7" nome="Fundamentos Hardware" />
+<materia hora="8" nome="Implanación de Sistemas Operativos" />
+<materia hora="9" nome="Implanación de Sistemas Operativos" />
+</dia>
+<dia num="4">
+<materia hora="1" nome="Planificación e Administración de Redes" />
+<materia hora="2" nome="Planificación e Administración de Redes" />
+<materia hora="3" nome="Implanación de Sistemas Operativos" />
+<materia hora="4" nome="Implanación de Sistemas Operativos" />
+<materia hora="5" nome="Formación e Orientación Laboral" />
+<materia hora="6" nome="Xestión de Bases de Datos" />
+<materia hora="7" nome="Xestión de Bases de Datos" />
+</dia>
+<dia num="5">
+<materia hora="1" nome="Planificación e Administración de Redes" />
+<materia hora="2" nome="Planificación e Administración de Redes" />
+<materia hora="3" nome="Xestión de Bases de Datos" />
+<materia hora="4" nome="Xestión de Bases de Datos" />
+<materia hora="5" nome="Fundamentos Hardware" />
+<materia hora="6" nome="Fundamentos Hardware" />
+<materia hora="7" nome="Formación e Orientación Laboral" />
+<dia>
+</horario>
+
+Páxina 27 de 35
+
+InIn-
+
+InIn-
+
+In-
+
+a) Tarefa 4_a
+
+Queremos obter como saída unha páxina web coa seguinte información:
+
+b) Tarefa 4_b
+
+Empregando como orixe o mesmo documento XML da tarefa anterior, obter o seguinte documento HTML como saída da transformación:
+
+Páxina 28 de 35
+
+c) Tarefa 4_c
+
+Tomando como orixe o mesmo documento XML da tarefa anterior, obter como saída da
+transformación un documento XML con raíz "<materias>", que soamente conteña a lista
+dos días coas materias tal e como figuran no documento orixe, pero non o elemento "<horas>" cos seus fillos "<hora>". Isto é, queremos obter o seguinte:
+<?xml version="1.0" encoding="UTF-8"?>
+<materias>
+<dia num="1">
+<materia hora="1" nome="Planificación e Administración de Redes"/>
+<materia hora="2" nome="Planificación e Administración de Redes"/>
+<materia hora="3" nome="Formación e Orientación Laboral"/>
+<materia hora="4" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación"/>
+<materia hora="5" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación"/>
+<materia hora="6" nome="Implanación de Sistemas Operativos"/>
+<materia hora="7" nome="Implanación de Sistemas Operativos"/>
+</dia>
+<dia num="2">
+<materia hora="1" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación"/>
+<materia hora="2" nome="Linguaxes de Marcas e Sistemas de Xestión da
+formación"/>
+<materia hora="3" nome="Xestión de Bases de Datos"/>
+
+Páxina 29 de 35
+
+InIn-
+
+InIn-
+
+<materia
+<materia
+<materia
+<materia
+</dia>
+...
+</materias>
+
+hora="4"
+hora="5"
+hora="6"
+hora="7"
+
+nome="Xestión de Bases de Datos"/>
+nome="Xestión de Bases de Datos"/>
+nome="Implanación de Sistemas Operativos"/>
+nome="Implanación de Sistemas Operativos"/>
+
+Autoavaliación
+a) Tarefa 4_a
+
+Unha posible solución é a seguinte:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" indent="yes" method="html"/>
+<xsl:template match="/">
+<html>
+<head>
+<title>Horario <xsl:value-of select="horario/@grupo" /> <xsl:value-of
+select="horario/@ciclo" /></title>
+</head>
+<body>
+<h1>Horario <xsl:value-of select="horario/@grupo" /> <xsl:value-of select="horario/@ciclo" />, ano <xsl:value-of select="horario/@ano" /></h1>
+<table border="1">
+<tr>
+<th></th>
+<th>Inicio</th>
+<th>Fin</th>
+</tr>
+<xsl:apply-templates select="horario/horas/hora" />
+</table>
+</body>
+</html>
+</xsl:template>
+<xsl:template match="hora">
+<tr>
+<th><xsl:value-of select="@id" /> Hora</th>
+<td><xsl:value-of select="inicio" /></td>
+<td><xsl:value-of select="fin" /></td>
+</tr>
+</xsl:template>
+</xsl:stylesheet>
+
+b) Tarefa 4_b
+
+Unha posible solución é a seguinte:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" indent="yes" method="html"/>
+<xsl:template match="/">
+<html>
+<head>
+<title>Horario <xsl:value-of select="horario/@grupo" /> <xsl:value-of
+select="horario/@ciclo" /></title>
+</head>
+
+Páxina 30 de 35
+
+<body>
+<h1>Asignaturas por día</h1>
+<ul>
+<xsl:apply-templates select="horario/dia" />
+</ul>
+</body>
+</html>
+</xsl:template>
+<xsl:template match="dia">
+<li>Día <xsl:value-of select="@num" /></li>
+<ul>
+<xsl:apply-templates select="materia" />
+</ul>
+</xsl:template>
+<xsl:template match="materia">
+<li><xsl:value-of select="@nome" /></li>
+</xsl:template>
+</xsl:stylesheet>
+
+c) Tarefa 4_c
+
+Unha posible solución é a seguinte:
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+<xsl:attribute-set name="atr_materia">
+<xsl:attribute name="hora"><xsl:value-of select="@hora"
+/></xsl:attribute>
+<xsl:attribute name="nome"><xsl:value-of select="@nome"
+/></xsl:attribute>
+</xsl:attribute-set>
+<xsl:template match="/">
+<materias>
+<xsl:apply-templates select="horario/dia" />
+</materias>
+</xsl:template>
+<xsl:template match="dia">
+<xsl:element name="dia">
+<xsl:attribute name="num">
+<xsl:value-of select="@num" />
+</xsl:attribute>
+<xsl:apply-templates select="materia" />
+</xsl:element>
+</xsl:template>
+<xsl:template match="materia">
+<xsl:element name="materia" use-attribute-sets="atr_materia">
+</xsl:element>
+</xsl:template>
+</xsl:stylesheet>
+
+Páxina 31 de 35
+
+2.
+
+Materiais
+
+2.1
+
+Textos de apoio ou de referencia
+▪ XML in a Nutshell, 2nd Ed, Elliotte Rusty Harold e W. Scott Means, Ed. O’Reilly.
+▪ Beginning XML, 5th Ed, Joe Fawcett, Liam R. E. Quin e Danny Ayers, Ed. Wrox.
+▪ Sams Teach Yourself XSLT in 21 days, Michiel van Otegem, Ed. Sams.
+▪ XSLT, Mastering XML Transformations, Doug Tidwell, Ed. O’Reilly.
+▪ TA1. Software para a realización de transformacións XSLT.
+
+2.2
+
+Recursos didácticos
+▪ Ordenador persoal, con navegador web e software de realización de transformacións
+XSLT.
+
+Páxina 32 de 35
+
+3.
+
+TA1. Software para a realización de
+transformacións XSLT
+Existen moitas aplicacións que nos permiten aplicar unha transformación XSLT a un documento XML. A máis común delas é o navegador. Cando abrimos un documento XML nun
+navegador moderno, na gran maioría dos casos buscará a folla de estilo XSLT asociada e
+realizará a transformación amosando o resultado obtido. Pero cando queiramos comprobar o
+documento de saída obtido, na opción de ver o código fonte asociado á páxina poderemos
+ver so o documento XML orixinal.
+O resto de ferramentas existentes baséanse maiormente no uso de tres procesadores
+XSLT: Xalan (http://xalan.apache.org/), Saxon (http://saxon.sourceforge.net/) e MSXML. A
+súa principal vantaxe é facilitar o uso do procesador, evitando o emprego da liña de comandos, e amosando inmediatamente o documento de saída. Nalgúns casos poderemos incluso
+escoller o procesador a empregar entre dúas ou máis opcións.
+Na páxina "http://edutechwiki.unige.ch/en/XML_editor" temos unha lista moi extensa de
+aplicacións de edición de documentos XML. Unhas cantas permiten tamén outras opcións,
+como a comprobación da validez dun documento en base a un DTD ou a un XML Schema,
+e a realización de transformacións XSLT. Imos ver algunhas das máis empregadas.
+XML Copy Editor
+
+Xa falaramos desta ferramenta na UD correspondente á linguaxe XML. Soporta tamén a realización de transformacións XSLT, pero non indica o procesador que emprega nin permite
+escoller outro.
+Kernow
+
+Kernow (http://kernowforsaxon.sourceforge.net/) é unha ferramenta programada en Java,
+que abrangue un amplo conxunto de funcións relacionadas coa linguaxe XML e pode executarse dende múltiples sistemas operativos. Non é gratuíta, aínda que ten un período de proba
+e o seu autor ofrece licenzas sen custo para uso non comercial.
+
+Páxina 33 de 35
+
+Baséase no procesador XSLT Saxon, e a execución das transformacións é moi intuitiva,
+amosando na mesma pantalla o documento XML orixe, o documento XSLT e o resultado
+obtido.
+XTrans
+
+É unha ferramenta gratuíta (http://sourceforge.net/projects/xtrans/) para sistemas operativos
+Windows orientada á realización de transformacións XSLT. Non permite escoller o procesador XSLT a empregar (nin indica o que emprega). Tampouco permite traballar con sistemas de codificación distintos ao "ISO-8859-1", o que ven a ser unha limitación bastante importante.
+
+Páxina 34 de 35
+
+XMLSpear
+
+XMLSpear (http://www.donkeydevelopment.com/) é un editor de documentos XML gratuíto programado en Java e dispoñible polo tanto para a maioría de sistemas operativos. Ofrece
+algunhas funcións interesantes, como a validación ou a avaliación de expresións XPath.
+
+Traballa sen problemas con diversos sistemas de codificación de caracteres. No relativo ás
+transformacións XSLT, permite empregar indistintamente os procesadores Xalan e Saxon.
+
+Páxina 35 de 35
+
+

@@ -224,6 +224,241 @@ following-sibling::seccion    # Hermano siguiente
    - `//` busca en todo el documento
    - `/` busca desde la raíz
 
+### Ejes XPath y Tipos de Nodos DOM XML
+
+#### Tipos de Nodos en DOM XML
+```xpath
+# Tipos principales de nodos
+Document    # Nodo Documento (documento XML completo)
+Element     # Nodo Elemento
+Attr        # Nodo Atributo
+Text        # Nodo Texto
+
+# Otros tipos de nodos
+Comment     # Nodo Comentario
+CDATASection # Nodo CDATA
+ProcessingInstruction # Nodo Instrucción de Procesamiento
+Entity      # Nodo Entidad
+```
+
+#### Relaciones entre Nodos
+```xpath
+# Relaciones básicas
+parentNode      # Nodo padre
+childNodes      # Nodos hijos
+siblingNodes    # Nodos hermanos
+firstChild      # Primer hijo
+lastChild       # Último hijo
+nextSibling     # Siguiente hermano
+previousSibling # Hermano anterior
+```
+
+#### Ejes XPath Detallados
+```xpath
+# Ejes principales
+self::*              # Nodo actual
+child::*             # Hijos directos
+parent::*            # Padre
+ancestor::*          # Antepasados
+descendant::*        # Descendientes
+following-sibling::* # Hermanos siguientes
+preceding-sibling::* # Hermanos anteriores
+following::*         # Nodos siguientes en el documento
+preceding::*         # Nodos anteriores en el documento
+attribute::*         # Atributos
+namespace::*         # Espacios de nombres
+```
+
+#### Interface DOM XML
+```javascript
+// Propiedades principales
+nodeName        # Nombre del nodo
+parentNode      # Nodo padre
+attributes      # Atributos del nodo
+childNodes      # Nodos hijos
+firstChild      # Primer hijo
+lastChild       # Último hijo
+nextSibling     # Siguiente hermano
+previousSibling # Hermano anterior
+
+// Métodos principales
+getElementsByTagName(nombre)  # Obtiene elementos por etiqueta
+hasAttributes()              # Verifica si tiene atributos
+removeChild(nodo)           # Elimina un nodo hijo
+appendChild(nodo)           # Añade un nodo hijo
+```
+
+#### Casos Prácticos con Tipos de Nodos DOM XML
+
+##### 1. Manipulación de Nodos de Texto
+```xml
+<!-- XML de entrada -->
+<documento>
+    <parrafo>Este es un texto con <negrita>texto en negrita</negrita> y más texto</parrafo>
+</documento>
+
+<!-- XSLT para manipular nodos de texto -->
+<xsl:template match="parrafo">
+    <p>
+        <xsl:for-each select="node()">
+            <xsl:choose>
+                <xsl:when test="self::text()">
+                    <xsl:value-of select="normalize-space(.)"/>
+                </xsl:when>
+                <xsl:when test="self::negrita">
+                    <strong><xsl:value-of select="."/></strong>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:for-each>
+    </p>
+</xsl:template>
+```
+
+##### 2. Trabajo con Atributos
+```xml
+<!-- XML de entrada -->
+<producto id="123" categoria="elec" stock="5">
+    <nombre>Laptop</nombre>
+    <precio>800</precio>
+</producto>
+
+<!-- XSLT para procesar atributos -->
+<xsl:template match="producto">
+    <div class="producto">
+        <!-- Procesar todos los atributos -->
+        <xsl:for-each select="@*">
+            <span class="atributo">
+                <xsl:value-of select="name()"/>: 
+                <xsl:value-of select="."/>
+            </span>
+        </xsl:for-each>
+        
+        <!-- Procesar contenido -->
+        <xsl:apply-templates/>
+    </div>
+</xsl:template>
+```
+
+##### 3. Manejo de Comentarios y CDATA
+```xml
+<!-- XML de entrada -->
+<documento>
+    <!-- Este es un comentario importante -->
+    <codigo><![CDATA[if (x > 0) { return true; }]]></codigo>
+    <!-- Otro comentario -->
+</documento>
+
+<!-- XSLT para procesar comentarios y CDATA -->
+<xsl:template match="documento">
+    <div class="documento">
+        <!-- Procesar comentarios -->
+        <div class="comentarios">
+            <xsl:for-each select="comment()">
+                <div class="comentario">
+                    <xsl:value-of select="."/>
+                </div>
+            </xsl:for-each>
+        </div>
+        
+        <!-- Procesar CDATA -->
+        <xsl:for-each select="codigo">
+            <pre class="codigo">
+                <xsl:value-of select="."/>
+            </pre>
+        </xsl:for-each>
+    </div>
+</xsl:template>
+```
+
+##### 4. Navegación entre Nodos
+```xml
+<!-- XML de entrada -->
+<articulo>
+    <titulo>Mi Artículo</titulo>
+    <autor>Juan Pérez</autor>
+    <secciones>
+        <seccion>
+            <titulo>Introducción</titulo>
+            <parrafo>Texto...</parrafo>
+        </seccion>
+        <seccion>
+            <titulo>Desarrollo</titulo>
+            <parrafo>Más texto...</parrafo>
+        </seccion>
+    </secciones>
+</articulo>
+
+<!-- XSLT para navegación entre nodos -->
+<xsl:template match="articulo">
+    <article>
+        <!-- Navegación a nodos hermanos -->
+        <header>
+            <h1><xsl:value-of select="titulo"/></h1>
+            <p class="autor">Por: <xsl:value-of select="autor"/></p>
+        </header>
+        
+        <!-- Navegación a nodos hijos -->
+        <div class="secciones">
+            <xsl:for-each select="secciones/seccion">
+                <section>
+                    <!-- Navegación a nodos padres -->
+                    <xsl:variable name="seccion-actual" select="."/>
+                    <h2><xsl:value-of select="titulo"/></h2>
+                    
+                    <!-- Navegación a nodos hermanos anteriores -->
+                    <xsl:if test="preceding-sibling::seccion">
+                        <p class="anterior">
+                            Sección anterior: 
+                            <xsl:value-of select="preceding-sibling::seccion[1]/titulo"/>
+                        </p>
+                    </xsl:if>
+                    
+                    <!-- Navegación a nodos hermanos siguientes -->
+                    <xsl:if test="following-sibling::seccion">
+                        <p class="siguiente">
+                            Siguiente sección: 
+                            <xsl:value-of select="following-sibling::seccion[1]/titulo"/>
+                        </p>
+                    </xsl:if>
+                    
+                    <xsl:apply-templates select="parrafo"/>
+                </section>
+            </xsl:for-each>
+        </div>
+    </article>
+</xsl:template>
+```
+
+##### 5. Trabajo con Espacios de Nombres
+```xml
+<!-- XML de entrada -->
+<documento xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:div class="contenido">
+        <html:p>Texto en párrafo</html:p>
+        <html:img src="imagen.jpg"/>
+    </html:div>
+</documento>
+
+<!-- XSLT para procesar espacios de nombres -->
+<xsl:template match="documento">
+    <xsl:namespace-alias stylesheet-prefix="html" result-prefix=""/>
+    <div class="documento">
+        <xsl:for-each select="html:div">
+            <xsl:apply-templates select="html:p"/>
+            <xsl:apply-templates select="html:img"/>
+        </xsl:for-each>
+    </div>
+</xsl:template>
+
+<xsl:template match="html:p">
+    <p><xsl:value-of select="."/></p>
+</xsl:template>
+
+<xsl:template match="html:img">
+    <img src="{@src}"/>
+</xsl:template>
+```
+
 ## XSLT - Transformaciones
 
 ### Estructura Básica XSLT
@@ -945,5 +1180,64 @@ order=""         # Orden (ascending/descending)
             <total><xsl:value-of select="$total"/></total>
         </ventas-totales>
     </resumen>
+</xsl:template>
+```
+
+### Formatos de Salida y Procesadores XSLT
+
+#### Formatos de Salida
+```xml
+<xsl:output
+    method="xml|html|text"           # Formato de salida
+    indent="yes|no"                  # Indentación del resultado
+    version="string"                 # Versión XML/HTML
+    encoding="string"                # Codificación (utf-8, utf-16)
+    omit-xml-declaration="yes|no"    # Omitir declaración XML
+    standalone="yes|no"              # Documento standalone
+    doctype-public="string"          # DTD público
+    doctype-system="string"          # DTD sistema
+    cdata-section-elements="namelist" # Elementos CDATA
+    media-type="string"              # Tipo MIME
+/>
+```
+
+#### Procesadores XSLT Disponibles
+```plaintext
+# Procesadores principales
+1. Navegadores Web
+   - Firefox, IE, Chrome (soporte XSLT 1.0)
+   - No soportan XSLT 2.0/3.0
+
+2. Procesadores Independientes
+   - Saxon (soporta XSLT 1.0/2.0/3.0)
+   - Xalan (soporta XSLT 1.0)
+   - MSXML (soporta XSLT 1.0)
+
+# Versiones de XSLT
+- XSLT 1.0 (1999): Versión más usada
+- XSLT 2.0 (2007): Mejoras en XPath 2.0
+- XSLT 3.0 (2013): En desarrollo
+```
+
+#### Patrones XSLT Avanzados
+```xml
+<!-- Patrón para elemento específico -->
+<xsl:template match="elemento">
+    <!-- contenido -->
+</xsl:template>
+
+<!-- Patrón con predicado -->
+<xsl:template match="elemento[@atributo='valor']">
+    <!-- contenido -->
+</xsl:template>
+
+<!-- Patrón con múltiples condiciones -->
+<xsl:template match="elemento[condicion1][condicion2]">
+    <!-- contenido -->
+</xsl:template>
+
+<!-- Patrón con prioridad -->
+<xsl:template match="elemento" priority="2">
+    <!-- contenido -->
 </xsl:template>
 ```
