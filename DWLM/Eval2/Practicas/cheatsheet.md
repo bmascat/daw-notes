@@ -460,7 +460,7 @@ order=""         # Orden (ascending/descending)
    - Usar nombres descriptivos para los modos
    - Documentar el propósito de cada plantilla
    - Estructurar jerárquicamente las transformaciones
-```
+
 ### Control de Espacios en Blanco
 ```xml
 <xsl:strip-space elements="*"/>        # Elimina espacios en blanco de todos los elementos
