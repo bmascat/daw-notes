@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE biblioteca [
+    <!ELEMENT biblioteca (libro+)>
+    <!ELEMENT libro (titulo, autor, precio, stock)>
+    <!ELEMENT titulo (#PCDATA)>
+    <!ELEMENT autor (#PCDATA)>
+    <!ELEMENT precio (#PCDATA)>
+    <!ELEMENT stock (#PCDATA)>
+    <!ATTLIST libro
+        id ID #REQUIRED
+        categoria CDATA #REQUIRED>
+]>
+<?xml-stylesheet type="text/xsl" href="example.xslt"?>
+<biblioteca>
+    <libro id="1" categoria="ficcion">
+        <titulo>Don Quijote</titulo>
+        <autor>Miguel de Cervantes</autor>
+        <precio>29.99</precio>
+        <stock>15</stock>
+    </libro>
+    <libro id="2" categoria="ficcion">
+        <titulo>Cien años de soledad</titulo>
+        <autor>Gabriel García Márquez</autor>
+        <precio>24.99</precio>
+        <stock>8</stock>
+    </libro>
+    <libro id="3" categoria="no-ficcion">
+        <titulo>Historia de España</titulo>
+        <autor>Juan Pérez</autor>
+        <precio>34.99</precio>
+        <stock>12</stock>
+    </libro>
+    <libro id="4" categoria="ficcion">
+        <titulo>La casa de los espíritus</titulo>
+        <autor>Isabel Allende</autor>
+        <precio>19.99</precio>
+        <stock>20</stock>
+    </libro>
+</biblioteca>
