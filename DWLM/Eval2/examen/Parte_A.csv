@@ -1,0 +1,6 @@
+punto;expresión XPath
+a-1;//asignatura[creditos_teoricos != 4]/nombre
+a-2;//alumnos/alumno[last()]/estudios/carrera/@codigo
+a-3;//alumnos/alumno[sexo="Mujer"]//asignatura/@codigo
+a-4;//alumnos/alumno[@beca="si"][apellido1][apellido2][nombre]
+a-5;//carrera[@id = //alumno[@id ="e01"]/estudios/carrera/@codigo]/nombre

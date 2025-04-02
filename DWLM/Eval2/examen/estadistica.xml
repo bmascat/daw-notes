@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alumnos universidad="Universidad de Victoria"
+          numTitulos="6"
+          numCreditos="1630"
+          numAlumnos="4">
+   <observaciones> Estadistística asignaturas por alumnos </observaciones>
+   <alumno codigoAlumnos="e01" codigoGrado="c01" numAsignaturas="4"/>
+   <alumno codigoAlumnos="e02" codigoGrado="c02" numAsignaturas="2"/>
+   <alumno codigoAlumnos="e03" codigoGrado="c02" numAsignaturas="4"/>
+   <alumno codigoAlumnos="e04" codigoGrado="c01" numAsignaturas="3"/>
+</alumnos>
