@@ -55,6 +55,84 @@ normalize-space() # Normaliza espacios
 not()             # Negación
 ```
 
+### Asignación de Variables en XSLT/XPath
+
+#### Formas Básicas de Asignación
+```xml
+<!-- 1. Asignación directa con select -->
+<xsl:variable name="precio" select="100"/>
+<xsl:variable name="nombre" select="'Juan'"/>
+<xsl:variable name="elemento" select="//libro[1]"/>
+
+<!-- 2. Asignación con contenido complejo -->
+<xsl:variable name="direccion">
+    <calle>Gran Vía</calle>
+    <numero>123</numero>
+</xsl:variable>
+
+<!-- 3. Asignación desde nodo actual -->
+<xsl:variable name="valor-actual" select="."/>
+<xsl:variable name="atributo" select="@tipo"/>
+```
+
+#### Asignación con Expresiones
+```xml
+<!-- Operaciones matemáticas -->
+<xsl:variable name="total" select="precio * cantidad"/>
+<xsl:variable name="promedio" select="sum(//precio) div count(//precio)"/>
+
+<!-- Concatenación -->
+<xsl:variable name="nombre-completo" select="concat(nombre, ' ', apellido)"/>
+
+<!-- Desde funciones -->
+<xsl:variable name="fecha" select="substring(fecha-actual, 1, 4)"/>
+```
+
+#### Variables para Agrupación
+```xml
+<!-- Guardar valor para comparaciones -->
+<xsl:variable name="dept-actual" select="@departamento"/>
+<xsl:for-each select="//empleado[@departamento = $dept-actual]">
+    <!-- Uso de la variable -->
+</xsl:for-each>
+
+<!-- Guardar resultados de cálculos -->
+<xsl:variable name="total-dept" 
+    select="sum(//empleado[@departamento = $dept-actual]/salario)"/>
+```
+### Caso Práctico
+
+```xml
+<xsl:template match="/">
+    <!-- Variable con valor simple -->
+    <xsl:variable name="iva" select="0.21"/>
+    
+    <!-- Variable con resultado de cálculo -->
+    <xsl:variable name="total-ventas" select="sum(//venta/importe)"/>
+    
+    <!-- Variable con contenido complejo -->
+    <xsl:variable name="resumen">
+        <total><xsl:value-of select="$total-ventas"/></total>
+        <iva><xsl:value-of select="$total-ventas * $iva"/></iva>
+    </xsl:variable>
+    
+    <!-- Uso de las variables -->
+    <resultado>
+        <ventas-sin-iva>{$total-ventas}</ventas-sin-iva>
+        <impuestos>{$total-ventas * $iva}</impuestos>
+        <resumen-completo>
+            <xsl:copy-of select="$resumen"/>
+        </resumen-completo>
+    </resultado>
+</xsl:template>
+```
+
+#### Notas Importantes
+1. Las variables en XSLT son inmutables (no pueden cambiar su valor)
+2. El ámbito de la variable es desde donde se declara hacia abajo
+3. Se pueden usar en atributos con la sintaxis `{$nombre-variable}`
+4. Las variables deben declararse antes de usarse
+
 ### Sintaxis Avanzada XPath
 
 #### Expresiones con Variables
