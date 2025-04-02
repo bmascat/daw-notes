@@ -241,6 +241,55 @@ order=""         # Orden (ascending/descending)
 </elemento>
 ```
 
+### Sintaxis de Llaves {...} en XSLT
+
+#### Uso Básico
+```xml
+<!-- Las llaves {} permiten evaluar expresiones XPath dentro de atributos -->
+<elemento atributo="{expresión-xpath}"/>
+
+<!-- Ejemplos básicos -->
+<div id="{@id}"/>                    # Copia el valor del atributo id
+<span class="{nombre}"/>             # Usa el valor del elemento nombre
+<p title="{.}"/>                     # Usa el valor del nodo actual
+```
+
+#### Casos Comunes
+```xml
+<!-- {.} - Valor del nodo actual -->
+<categoria nombre="{.}"/>            # El valor del texto del nodo actual
+<elemento valor="{./texto}"/>        # Valor de un hijo directo
+
+<!-- {@atributo} - Valor de atributos -->
+<div id="{@id}"/>                    # Copia un atributo
+<span class="{@tipo}"/>              # Usa un atributo como clase
+
+<!-- Expresiones compuestas -->
+<div class="precio-{@tipo}"/>        # Concatena texto con valor
+<span title="{nombre} - {apellido}"/> # Combina múltiples valores
+```
+
+#### Ejemplos Avanzados
+```xml
+<!-- Funciones dentro de llaves -->
+<p class="{concat(tipo, '-', @id)}"/>
+
+<!-- Operaciones matemáticas -->
+<precio total="{precio * cantidad}"/>
+
+<!-- Condiciones -->
+<div class="{if (@tipo='especial') then 'destacado' else 'normal'}"/>
+
+<!-- Variables -->
+<span valor="{$variable}"/>
+```
+
+#### Notas Importantes
+1. Las llaves `{...}` solo funcionan en valores de atributos
+2. Para texto dentro de elementos, usar `<xsl:value-of>`
+3. No se pueden anidar llaves
+4. Las llaves evalúan la expresión XPath inmediatamente
+
 ### Técnicas Avanzadas
 
 #### Agrupación
