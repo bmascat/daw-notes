@@ -113,46 +113,40 @@ tbody tr:hover {
 }
 
 /* Formulario de contacto */
-form {
-  display: grid;
-  grid-gap: 15px;
+.form-wrapper.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-label {
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: var(--dark-color);
+.form-wrapper.card form {
+  display: flex;
+  flex-direction: column;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 10px;
+.form-wrapper.card input,
+.form-wrapper.card textarea {
+  margin-bottom: 15px;
+  padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-family: inherit;
 }
 
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--secondary-color);
-  box-shadow: 0 0 0 2px rgba(32, 178, 170, 0.2);
-}
-
-button {
-  background-color: var(--primary-color);
+.form-wrapper.card button {
+  background-color: #4CAF50;
   color: white;
+  padding: 10px 15px;
   border: none;
-  padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s;
-  justify-self: start;
-  margin-top: 10px;
+  align-self: flex-start;
 }
 
-button:hover {
-  background-color: var(--secondary-color);
+.form-wrapper.card button:hover {
+  background-color: #45a049;
 }
 
 /* Checkbox personalizado */
