@@ -6,8 +6,9 @@
   --dark-color: #2c3e50;
   --light-color: #f9f9f9;
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --transition-standard: 0.3s ease;
 }
-
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -46,7 +47,7 @@ nav a {
   font-weight: 500;
   padding: 5px 10px;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: background-color var(--transition-standard);
 }
 
 nav a:hover {
@@ -90,10 +91,10 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-strong);
   border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-standard);
 }
 
 table:hover {
@@ -124,12 +125,12 @@ thead i {
   opacity: 0.9;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #f5f9fc;
-}
-
 tbody tr {
   transition: all 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f5f9fc;
 }
 
 tbody tr:hover {
@@ -148,26 +149,11 @@ tbody td i {
   font-size: 1.2rem;
 }
 
-@media (max-width: 768px) {
-  th, td {
-    padding: 12px 15px;
-  }
-  
-  thead i {
-    margin-right: 6px;
-  }
-  
-  tbody td i {
-    margin-right: 8px;
-    font-size: 1.1rem;
-  }
-}
-
 /* Formulario de contacto */
 .form-wrapper.card {
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   padding: 20px;
   max-width: 600px;
   margin: 0 auto;
@@ -187,13 +173,14 @@ tbody td i {
 }
 
 .form-wrapper.card button {
-  background-color: #4CAF50;
+  background-color: var(--accent-color);
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   align-self: flex-start;
+  transition: background-color var(--transition-standard);
 }
 
 .form-wrapper.card button:hover {
@@ -217,50 +204,13 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Diseño responsivo */
-@media (max-width: 768px) {
-  header {
-    padding: 15px 0;
-  }
-
-  nav ul {
-    gap: 15px;
-  }
-
-  section {
-    padding: 15px;
-  }
-
-  table {
-    font-size: 0.9rem;
-  }
-
-  th, td {
-    padding: 8px 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  table {
-    display: block;
-    overflow-x: auto;
-  }
-}
-
+/* Componente Hero */
 .hero {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color: #f0f8ff;
   padding: 3rem;
-
 }
 
 .hero-content {
@@ -283,13 +233,13 @@ footer {
 
 .cta-button {
   display: inline-block;
-  background-color: #2ecc71;
+  background-color: var(--accent-color);
   color: white;
   padding: 0.8rem 1.5rem;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
-  transition: background-color 0.3s;
+  transition: background-color var(--transition-standard);
 }
 
 .cta-button:hover {
@@ -301,26 +251,9 @@ footer {
   text-align: center;
 }
 
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+/* Las propiedades de imagen ya están definidas en la regla img general */
 
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    padding: 2rem 1rem;
-  }
-  
-  .hero-content {
-    padding-right: 0;
-    margin-bottom: 2rem;
-  }
-}
-
-/* Estilos mejorados para la sección de misión */
+/* Sección de misión */
 .mission-section {
   background-color: #f8f9fa;
   padding: 60px 20px;
@@ -329,7 +262,7 @@ footer {
 
 .mission-content h2 {
   margin-bottom: 40px;
-  color: #2c3e50;
+  color: var(--dark-color);
   font-size: 2.2rem;
 }
 
@@ -344,10 +277,10 @@ footer {
 .mission-card {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-strong);
   padding: 30px 20px;
   width: 250px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard);
 }
 
 .mission-card:hover {
@@ -357,7 +290,7 @@ footer {
 
 .mission-card i {
   font-size: 3rem;
-  color: #3498db;
+  color: var(--primary-color);
   margin-bottom: 20px;
 }
 
@@ -367,20 +300,7 @@ footer {
   line-height: 1.5;
 }
 
-/* Responsive para mission cards */
-@media (max-width: 768px) {
-  .mission-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .mission-card {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-
-/* Estilos para la sección de visión */
+/* Sección de visión */
 .vision-section {
   background-color: #e8f4fc;
   padding: 70px 20px;
@@ -402,7 +322,7 @@ footer {
 
 .vision-section h2 {
   position: relative;
-  color: #2c3e50;
+  color: var(--dark-color);
   font-size: 2.5rem;
   margin-bottom: 25px;
   z-index: 1;
@@ -420,9 +340,55 @@ footer {
   z-index: 1;
 }
 
+/* Diseño responsivo unificado */
 @media (max-width: 768px) {
-  .vision-section {
-    padding: 50px 15px;
+  header, .vision-section {
+    padding: 15px 0;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 8px 10px;
+  }
+  
+  thead i {
+    margin-right: 6px;
+  }
+  
+  tbody td i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+  }
+  
+  .hero {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+  
+  .hero-content {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .mission-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mission-card {
+    width: 100%;
+    max-width: 300px;
   }
   
   .vision-section h2 {
@@ -431,5 +397,18 @@ footer {
   
   .vision-section p {
     font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
   }
 } 
