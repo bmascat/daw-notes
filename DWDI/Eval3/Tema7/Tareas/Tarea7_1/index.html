@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas con Transiciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 800px;
+            gap: 20px;
+        }
+        
+        .card {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .card p {
+            text-align: center;
+            color: #666;
+        }
+        
+        /* Tarjeta 1: Cambia color, escala y sombra */
+        .card-1 {
+            background-color: #e3f2fd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .card-1:hover {
+            background-color: #bbdefb;
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Tarjeta 2: Rota y cambia borde */
+        .card-2 {
+            background-color: #e8f5e9;
+            border: 2px solid transparent;
+        }
+        
+        .card-2:hover {
+            transform: rotate(5deg);
+            border: 2px solid #4caf50;
+        }
+        
+        /* Tarjeta 3: Se traslada hacia la derecha y cambia opacidad */
+        .card-3 {
+            background-color: #fff3e0;
+            opacity: 1;
+        }
+        
+        .card-3:hover {
+            transform: translateX(20px);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card card-1">
+            <h3>Tarjeta 1</h3>
+            <p>Esta tarjeta cambia de color, escala y sombra al pasar el ratón.</p>
+        </div>
+        
+        <div class="card card-2">
+            <h3>Tarjeta 2</h3>
+            <p>Esta tarjeta rota y cambia su borde al pasar el ratón.</p>
+        </div>
+        
+        <div class="card card-3">
+            <h3>Tarjeta 3</h3>
+            <p>Esta tarjeta se traslada a la derecha y cambia su opacidad al pasar el ratón.</p>
+        </div>
+    </div>
+</body>
+</html>
