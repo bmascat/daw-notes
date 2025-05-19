@@ -1,9 +1,9 @@
 (: 8.- Título de los libros que no tienen versión electrónica. :)
 "-----------INICIO----------",
-for $x in doc("libros.xml")/biblioteca/libros/libro
+for $x in doc("../libros.xml")/biblioteca/libros/libro
 return concat(" - ",$x/editorial/data()),
 
-for $x in doc("libros.xml")/biblioteca/libros/libro
+for $x in doc("../libros.xml")/biblioteca/libros/libro
 return concat("Total: ", count($x/editorial/data())),
 
 (: FLWOR
@@ -15,7 +15,7 @@ RETURN
 :)
 
 "-----------prueba1----------",
-for $x in doc("libros.xml")/biblioteca/libros/libro
+for $x in doc("../libros.xml")/biblioteca/libros/libro
 where not($x/versionElectronica)
 return$x/titulo
 
