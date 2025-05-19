@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MiBibliotecaMP3>
+  <archivo almacenado="DISCO1">
+    <canción>Hangar 18</canción>
+    <artista>Megadeth</artista>
+    <disco>Rust in Peace</disco>
+    <puntuacion>9</puntuacion>
+    </archivo>
+  <archivo almacenado="DISCO2">
+    <canción>Peace Sells</canción>
+    <artista>Megadeth</artista>
+    <disco>Peace Sells...But Who's Buying</disco>
+    <puntuacion>9</puntuacion>
+    </archivo>
+  <archivo almacenado="DISCO1">
+    <canción>Master of Puppets</canción>
+    <artista>Metallica</artista>
+    <disco>Master of Puppets</disco>
+    <puntuacion>10</puntuacion>
+    </archivo>
+  <archivo almacenado="DISCO2">
+    <canción>Among The Living</canción>
+    <artista>Anthrax</artista>
+    <disco>Among The Living</disco>
+    <puntuacion>8</puntuacion>
+    </archivo>  
+   <archivo almacenado="DISCO1">
+    <canción>For Whom The Bell Tolls</canción>
+    <artista>Metallica</artista>
+    <disco>Ride The Lightning</disco>
+    <puntuacion>8</puntuacion>
+  </archivo>  
+</MiBibliotecaMP3>
