@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaciones continuas con keyframes</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+            font-family: sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        /* estilo base */
+        .icono{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .girar{
+            background-color: violet;
+            animation: girar 2s linear infinite;
+        }
+        @keyframes girar {
+            from { transform: rotate(0deg);}
+            to { transform: rotate(360deg);}
+        }
+
+        .latido{
+            background-color: lightcoral;
+            animation: latido 1s ease-in-out infinite;
+        }
+        @keyframes latido {
+            0%, 100% { transform: scale(1);}
+            50% { transform: scale(1.2);}
+        }
+
+        .parpadeo{
+            background-color: black;
+            animation: parpadeo 1s linear infinite;
+        }
+        @keyframes parpadeo {
+            0%, 100% { opacity: 1;}
+            50% { opacity: 0;}
+        }
+
+        .horizontal{
+            background-color: orange;
+            animation: horizontal 2s ease-in-out infinite alternate;
+        }
+        @keyframes horizontal {
+            from { transform: translateX(0);}
+            to { transform: translateX(50px);}
+        }
+
+        .fondo-scroll{
+            background-image: url(./background/nubes.jpg);
+            background-size: cover;
+            background-position: center;
+            animation: fondo-scroll 5s linear infinite;
+        }
+        @keyframes fondo-scroll {
+            0% { background-position: 0 0;}
+            to { background-position: -100px 0;}
+        }
+
+        .loader{
+            background-color: green;
+            animation: loader 1.2s ease-in-out infinite;
+        }
+        @keyframes loader {
+            0% { transform: scale(0); opacity: 0;}
+            50% { transform: scale(1); opacity: 1;}
+            100% { transform: scale(0); opacity: 0;}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="icono girar">🛞</div>
+    <div class="icono latido">❤️</div>
+    <div class="icono parpadeo">👁️</div>
+    <div class="icono horizontal">➡️</div>
+    <div class="icono fondo-scroll">☁️</div>
+    <div class="icono loader">⌚</div>
+</body>
+</html>

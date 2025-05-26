@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de animaciones básicas con transition</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .caja{
+            width: 200px;
+            height: 200px;
+            background-color: lightskyblue;
+            color:white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            border: 4px solid darkblue;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            opacity: 1;
+            transform: translateY(0) scale(1); /* estado inicial */
+
+            /* Transiciones para múltiples propiedades */
+            transition:
+                background-color 0.4s ease,
+                color 0.4s ease,
+                transform 0.4s ease,
+                opacity 0.4s ease,
+                border 0.4s ease,
+                box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .caja:hover{
+            background-color: greenyellow;
+            color: black;
+            transform: translateY(-10px) scale(1.1);
+            opacity: 0.6;
+            border: 5px solid green;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="caja">Pasa el mouse</div>
+</body>
+</html>
