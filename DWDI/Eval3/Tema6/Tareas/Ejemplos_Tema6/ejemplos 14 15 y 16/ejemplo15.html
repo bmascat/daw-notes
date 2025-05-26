@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de inserción de elemento &lt;audio&gt;</title>
+    <style>
+        .audio-contenedor{
+            background-color: #f2f2f2;
+            border: 2px solid lightgray;
+            border-radius: 10px;
+            padding: 20px;
+            width: 350px;
+            margin: 30px auto;
+            box-shadow: 4px 4px 10px rgba(0,0,0,30%);
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .audio-contenedor h2{
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color:tomato;
+        }
+        audio{
+            width: 100%;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejemplo de inserción de audio con elemento &lt;audio&gt;</h1>
+    <p>Plantilla básica en HTML5 para insertar audio en una página web de forma accesible y compatible con navegadores modernos.</p>
+    <p>Haz clic en el botón de reproducción para escuchar el audio:</p>
+
+    <!-- Reproductor de audio-->
+     <div class="audio-contenedor"> <!-- creamos contenedor-->
+        <h2>🎼 Escucha este ejemplo:</h2>
+        <audio controls preload="none">
+            <source src="media/audio.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio. Puedes descargarlo aquí <a href="media/audio.mp3"></a>
+        </audio>
+    </div>
+
+
+</body>
+</html>
