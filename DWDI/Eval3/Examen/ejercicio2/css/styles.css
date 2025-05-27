@@ -1,0 +1,60 @@
+/* Importar fuente local */
+@font-face {
+    font-family: Satisfy;
+    src: url(../fonts/Satisfy-Regular.ttf);
+    font-weight: normal;
+}
+
+body {
+    font-family: Satisfy;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    text-align: center;
+    background-color: #30dfce;
+}
+h1 {
+    margin-top: 0px;
+    font-size: 34px;
+}
+
+header p {
+    margin: 0px;
+    font-size: 24px;
+}
+
+/* Estilo para la galería de videos */
+.galeria {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/fondo.jpg);
+    gap: 10px;
+    max-width: 1440px;
+}
+
+/* Estilos del contenedor de cada uno de los videos de la galería */
+.contenedor {
+    margin-bottom: 10px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+    border: #30dfce 5px solid;
+}
+
+figcaption {
+    background-color: #30dfce;
+    font-size: 20px;
+}
+figcaption p {
+    margin: 0px;
+}
+footer {
+    text-align: center;
+    background-color: #30dfce;
+    padding: 20px;
+}
