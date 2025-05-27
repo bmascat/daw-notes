@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de inserción de elemento de vídeo &lt;video&gt;</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            background-color: lightgrey;
+            color: green;
+            text-align: center;
+            padding: 2em;
+        }
+
+        h1{
+            color: darkgreen;
+        }
+
+        .video-container{
+            display: inline-block;
+            border: 5px solid rgb(49, 73, 0);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
+            background-color: black;
+        }
+
+        video{
+            display: block;
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        p{
+            margin-bottom: 1em;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Ejemplo de inserción de elemento de vídeo &lt;video&gt;</h1>
+    <p>A continuación podrás ver un vídeo de lluvia:</p>
+    <div class="video-container">
+        <!-- Inserción de video -->
+        <video controls width="640" poster="media/poster.jpg">
+            <source src="media/video.mp4" type="video/mp4">
+            <source src="media/video.webm" type="video/webm">
+            <!-- Subtítulos en español-->
+            <track kind="subtitles" src="media/subtitulos.vtt" srclang="es" label="Español" default>
+            <!-- Subtítulos en inglés-->
+            <track kind="subtitles" src="media/subtitles.vtt" srclang="en" label="English">
+            Tu navegador no soporta este formato de video.
+        </video>
+    </div>
+</body>
+</html>
