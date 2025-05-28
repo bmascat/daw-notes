@@ -1,0 +1,52 @@
+<personas>
+    <persona codPER="5">
+        <seccion>S1</seccion>
+        <nombre>Pedro De la cierva Gascon</nombre>
+        <edad>80</edad>
+    </persona>
+    <persona codPER="6">
+        <seccion>S1</seccion>
+        <nombre>Luisa Garcia Garcia</nombre>
+        <edad>93</edad>
+    </persona>
+    <persona codPER="8">
+        <seccion>S3</seccion>
+        <nombre>Sigismundo Perez Perez</nombre>
+        <edad>65</edad>
+    </persona>
+    <persona codPER="9">
+        <seccion>S2</seccion>
+        <nombre>Iñaki Galarreta Goicoechea</nombre>
+        <edad>69</edad>
+    </persona>
+    <persona codPER="11">
+        <seccion>S2</seccion>
+        <nombre>Josefina Pla Noape</nombre>
+        <edad>67</edad>
+    </persona>
+    <persona codPER="17">
+        <seccion>S3</seccion>
+        <nombre>Leopoldo Alas Clarín</nombre>
+        <edad>68</edad>
+    </persona>
+    <persona codPER="16">
+        <seccion>S2</seccion>
+        <nombre>Rubén Darío Noape</nombre>
+        <edad>66</edad>
+    </persona>
+    <persona codPER="15">
+        <seccion>S3</seccion>
+        <nombre>Santiago Neruda Cabrera</nombre>
+        <edad>65</edad>
+    </persona>
+    <persona codPER="18">
+        <seccion>S1</seccion>
+        <nombre>Claudia Lars Noape</nombre>
+        <edad>68</edad>
+    </persona>
+    <persona codPER="20">
+        <seccion>S1</seccion>
+        <nombre>Claudia Pina Piñeiro</nombre>
+        <edad>100</edad>
+    </persona>
+</personas>

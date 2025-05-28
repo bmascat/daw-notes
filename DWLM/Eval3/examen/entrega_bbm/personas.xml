@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet href="/EXAMEN/Sol_G.xsl" type="text/xsl" ?>
+<personas>
+<persona codPER="1" sex="M">
+<seccion>S1</seccion>
+<nombre>Leticia Alonso Ojeda</nombre>
+<peso>63</peso>
+<edad>45</edad>
+</persona>
+<persona codPER="3" sex="M">
+<seccion>S3</seccion>
+<nombre>Maria Antonia Guitiriz Carballal</nombre>
+<peso>52</peso>
+<edad>36</edad>
+</persona>
+<persona codPER="4" sex="V">
+<seccion>S3</seccion>
+<nombre>Antonio Fernandez Pastoriza</nombre>
+<peso>69</peso>
+<edad>30</edad>
+</persona>
+<persona codPER="10" sex="V">
+<seccion>S3</seccion>
+<nombre>Juan Ramon Gimenez Azorin</nombre>
+<peso>73</peso>
+<edad>22</edad>
+</persona>
+<persona codPER="5" sex="V">
+<seccion>S1</seccion>
+<nombre>Pedro De la cierva Gascon</nombre>
+<peso>59</peso>
+<edad>80</edad>
+</persona>
+<persona codPER="6" sex="M">
+<seccion>S1</seccion>
+<nombre>Luisa Garcia Garcia</nombre>
+<peso>61</peso>
+<edad>93</edad>
+</persona>
+<persona codPER="7" sex="V">
+<seccion>S3</seccion>
+<nombre>Isaac Peral Sanchez</nombre>
+<peso>77</peso>
+<edad>45</edad>
+</persona>
+<persona codPER="8" sex="V">
+<seccion>S3</seccion>
+<nombre>Sigismundo Perez Perez</nombre>
+<peso>70</peso>
+<edad>65</edad>
+</persona>
+<persona codPER="9" sex="V">
+<seccion>S2</seccion>
+<nombre>Iñaki Galarreta Goicoechea</nombre>
+<peso>75</peso>
+<edad>69</edad>
+</persona>
+<persona codPER="2" sex ="M">
+<seccion>S1</seccion>
+<nombre>Amelia Denis de Icaza</nombre>
+<peso>53</peso>
+<edad>55</edad>
+</persona>
+<persona codPER="11" sex="M">
+<seccion>S2</seccion>
+<nombre>Josefina Pla Noape</nombre>
+<peso>63</peso>
+<edad>67</edad>
+</persona>
+<persona codPER="17" sex="V">
+<seccion>S3</seccion>
+<nombre>Leopoldo Alas Clarín</nombre>
+<peso>82</peso>
+<edad>68</edad>
+</persona>
+<persona codPER="16" sex="V">
+<seccion>S2</seccion>
+<nombre>Rubén Darío Noape</nombre>
+<peso>72</peso>
+<edad>66</edad>
+</persona>
+<persona codPER="12" sex="V">
+<seccion>S1</seccion>
+<nombre>Pablo García Baena</nombre>
+<peso>77</peso>
+<edad>56</edad>
+</persona>
+<persona codPER="19" sex="V">
+<seccion>S2</seccion>
+<nombre>Francisco de Quevedo Noape</nombre>
+<peso>89</peso>
+<edad>58</edad>
+</persona>
+<persona codPER="15" sex="V">
+<seccion>S3</seccion>
+<nombre>Santiago Neruda Cabrera</nombre>
+<peso>76</peso>
+<edad>65</edad>
+</persona>
+<persona codPER="14" sex="V">
+<seccion>S1</seccion>
+<nombre>José Hernández Noape</nombre>
+<peso>73</peso>
+<edad>64</edad>
+</persona>
+<persona codPER="13" sex="M">
+<seccion>S2</seccion>
+<nombre>Mariana Pérez Rodríguez</nombre>
+<edad>63</edad>
+<peso>59</peso>
+</persona>
+<persona codPER="18" sex="M">
+<seccion>S1</seccion>
+<nombre>Claudia Lars Noape</nombre>
+<peso>66</peso>
+<edad>68</edad>
+</persona>
+<persona codPER="20" sex="M">
+<seccion>S1</seccion>
+<nombre>Claudia Pina Piñeiro</nombre>
+<peso>61</peso>
+<edad>100</edad>
+</persona>
+<persona codPER="21" sex="V">
+<seccion>S1</seccion>
+<nombre>Antonio Pina Piñeiro</nombre>
+<peso>88</peso>
+<edad>64</edad>
+</persona>
+<persona codPER="22" sex="M">
+<seccion>S1</seccion>
+<nombre>Eva Luisa Pina Piñeiro</nombre>
+<peso>58</peso>
+<edad>64</edad>
+</persona>
+<persona codPER="24" sex="M">
+<seccion>S3</seccion>
+<nombre>Eva Llopis Piñeiro</nombre>
+<peso>58</peso>
+<edad>45</edad>
+</persona>
+<persona codPER="23" sex="V">
+<seccion>S3</seccion>
+<nombre>Jaime Piñeiro Rodas</nombre>
+<peso>58</peso>
+<edad>64</edad>
+</persona>
+<persona codPER="25" sex="V">
+<seccion>S2</seccion>
+<nombre>Marcos Alonso Recarey Philipon</nombre>
+<peso>72</peso>
+<edad>45</edad>
+</persona>
+</personas>

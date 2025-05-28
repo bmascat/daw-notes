@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Ejecutar transformación XSLT con Saxon (local)",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-jar",
+                "C:/saxon/saxon-he-11.4.jar",
+                "-s:${file}",
+                "-xsl:${fileDirname}/example.xslt",
+                "-o:${fileDirname}/output.xml"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

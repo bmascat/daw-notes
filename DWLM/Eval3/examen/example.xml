@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca>
+    <libro categoria="ficcion">
+        <titulo>El Señor de los Anillos</titulo>
+        <autor>J.R.R. Tolkien</autor>
+        <anio>1954</anio>
+        <precio>29.99</precio>
+        <disponible>true</disponible>
+    </libro>
+    <libro categoria="ciencia">
+        <titulo>Una breve historia del tiempo</titulo>
+        <autor>Stephen Hawking</autor>
+        <anio>1988</anio>
+        <precio>19.95</precio>
+        <disponible>true</disponible>
+    </libro>
+    <libro categoria="novela">
+        <titulo>Cien años de soledad</titulo>
+        <autor>Gabriel García Márquez</autor>
+        <anio>1967</anio>
+        <precio>24.50</precio>
+        <disponible>false</disponible>
+    </libro>
+    <libro categoria="informatica">
+        <titulo>Aprendiendo XML</titulo>
+        <autor>Erik T. Ray</autor>
+        <anio>2003</anio>
+        <precio>39.95</precio>
+        <disponible>true</disponible>
+    </libro>
+</biblioteca>
